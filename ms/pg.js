@@ -14,7 +14,7 @@
   );
 document.getElementById( document.cdnParameters.progress_bar ).innerHTML = '<div class="progress-bar">' +
                                                                                '<div class="bar-container">' +
-                                                                                  '<div class="bar"></div>' +
+                                                                                  '<div class="bar" id="pgBar"></div>' +
                                                                                '</div>' + 
                                                                            '</div>' + 
                                                                            '<div class="progress-bar-percent" id="perVal"></div>';
