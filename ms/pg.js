@@ -12,8 +12,12 @@
       console.log('next');
     }   
   );
-
-document.getElementById( document.cdnParameters.progress_bar ).innerHTML = '<div class="progress-bar"></div><div class="progress-bar-percent" id="perVal"></div>';
+document.getElementById( document.cdnParameters.progress_bar ).innerHTML = '<div class="progress-bar">' +
+                                                                               '<div class="bar-container">' +
+                                                                                  '<div class="bar"></div>' +
+                                                                               '</div>' + 
+                                                                           '</div>' + 
+                                                                           '<div class="progress-bar-percent" id="perVal"></div>';
 
 var setProgress = function() {
     var progress = ( ( $( '.active' ).attr( 'data-id' ) ) / Object.keys( document.cdnMultiStep.steps ).length);
