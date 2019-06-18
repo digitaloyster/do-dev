@@ -1,0 +1,101 @@
+
+<script>
+document.cdnMultiStep = {
+      buttons: {
+        nextButton: 'lp-pom-button-13',
+        prevButton: 'lp-pom-button-14',
+        submitButton: 'lp-pom-button-12'
+      },
+      steps: {
+        1: {
+          elements: 'lp-pom-text-15',
+          fields : 'multilender,lender_other',
+          checkBoxesToButtons: 'Y', // Y/N
+          nextButtonText: 'NEXT →'
+        },
+        2: {
+          elements: 'lp-pom-text-16',
+          fields : 'gender',
+          radioButtonsToButtons: 'Y', // Y/N
+          nextButtonText: 'NEXT →'
+        },
+        3: {
+          elements: 'lp-pom-text-17',
+          fields : 'first_name,last_name',
+          nextButtonText: 'NEXT →'
+        },
+        4: {
+          elements: 'lp-pom-text-18',
+          fields : 'email_address,telephone'
+        }
+      }
+};
+</script>
+
+
+<script>
+  document.cdnParameters = {
+    cake_offer_id: "802",
+    cake_lp_event_id: "256",
+    lp_tracking_prefix: "D", //B, D, M (Both, Desktop, Mobile)
+    favicon_url: "https://digitaloyster.co.uk/favicons/WPG-favicon.ico",
+    FB_account_names: "Life insurance, WPL (CPA), We Plan Life Cover", //FB account names comma separated
+    FB_pixel_ids: "1228474257260755,1014307918755596,182328872328651", //FB pixel ids comma separated
+    TB_account_names: "life insurance", //TB account names comma separated
+    TB_pixel_ids: "1079616", //TB pixel ids comma separated
+    postcode: "A", // A, S, N (Autocomplete, Search, No)
+    data8: "Y", // Y/N
+    smooth_scroll: "Y", // Y/N
+    hide_elements_affs: "929", //IDs of affiliates to hide elements comma separated
+    hide_elements: "#lp-pom-box-590" //IDs of elements to hide comma separated
+  };
+
+
+  document.cdnMultiStep = {
+    settings: {
+      nextButton: 'lp-pom-button-143',
+      prevButton: 'lp-pom-button-144',
+      submitButton: 'lp-pom-button-88'
+    },
+    steps: {
+      1: {
+        nextButtonText: 'CONTINUE >>',
+        elements: 'lp-pom-text-549,lp-pom-text-550',
+        fields: {
+          gender: {error: 'Please select gender'}
+        },
+      2: {
+        nextButtonText: 'CONTINUE >>',
+        elements: 'lp-pom-text-553,lp-pom-text-554',
+        fields: {
+          age: {}
+        }
+      },
+      3: {
+        nextButtonText: 'CONTINUE >>',
+        elements: 'lp-pom-text-557,lp-pom-text-558',
+        fields: {
+          smoker: {error: 'Please select smoker / non-smoker'}
+        }
+      },
+      4: {
+        nextButtonText: 'CONTINUE >>',
+        elements: 'lp-pom-text-561,lp-pom-text-562',
+        fields : {
+          title: {error: 'Select title'},
+          first_name: {},
+          last_name: {}
+        }
+      },
+      5: {
+        elements: 'lp-pom-text-565, #lp-pom-text-566, #lp-pom-button-583, #lp-pom-text-582',
+        fields : {
+          telephone: {},
+          email_address: {}
+        }
+      }
+    }
+  };
+
+
+</script>

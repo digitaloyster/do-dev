@@ -1,0 +1,7 @@
+/* Android CSS Fix CDN-v1.0 */
+
+@media only screen and (max-width: 600px) {
+  .lp-pom-form.has-axis .option {
+      margin-bottom: 3px !important;
+  }
+}

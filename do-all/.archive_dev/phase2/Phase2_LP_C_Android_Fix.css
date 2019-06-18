@@ -1,0 +1,9 @@
+/* needs adding to LP.CSS */
+
+/* Android Fix */
+@media only screen and (max-width: 600px) {
+   .lp-pom-form.has-axis .option {
+       margin-bottom: 3px !important;
+   }
+}
+/* Android Fix */

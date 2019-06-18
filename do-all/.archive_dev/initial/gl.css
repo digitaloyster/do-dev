@@ -1,0 +1,28 @@
+.glow {text-shadow: 0 0 5px rgba(81, 203, 238, 1);}
+
+.focusGlow {
+  box-shadow: 0 0 5px 1px rgba(81, 203, 238, 1) !important;
+  border: 1px solid #333 !important;
+
+  -webkit-animation: shadow 0.5s ease-in-out infinite !important;
+  -moz-animation: shadow 0.5s ease-in-out infinite !important;
+  animation: shadow 0.5s ease-in-out infinite !important;
+}
+
+@-webkit-keyframes shadow {
+  0% {box-shadow:0 0 0 1px rgba(81, 203, 238, 1) !important;}
+  50% {box-shadow:0 0 0 15px rgba(81, 203, 238, 1) !important;}
+  100% {box-shadow:0 0 0 1px rgba(81, 203, 238, 1) !important;}
+}
+
+@-moz-keyframes shadow {
+  0% {box-shadow:0 0 0 1px rgba(81, 203, 238, 1) !important;}
+  50% {box-shadow:0 0 0 15px rgba(81, 203, 238, 1) !important;}
+  100% {box-shadow:0 0 0 1px rgba(81, 203, 238, 1) !important;}
+}
+
+@keyframes shadow {
+0% {box-shadow:0 0 0 1px rgba(81, 203, 238, 1) !important;}
+  50% {box-shadow:0 0 0 15px rgba(81, 203, 238, 1) !important;}
+  100% {box-shadow:0 0 0 1px rgba(81, 203, 238, 1) !important;}
+}

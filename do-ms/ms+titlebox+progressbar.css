@@ -1,0 +1,86 @@
+/* Pagination */
+.step {
+  display:none;
+}
+.step.active  {
+  display:block;
+}
+
+/* Select Buttons */
+
+.select-button {
+  display: block;
+  position: relative !important;
+  height: 40px !important;
+  top: 0px !important;
+  /*background-color: #EFAC1F;*/
+  padding: 0 !important;
+  width: 100% !important;
+  border-radius: 5px;
+}
+.select-button.selected {
+  background-color: red;
+}
+.select-button:hover {
+opacity:0.7;
+}
+.select-button label {
+  padding: 0 !important;
+  position: relative;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+.select-button label span {
+  text-align: center;
+  width: 100% !important;
+  color: white;
+  display: block;
+  line-height: 40px;
+  top: 50% !important;
+}
+.select-button input {
+  display: none;
+}
+
+/* Progress Bar */
+
+.progress {
+  width: 100%;
+  height: 100%;
+}
+
+.progress-wrap {
+  background: #f80;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+.progress-wrap .progress-bar {
+  background: #ddd;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+/* Titles Section */
+.titles {
+  padding: 20px 0;
+  text-align: center;
+}
+.titles span {
+  color: white;
+  width: 100%;
+  display: inline-block;
+}
+.titles .title {
+  font-size: 28px;
+  font-weight: 800;
+  padding-bottom: 20px;
+}
+.titles .subtitle {
+  font-size: 18px;
+}
+.titles .percentage {
+  padding-bottom: 20px;
+}
