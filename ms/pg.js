@@ -18,6 +18,7 @@ document.getElementById( document.cdnParameters.progress_bar ).innerHTML = '<div
                                                                                '</div>' + 
                                                                            '</div>' + 
                                                                            '<div class="progress-bar-percent" id="perVal"></div>';
+document.getElementById('pgBar').style.background = 'linear-gradient( to right, ' + document.cdnParameters.progress_bar_color1 + ' 0%, ' + document.cdnParameters.progress_bar_color2 + ' 0% 100%';
 
 var setProgress = function() {
     var progress = ( ( $( '.active' ).attr( 'data-id' ) ) / Object.keys( document.cdnMultiStep.steps ).length);
