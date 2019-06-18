@@ -23,7 +23,7 @@ $(document).ready(function(){
       $('a:not(#link-no-replace, #ubpoverlay-close,'+document.cdnParameters.adv_not_replace_url_on+' )').attr('href', url);
 	    $("area").attr("href", url);
     }
-  // replace URL
+  // replace URL 
 
   // ADV Replace URLS
     if (document.cdnParameters.adv_replace_urls_to != '' && typeof document.cdnParameters.adv_replace_urls_to !== 'undefined') {
