@@ -1,0 +1,25 @@
+  .progress-bar {
+    height: 100%;
+    float: left;
+    width: 85%;
+  }
+  .bar-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .bar {
+    width: 80%;
+    height: 78%;
+  }
+  .progress-bar-percent {
+    width: 15%;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: inherit;
+  }
