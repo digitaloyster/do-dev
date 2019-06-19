@@ -175,12 +175,12 @@ function(args) {
       var $checked = $('input[name=lender]:checked');
       var other = false;
       for ( i = 0; i < $checked.length; i += 1) {
-          console.log($checked[i].value);
+          //console.log($checked[i].value);
           if ($checked[i].value === "Other" ) {
-              $('#container_other_1').show();
+              $('#container_other_1, #container_other_2').show();
           } else { lenders.push($checked[i].value); }
       }
-      if (!other) { $('#container_other_1').hide(); }
+      if (!other) { $('#container_other_1, #container_other_2').hide(); }
 
   });
 
