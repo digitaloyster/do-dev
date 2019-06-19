@@ -207,8 +207,8 @@ hooks.register(
         } else if (selected.length > 8) {
           document.getElementById('lender_abbey_national').setCustomValidity('Please select 8 or less banks/lenders');
           return false;
-        }
-        return true;*/
+      }*/
+        return true;
     }
 );
 
