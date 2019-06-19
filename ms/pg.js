@@ -33,11 +33,9 @@ var num_steps = Object.keys( document.cdnMultiStep.steps ).length;
 document.getElementById('percent_value').innerHTML = '0/' + num_steps + ' steps';
 var setProgress = function( nextPrev ) {
     var step = $( '.active' ).attr( 'data-id' );
-    nextPrev == 'prev' ? step -=2 : step === step;
-    var progress = Math.floor( ( Math.round( ( step / num_steps ) * 100 ) / 100 ) * 100 ) + '%';
-    var perVal = '';
-    progress == '100%' ? perVal = progress : perVal =  step + '/' + num_steps + ' steps';
-    document.getElementById('percent_value').innerHTML = perVal;
+    nextPrev == 'prev' ? step -=1 : step === step;
+    var progress = Math.floor( ( Math.round( ( ( step + 1 ) / num_steps ) * 100 ) / 100 ) * 100 ) + '%';
+    document.getElementById('percent_value').innerHTML = progress;
     $('.progress').stop().animate({
       width: progress
     }, 500);
