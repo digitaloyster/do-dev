@@ -66,8 +66,8 @@ var fillLenderFields = function(page) {
     lenderTypeWrapper = '';
     isOK = true;
 
-    var allLenders = $(':input:checked, select', '#step-1');
-    var checkedID = 0;
+    //var allLenders = $(':input:checked, select', '#step-1');
+    //var checkedID = 0;
 
     for (var j = 0; j < allLenders.length; j++) {
         var $l = $(allLenders[j]);
