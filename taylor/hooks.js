@@ -62,7 +62,7 @@ function autocomplete() {
 
 
 var fillLenderFields = function(page) {
-    var allLender = lenders.push(customBanksArr);
+    var allLenders = lenders.push(customBanksArr);
     lenderTypeWrapper = '';
     isOK = true;
 
