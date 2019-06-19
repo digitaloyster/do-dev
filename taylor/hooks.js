@@ -66,8 +66,8 @@ var fillLenderFields = function(page) {
     console.log(lenders);
     console.log(customBanksArr);
 
-    var allLenders = [];
-    allLenders.push.apply(lenders, customBanksArr);
+    var allLenders = lenders;
+    allLenders.extend(customBanksArr);
 
     console.log(allLenders);
 
@@ -145,6 +145,11 @@ if (checked.length != $selectedLender.length) {
 var isArrayEqual = function(arr1, arr2) {
     return arr1.toString() === arr2.toString()
 };
+
+Array.prototype.extend = function (other_array) {
+    /* You should include a test to check whether other_array really is an array */
+    other_array.forEach(function(v) {this.push(v)}, this);
+}
 
 if (!String.prototype.format) {
     String.prototype.format = function() {
