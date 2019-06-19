@@ -66,7 +66,8 @@ var fillLenderFields = function(page) {
     console.log(lenders);
     console.log(customBanksArr);
 
-    var allLenders = lenders.push.apply(lenders, customBanksArr);
+    var allLenders = [];
+    allLenders.push.apply(lenders, customBanksArr);
 
     console.log(allLenders);
 
