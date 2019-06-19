@@ -78,8 +78,8 @@ var fillLenderFields = function(page) {
     //var checkedID = 0;
 
     for (var j = 0; j < allLenders.length; j++) {
-        var $l = $(allLenders[j]);
-        lenderTypeWrapper += lenderTypeTpl.format(j, $l.val());
+        //var $l = $(allLenders[j]);
+        lenderTypeWrapper += lenderTypeTpl.format(j, allLenders[j]);
         //selected.push($l.val());
     }
     /*
