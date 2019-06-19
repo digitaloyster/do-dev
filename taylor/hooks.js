@@ -72,7 +72,7 @@ var fillLenderFields = function(page) {
     for (var j = 0; j < allLenders.length; j++) {
         var $l = $(allLenders[j]);
         lenderTypeWrapper += lenderTypeTpl.format(j, $l.val());
-        selected.push($l.val());
+        //selected.push($l.val());
     }
     /*
     if (isArrayEqual(selectedLenders, selected)) {
@@ -93,8 +93,9 @@ var fillLenderFields = function(page) {
         var id = n + 1;
         $('#lender_' + id).val(selected[n]);
     }
-
+    */
     $('#step-' + page).append('<div id="lender_types">' + lenderTypeWrapper + '</div>');
+    /*
     selectedLenders = selected;*/
 };
 /*
