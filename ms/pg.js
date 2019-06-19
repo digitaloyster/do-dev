@@ -25,7 +25,7 @@ document.getElementById( document.cdnParameters.progress_bar ).innerHTML = '<div
                                                                                '</div>' + 
                                                                            '</div>' + 
                                                                            '<div class="progress-bar-percent" id="percent_value" style="width: 15%;height: 100%;background-color: #ffff00;float: left;"></div>';
-document.getElementById('perVal').innerHTML = '0%';
+document.getElementById('percent_value').innerHTML = '0%';
 var setProgress = function( nextPrev ) {
     var step = $( '.active' ).attr( 'data-id' );
     nextPrev == 'prev' ? step -=2 : step === step;
