@@ -34,7 +34,7 @@ $( document.cdnParameters.progress_bar ).html( '<div class="progress-bar" style=
 var setProgress = function( nextPrev ) {
     var num_steps = Object.keys( document.cdnMultiStep.steps ).length;
     var step = $( '.active' ).attr( 'data-id' );
-    nextPrev == 'prev' ? step == step : step += 1;
+    nextPrev == 'prev' ? step == step : step ++;
     nextPrev === 1 ? step = nextPrev : step == step;
     var progress = Math.floor( ( Math.round( ( step / num_steps ) * 100 ) / 100 ) * 100 ) + '%';
     document.getElementById('percent_value').innerHTML = progress;
