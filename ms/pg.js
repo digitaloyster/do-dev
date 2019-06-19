@@ -29,7 +29,7 @@ var setProgress = function( nextPrev ) {
     nextPrev == 'prev' ? step -=2 : step === step;
     var progress = ( ( step ) / Object.keys( document.cdnMultiStep.steps ).length);
     pg_per = Math.abs(progress) * 100;
-    document.getElementById('perVal').innerHTML = pg_per;
+    document.getElementById('perVal').innerHTML = pg_per + '%';
     document.getElementById('pgBar').style.background = 'linear-gradient( to right, ' + document.cdnParameters.progress_bar_color1 + ' ' + pg_per +  '%, ' + document.cdnParameters.progress_bar_color2 + ' ' + pg_per + '% 100%';
     var getProgressWrapWidth = $('.progress-wrap').width();
     var progressTotal = progress * getProgressWrapWidth;
