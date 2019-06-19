@@ -62,17 +62,10 @@ function autocomplete() {
 
 
 var fillLenderFields = function(page) {
-
-    console.log(lenders);
-    console.log(customBanksArr);
-
     var allLenders = lenders;
     allLenders.extend(customBanksArr);
-
-    console.log(allLenders);
-
     lenderTypeWrapper = '';
-    isOK = true;
+    //isOK = true;
 
     //var allLenders = $(':input:checked, select', '#step-1');
     //var checkedID = 0;
@@ -82,6 +75,8 @@ var fillLenderFields = function(page) {
         lenderTypeWrapper += lenderTypeTpl.format(j, allLenders[j]);
         //selected.push($l.val());
     }
+    console.log(allLenders);
+    $('#multilender').val(allLenders.join(','));
     /*
     if (isArrayEqual(selectedLenders, selected)) {
         return true;
@@ -105,6 +100,17 @@ var fillLenderFields = function(page) {
     $('#step-' + page).append('<div id="lender_types">' + lenderTypeWrapper + '</div>');
     /*
     selectedLenders = selected;*/
+};
+
+var fillTypeField = function () {
+    var allTypes = [];
+    var allLenders = lenders;
+    allLenders.extend(customBanksArr);
+    for ( i = 0; i < allLenders.length ; i += 1 ) {
+        allTypes.push( $('input[name=lender_type-' + i + ']:checked').value );
+    }
+    console.log(allTypes);
+    $('#multitype').val(allTypes.join(','));
 };
 /*
 var fillCustomBanks = function(n, selected) {
@@ -201,7 +207,8 @@ hooks.register(
         } else if ($('body[data-current-page="2"]').length) {
             fillLenderFields(2);
         } else if ($('body[data-current-page="3"]').length) {
-
+            fillTypeField();
+            console.log($('#multitype'));
         }
         return true;
     }
