@@ -29,7 +29,7 @@ document.getElementById('percent_value').innerHTML = '0%';
 var setProgress = function( nextPrev ) {
     var step = $( '.active' ).attr( 'data-id' );
     nextPrev == 'prev' ? step -=2 : step === step;
-    var progress = ( Math.round( ( step / Object.keys( document.cdnMultiStep.steps ).length ) * 100 ) / 100 ) * 100 + '%';
+    var progress = Math.floor( ( Math.round( ( step / Object.keys( document.cdnMultiStep.steps ).length ) * 100 ) / 100 ) * 100 ) + '%';
     document.getElementById('percent_value').innerHTML = progress;
     $('.progress').stop().animate({
       width: progress
