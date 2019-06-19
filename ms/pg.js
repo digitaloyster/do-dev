@@ -23,7 +23,7 @@ document.getElementById( document.cdnParameters.progress_bar ).innerHTML = '<div
                                                                            '</div>' + 
                                                                            '<div class="progress-bar-percent" id="perVal"></div>';
 document.getElementById('pgBar').style.background = 'linear-gradient( to right, ' + document.cdnParameters.progress_bar_color1 + ' 0%, ' + document.cdnParameters.progress_bar_color2 + ' 0% 100%';
-
+document.getElementById('perVal').innerHTML = '0%';
 var setProgress = function( nextPrev ) {
     var step = $( '.active' ).attr( 'data-id' );
     nextPrev == 'prev' ? step -=2 : step === step;
