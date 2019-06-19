@@ -30,7 +30,7 @@ var setProgress = function( nextPrev ) {
     var step = $( '.active' ).attr( 'data-id' );
     nextPrev == 'prev' ? step -=2 : step === step;
     var progress = Math.abs( ( ( step ) / Object.keys( document.cdnMultiStep.steps ).length) ) * 100 + '%';
-    document.getElementById('perVal').innerHTML = progress;
+    document.getElementById('percent_value').innerHTML = progress;
     $('.progress').stop().animate({
       width: progress
     }, 500);
