@@ -31,7 +31,6 @@ $( document.cdnParameters.progress_bar ).html( '<div class="progress-bar" style=
 	                                               '<div class="progress-bar-percent" id="percent_value" style="width: 15%;height: 100%;float: left; display: flex;justify-content: center;align-items: center;"></div>');
 // document.getElementById('percent_value').innerHTML = '1/' + Object.keys( document.cdnMultiStep.steps ).length + ' steps';
 // $('.progress').css('width','25%');
-setProgress( 1 );
 var setProgress = function( nextPrev ) {
     var num_steps = Object.keys( document.cdnMultiStep.steps ).length;
     var step = $( '.active' ).attr( 'data-id' );
@@ -44,3 +43,4 @@ var setProgress = function( nextPrev ) {
     }, 500);
     return true;
 };
+setProgress( 1 );
