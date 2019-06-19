@@ -72,13 +72,13 @@ var fillLenderFields = function(page) {
     var all = allLenders;
     lenderTypeWrapper = '';
 
-    for (var j = 0; j < allLenders.length; j++) {
-        lenderTypeWrapper += lenderTypeTpl.format(j, allLenders[j]);
+    for (var j = 0; j < all.length; j++) {
+        lenderTypeWrapper += lenderTypeTpl.format(j, all[j]);
     }
 
-    console.log(allLenders);
+    console.log(all);
 
-    $('#multilender').val(allLenders.join(','));
+    $('#multilender').val(all.join(','));
     $('#lender_types').remove();
     $('#step-' + page).append('<div id="lender_types">' + lenderTypeWrapper + '</div>');
 
@@ -86,9 +86,8 @@ var fillLenderFields = function(page) {
 
 var fillTypeField = function () {
     var allTypes = [];
-    var allLenders = lenders;
-    allLenders.extend(customBanksArr);
-    for ( i = 0; i < allLenders.length ; i += 1 ) {
+    var all = allLenders;
+    for ( i = 0; i < all.length ; i += 1 ) {
         allTypes.push( $('input[name=lender_type-' + i + ']:checked').value );
     }
     console.log(allTypes);
