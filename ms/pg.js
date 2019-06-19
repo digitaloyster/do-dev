@@ -1,4 +1,5 @@
- var hooks = document.cdnMultiStep.hooks;
+"use strict"; 
+var hooks = document.cdnMultiStep.hooks;
 
   hooks.register(
     'hookPrevCheck',
