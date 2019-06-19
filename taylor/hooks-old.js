@@ -1,7 +1,5 @@
 /*------------------------------------------------
-Output:
-multilender hidden csv
-multitype hidden csv
+Need to end with a csv of lenders and lender types
 --------------------------------------------------*/
 
 //--------------- VARIABLES
@@ -23,7 +21,6 @@ var lenderTypeTpl =
   '</div>' +
   '</div>';
 var customBanks = 0;
-var lenders = [];
 var customBanksArr = [];
 var maxCustomBanks = 3;
 //--------------- VARIABLES
@@ -40,16 +37,14 @@ $(selector).selectize({
   hideSelected: true,
   closeAfterSelect: true,
   onItemAdd: function(value, $item) {
-    //customBanks++;
+    customBanks++;
     customBanksArr.push(value);
     $('body').addClass('hide-dropdown');
-    console.log(customBanksArr);
   },
   onItemRemove: function(value) {
-    //customBanks--;
+    customBanks--;
     customBanksArr.removeByValue(value);
     $('body').addClass('hide-dropdown');
-    console.log(customBanksArr);
   },
   onType: function(str) {
     if (str && str.trim().length) {
@@ -59,7 +54,6 @@ $(selector).selectize({
 });
 $('body').addClass('hide-dropdown');
 }
-
 
 var fillLenderFields = function(page) {
 var selected = [];
@@ -149,53 +143,34 @@ var isArrayEqual = function(arr1, arr2) {
 return arr1.toString() === arr2.toString()
 };
 
-if (!String.prototype.format) {
-  String.prototype.format = function() {
-    var args = arguments;
-    return this.replace(/{(\d+)}/g, function(match, number) {
-      return typeof args[number] != 'undefined' ? args[number] : match;
-    });
-  };
-}
-
 //--------------- FUNCTIONS
 
 //--------------- EVENTS/HOOKS
-//Hooks Page Init
+
 hooks.register(
 'hookPageInit',
 function(args) {
-    $('#lender_other').load(autocomplete());
   //Selectize
-
-  //TODO: Convert to fill lenders array or activate autocomplete()
-
-  $('input[name=lender]').change(function() {
-      lenders = [];
-      var $checked = $('input[name=lender]:checked');
-      var other = false;
-      for ( i = 0; i < $checked.length; i += 1) {
-          if ($checked[i].val() === "Other" ) {
-              $('#container_other_1').show();
-          } else { lenders.push($checked[i].val()); }
-      }
-      if (!other) { $('#container_other_1').hide(); }
-      console.log(lenders);
-  });
-
-
-
-  /*$('#lender_other').change(function() {
+  $('#lender_other').change(function() {
     if ($('#lender_other:checked').val() == 'Other' ) $('#container_other_1, #container_other_2').show();
     else $('#container_other_1, #container_other_2').hide();
-    });*/
+  });
+  $('#lender_other').load(autocomplete());
 
+  if (!String.prototype.format) {
+    String.prototype.format = function() {
+      var args = arguments;
+      return this.replace(/{(\d+)}/g, function(match, number) {
+        return typeof args[number] != 'undefined' ? args[number] : match;
+      });
+    };
+  }
   //Selectize
   return true;
 
 }
 );
-//Hooks New Step
+
 hooks.register(
 'hookNewStep',
 function(args) {
@@ -212,7 +187,7 @@ function(args) {
   return true;
 }
 );
-//Hooks Next Check
+
 hooks.register(
 'hookNextCheck',
 function(args) {
