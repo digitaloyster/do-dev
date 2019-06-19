@@ -29,9 +29,10 @@ $( document.cdnParameters.progress_bar ).html( '<div class="progress-bar" style=
 	                                                   '</div>' + 
 	                                                '</div>' + 
 	                                               '<div class="progress-bar-percent" id="percent_value" style="width: 15%;height: 100%;float: left; display: flex;justify-content: center;align-items: center;"></div>');
-var num_steps = Object.keys( document.cdnMultiStep.steps ).length;
-document.getElementById('percent_value').innerHTML = '0/' + num_steps + ' steps';
+document.getElementById('percent_value').innerHTML = '1/' + Object.keys( document.cdnMultiStep.steps ).length + ' steps';
+$('.progress').css('width','25%');
 var setProgress = function( nextPrev ) {
+    var num_steps = Object.keys( document.cdnMultiStep.steps ).length;
     var step = $( '.active' ).attr( 'data-id' );
     nextPrev == 'prev' ? step -=1 : step === step;
     var progress = Math.floor( ( Math.round( ( ( step + 1 ) / num_steps ) * 100 ) / 100 ) * 100 ) + '%';
