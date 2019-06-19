@@ -24,7 +24,7 @@ document.getElementById( document.cdnParameters.progress_bar ).innerHTML = '<div
                                                                                   '</div>' +
                                                                                '</div>' + 
                                                                            '</div>' + 
-                                                                           '<div class="progress-bar-percent" id="perVal" style="width: 15%;height: 100%;background-color: #ffff00;float: left;"></div>';
+                                                                           '<div class="progress-bar-percent" id="percent_value" style="width: 15%;height: 100%;background-color: #ffff00;float: left;"></div>';
 document.getElementById('pgBar').style.background = 'linear-gradient( to right, ' + document.cdnParameters.progress_bar_color1 + ' 0%, ' + document.cdnParameters.progress_bar_color2 + ' 0% 100%';
 document.getElementById('perVal').innerHTML = '0%';
 var setProgress = function( nextPrev ) {
