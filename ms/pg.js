@@ -4,12 +4,16 @@
     'hookPrevCheck',
     function (args) {
       console.log('prev');
+      setProgress();
+      return true;
     }   
   );
     hooks.register(
     'hookNextCheck',
     function (args) {
       console.log('next');
+      setProgress();
+      return true;
     }   
   );
 document.getElementById( document.cdnParameters.progress_bar ).innerHTML = '<div class="progress-bar">' +
