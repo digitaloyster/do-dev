@@ -166,36 +166,22 @@ hooks.register(
 'hookPageInit',
 function(args) {
     $('#lender_other').load(autocomplete());
-  //Selectize
 
-  //TODO: Convert to fill lenders array or activate autocomplete()
-
-  $('input[name=lender]').change(function() {
+    $('input[name=lender]').change(function() {
       lenders = [];
       var $checked = $('input[name=lender]:checked');
       var other = false;
       for ( i = 0; i < $checked.length; i += 1) {
-          //console.log($checked[i].value);
           if ($checked[i].value === "Other" ) {
               other = true;
-              $('#container_other_1, #container_other_2').show();
+              $('#container_other_1').show();
           } else { lenders.push($checked[i].value); }
       }
-      if (!other) { $('#container_other_1, #container_other_2').hide(); }
+      if (!other) { $('#container_other_1').hide(); }
   });
-
-
-
-  /*$('#lender_other').change(function() {
-    if ($('#lender_other:checked').val() == 'Other' ) $('#container_other_1, #container_other_2').show();
-    else $('#container_other_1, #container_other_2').hide();
-    });*/
-
-  //Selectize
   return true;
+});
 
-}
-);
 //Hooks New Step
 hooks.register(
 'hookNewStep',
@@ -213,6 +199,7 @@ function(args) {
   return true;
 }
 );
+
 //Hooks Next Check
 hooks.register(
 'hookNextCheck',
