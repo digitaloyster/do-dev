@@ -29,6 +29,13 @@ var maxCustomBanks = 3;
 //--------------- VARIABLES
 
 //--------------- FUNCTIONS
+var allLenders = function() {
+    var all = [];
+    all.extend(lenders);
+    all.extend(customBanksArr);
+    return all;
+};
+
 function autocomplete() {
     var selector = '#other_1';
     $(selector).attr('multiple', true);
@@ -62,45 +69,19 @@ function autocomplete() {
 
 
 var fillLenderFields = function(page) {
-    var allLenders = [];
-    allLenders.extend(lenders);
-    allLenders.extend(customBanksArr);
+    var all = allLenders;
     lenderTypeWrapper = '';
-    //isOK = true;
-
-    //var allLenders = $(':input:checked, select', '#step-1');
-    //var checkedID = 0;
 
     for (var j = 0; j < allLenders.length; j++) {
-        //var $l = $(allLenders[j]);
         lenderTypeWrapper += lenderTypeTpl.format(j, allLenders[j]);
-        //selected.push($l.val());
     }
+
     console.log(allLenders);
+
     $('#multilender').val(allLenders.join(','));
-    /*
-    if (isArrayEqual(selectedLenders, selected)) {
-        return true;
-    }
-
     $('#lender_types').remove();
-
-    var fields = $('[type="hidden"][id^="acctype"]');
-    for (var i = 0; i < fields.length; i++) {
-        $(fields[i]).val('');
-    }
-    var lenders = $('[type="hidden"][id^="lender"]');
-    for (var i = 0; i < lenders.length; i++) {
-        $(lenders[i]).val('');
-    }
-    for (var n = 0; n < selected.length; n++) {
-        var id = n + 1;
-        $('#lender_' + id).val(selected[n]);
-    }
-    */
     $('#step-' + page).append('<div id="lender_types">' + lenderTypeWrapper + '</div>');
-    /*
-    selectedLenders = selected;*/
+
 };
 
 var fillTypeField = function () {
@@ -113,49 +94,16 @@ var fillTypeField = function () {
     console.log(allTypes);
     $('#multitype').val(allTypes.join(','));
 };
-/*
-var fillCustomBanks = function(n, selected) {
-for (var k = 0; k < customBanksArr.length; k++) {
-  $('[type="hidden"][id="lender_' + (n+1) + '"]').val(customBanksArr[k]);
-  selected.push(customBanksArr[k]);
-  lenderTypeWrapper += lenderTypeTpl.format((n+1), customBanksArr[k]);
-  n++;
-}
-};*/
-
-/*
-var fillLenderTypes = function() {
-var checked = $('[name^=lender_type-]:checked');
-var all = $('[name^=lender_type-]');
-var $selectedLender = $('.selected-lender');
-$selectedLender.removeClass('invalid');
-for (var h = 0; h < all.length; h++) {
-  var idx = h + 1;
-  var $el = $('[name^=lender_type-' + idx + ']');
-  if (!$el.is(':checked')) {
-    $el.parents('.selected-lender').addClass('invalid');
-  }
-}
-if (checked.length != $selectedLender.length) {
-  isOK = false;
-} else {
-  for (var k = 0; k < checked.length; k++) {
-    var id = $(checked[k]).attr('name').split('-');
-    var v = $(checked[k]).val();
-    $('#acctype' + id[1]).val(v);
-  }
-  isOK = true;
-}
-};*/
 
 // Utilities
 var isArrayEqual = function(arr1, arr2) {
     return arr1.toString() === arr2.toString()
 };
 
-Array.prototype.extend = function (other_array) {
-    /* You should include a test to check whether other_array really is an array */
-    other_array.forEach(function(v) {this.push(v)}, this);
+if (!Array.prototype.extend) {
+    Array.prototype.extend = function (other_array) {
+        other_array.forEach(function(v) {this.push(v)}, this);
+    };
 }
 
 if (!String.prototype.format) {
