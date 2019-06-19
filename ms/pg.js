@@ -34,8 +34,8 @@ $('.progress').css('width','25%');
 var setProgress = function( nextPrev ) {
     var num_steps = Object.keys( document.cdnMultiStep.steps ).length;
     var step = $( '.active' ).attr( 'data-id' );
-    nextPrev == 'prev' ? step -=1 : step === step;
-    var progress = Math.floor( ( Math.round( ( ( step + 1 ) / num_steps ) * 100 ) / 100 ) * 100 ) + '%';
+    nextPrev == 'prev' ? step == step : step += 1;
+    var progress = Math.floor( ( Math.round( ( step / num_steps ) * 100 ) / 100 ) * 100 ) + '%';
     document.getElementById('percent_value').innerHTML = progress;
     $('.progress').stop().animate({
       width: progress
