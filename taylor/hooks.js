@@ -175,9 +175,9 @@ function(args) {
       var $checked = $('input[name=lender]:checked');
       var other = false;
       for ( i = 0; i < $checked.length; i += 1) {
-          if ($checked[i].val === "Other" ) {
+          if ($checked[i].value === "Other" ) {
               $('#container_other_1').show();
-          } else { lenders.push($checked[i].val); }
+          } else { lenders.push($checked[i].value); }
       }
       if (!other) { $('#container_other_1').hide(); }
       console.log(lenders);
