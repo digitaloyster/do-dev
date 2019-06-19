@@ -177,12 +177,11 @@ function(args) {
       for ( i = 0; i < $checked.length; i += 1) {
           //console.log($checked[i].value);
           if ($checked[i].value === "Other" ) {
-              console.log("Other checked");
+              other = true;
               $('#container_other_1, #container_other_2').show();
           } else { lenders.push($checked[i].value); }
       }
       if (!other) { $('#container_other_1, #container_other_2').hide(); }
-
   });
 
 
