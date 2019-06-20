@@ -1,3 +1,3 @@
 # do-dev
 
-cdn.jsdelivr.net and digitaloyster.github.io are both directories for saving local overrides under chrome.
+cdn.jsdelivr.net, digitaloyster.github.io and dev.digitaloyster.co.uk are all directories for saving local overrides under chrome.
