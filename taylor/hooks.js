@@ -205,7 +205,7 @@ hooks.register(
 
 //Hooks Submit
 hooks.register(
-    'hookNextCheck',
+    'hookSubmit',
     function (args) {
         "use strict";
         $submit.unbind("click");
