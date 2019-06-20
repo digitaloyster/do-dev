@@ -109,6 +109,37 @@ var fillTypeField = function () {
     $('#multitype').val(allTypes.join(','));
 };
 
+var escapeQuote = function () {
+    "use strict";
+    var inputs = $(':input', 'form'),
+        escapeRegExp = /'/g,
+        inputVal,
+        newVal;
+    $.each(inputs, function (i) {
+        inputVal = $(inputs[i]).val() || '';
+        if (inputVal.indexOf('\'') > -1) {
+            newVal = inputVal.replace(escapeRegExp, ' ');
+            $(inputs[i]).val(newVal);
+        }
+    });
+};
+
+var reformatFields = function () {
+    "use strict";
+    var capitalize = function (str) {
+        str = str.toLowerCase();
+        return str.replace(/\b\w/g, function (l) {
+            return l.toUpperCase();
+        });
+    },
+        valFN = $('#first_name').val(),
+        valLN = $('#last_name').val(),
+        valPC = $('#postcode').val();
+    $('#first_name').val(capitalize(valFN));
+    $('#last_name').val(capitalize(valLN));
+    $('#postcode').val(valPC.toUpperCase());
+};
+
 // Utilities
 var isArrayEqual = function (arr1, arr2) {
     "use strict";
@@ -209,17 +240,17 @@ hooks.register(
         "use strict";
         $submit.unbind("click");
         $submit.find('span').html('<strong>Please wait...</strong>');
+        escapeQuote();
+        reformatFields();
         var formData = new FormData(), $fields  = $(':input').not('[type="file"], [type="button"], button');
         $fields.each(function (i, val) {
             var name = $(val).attr('name'), value = $(val).val();
             formData.append(name, value);
         });
-    //formData.append("lenders", multiLender());
 
         $.ajax({
             type: "post",
-            //url: "https://digitaloyster.co.uk/dev/sigform_taylor/API-Stage-1.php",
-            url: "https://digitaloyster.co.uk/dev/sigform_taylor/test_page.php",
+            url: "https://digitaloyster.co.uk/dev/sigform_taylor/API-Stage-1a.php",
             data: formData,
             dataType: "text",
             cache: false,
@@ -237,7 +268,6 @@ hooks.register(
                 console.log(data);
                 $('#reference').val(data);
                 setCookie(data);
-                //alert("Submitted");
                 return true;
             })
             .fail(function () {
