@@ -191,7 +191,7 @@ hooks.register(
                 $('#group_lender').append('<div class="error-message">Limit to 8 banks/lenders.</div>');
                 return false;
             }
-            if ($('#lender_other:checked').value === 'Other' && customBanksArr.length === 0) {
+            if ($('#lender_other:checked').val() === 'Other' && customBanksArr.length === 0) {
                 $('#group_lender').append('<div class="error-message">Choose Other from box above.</div>');
                 return false;
             }
