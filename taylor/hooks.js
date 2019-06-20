@@ -71,8 +71,15 @@ var fillLenderFields = function(page) {
     for (var j = 0; j < all.length; j++) {
         lenderTypeWrapper += lenderTypeTpl.format(j, all[j]);
     }
+    var multitypesetting = $('#multitype')[0].value;
+    if (multitypesetting !== '') {
+        var multitypesettings = multitypesetting.split(',');
+        for ( i = 0; i < multitypesettings.length ; i += 1) {
+            if (multitypesettings[i] === "Credit Card") { $('#cc_card-' + i).attr('checked', 'true'); }
+            else if (multitypesettings[i] === "Mortgage") { $('#mortgage-' + i).attr('checked', 'true'); }
+        }        
+    }
 
-    console.log(all);
 
     $('#multilender').val(all.join(','));
     $('#lender_types').remove();
@@ -88,8 +95,6 @@ var fillTypeField = function () {
     for ( i = 0; i < all.length ; i += 1 ) {
         allTypes.push( $('input[name=lender_type-' + i + ']:checked')[0].value );
     }
-    console.log("types");
-    console.log(allTypes);
     $('#multitype').val(allTypes.join(','));
 };
 
