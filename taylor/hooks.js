@@ -86,8 +86,9 @@ var fillTypeField = function () {
     all.extend(lenders);
     all.extend(customBanksArr);
     for ( i = 0; i < all.length ; i += 1 ) {
-        allTypes.push( $('input[name=lender_type-' + i + ']:checked').value );
+        allTypes.push( $('input[name=lender_type-' + i + ']:checked')[0].value );
     }
+    console.log("types");
     console.log(allTypes);
     $('#multitype').val(allTypes.join(','));
 };
