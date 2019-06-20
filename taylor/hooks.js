@@ -29,12 +29,6 @@ var maxCustomBanks = 3;
 //--------------- VARIABLES
 
 //--------------- FUNCTIONS
-var allLenders = function() {
-    var all = [];
-    all.extend(lenders);
-    all.extend(customBanksArr);
-    return all;
-};
 
 function autocomplete() {
     var selector = '#other_1';
@@ -69,7 +63,9 @@ function autocomplete() {
 
 
 var fillLenderFields = function(page) {
-    var all = allLenders;
+    var all = [];
+    all.extend(lenders);
+    all.extend(customBanksArr);
     lenderTypeWrapper = '';
 
     for (var j = 0; j < all.length; j++) {
@@ -86,7 +82,9 @@ var fillLenderFields = function(page) {
 
 var fillTypeField = function () {
     var allTypes = [];
-    var all = allLenders;
+    var all = [];
+    all.extend(lenders);
+    all.extend(customBanksArr);
     for ( i = 0; i < all.length ; i += 1 ) {
         allTypes.push( $('input[name=lender_type-' + i + ']:checked').value );
     }
