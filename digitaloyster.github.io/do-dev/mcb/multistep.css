@@ -1,28 +1,19 @@
-/* Pagination */
-.step {
-  display:none;
-}
-.step.active  {
-  display:block;
-}
-
-/* Select Buttons */
-
 .select-button {
   display: block;
   position: relative !important;
-  height: 40px;
-  top: 0px !important;
-  /*background-color: #EFAC1F;*/
+  height: 25px !important;
+  background-color: #337ab7;
   padding: 0 !important;
   width: 100% !important;
   border-radius: 5px;
+  margin-bottom: 1px !important;
+  margin-left: 4px !important;
 }
 .select-button.selected {
-  /*background-color: red;*/
+  background-color: #fddfa1;
 }
 .select-button:hover {
-opacity:0.7;
+  opacity: 0.7;
 }
 .select-button label {
   padding: 0 !important;
@@ -34,11 +25,13 @@ opacity:0.7;
 .select-button label span {
   text-align: center;
   width: 100% !important;
-  color: white;
+  color: #ffffff !important;
   display: block;
-  line-height: 40px;
+  line-height: 25px !important;
   top: 50% !important;
 }
 .select-button input {
-  display: none;
+  display: none !important;
 }
+
+/*# sourceMappingURL=multistep.css.map */
