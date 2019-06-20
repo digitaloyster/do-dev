@@ -245,7 +245,8 @@ hooks.register(
                 var d = new Date(), message = "Fail: " + $('#ckm_request_id').val() + " - " + d.toUTCString();
                 $.get("https://digitaloyster.co.uk/dev/sigform_taylor/error_logging.php", { msg: message});
                 alert("ajax error");
-                $submit.on("click", submitHandle);
+                var event = new Event('submitActive');
+                document.dispatchEvent(event);
                 $submit.find('span').html(submit_text);
                 return false;
             });
