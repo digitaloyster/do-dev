@@ -34,7 +34,7 @@ var setProgress = function( nextPrev ) {
     if( step == num_steps){ 
       $('#progress').stop().animate({
         width: progress,
-        borderRadius: 8
+        borderRadius: 4
       }, 500);
     }
     else{
