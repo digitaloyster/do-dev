@@ -29,7 +29,6 @@ var setProgress = function( nextPrev ) {
     nextPrev == 'prev' ? step -- : step ++;
     nextPrev === 1 ? step = nextPrev : step == step;
     var progress = Math.floor( ( Math.round( ( step / num_steps ) * 100 ) / 100 ) * 100 ) + '%';
-    //document.getElementById('percent_value').innerHTML = progress;
     document.getElementById('progress').innerHTML = progress;
     $('#progress').stop().animate({
       width: progress
