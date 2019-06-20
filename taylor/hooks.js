@@ -188,13 +188,13 @@ hooks.register(
         "use strict";
         if ($('body[data-current-page="1"]').length) {
             if (lenders.length + customBanksArr.length > 8) {
-                $('#group_lender .error-message').remove();
-                $('#group_lender').append('<div class="error-message">Limit to 8 banks/lenders.</div>');
+                $('#container_lender .error-message').remove();
+                $('#container_lender').append('<div class="error-message">Limit to 8 banks/lenders.</div>');
                 return false;
             }
             if ($('#lender_other:checked').val() === 'Other' && customBanksArr.length === 0) {
-                $('#group_lender .error-message').remove();
-                $('#group_lender').append('<div class="error-message">Choose Other from box above.</div>');
+                $('#container_lender .error-message').remove();
+                $('#container_lender').append('<div class="error-message">Choose Other from box above.</div>');
                 return false;
             }
         }
