@@ -33,8 +33,6 @@ var setProgress = function( nextPrev ) {
     var progress = Math.floor( ( Math.round( ( step / num_steps ) * 100 ) / 100 ) * 100 ) + '%';
     //document.getElementById('percent_value').innerHTML = progress;
     document.getElementById('progress').innerHTML = progress;
-    
-    $this.css('font-size', Math.max(Math.min($this.width() / (compressor*10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)));
     $('#progress').stop().animate({
       width: progress
     }, 500);
