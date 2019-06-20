@@ -1,9 +1,9 @@
 // Variables
-  var $submit = $('#lp-pom-button-1231');
-  var submit_text = $submit.find('span').html();
+  /*var $submit = $('#lp-pom-button-1231');
+  var submit_text = $submit.find('span').html();*/
 
   //Functions
-  function setCookie(ref) {
+  /*function setCookie(ref) {
     var d = new Date();
     var setTime = new Date();
     //setTime.setTime(setTime.getTime());
@@ -14,14 +14,14 @@
     document.cookie = "reference=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "reference=" + ref + ";"+expires + ";path=/";
     document.cookie = timeout+";"+expires + ";path=/";
-    console.log("setCookie");
-  }
+    //console.log("setCookie");
+}*/
 
-  function multiLender() {
+  /*function multiLender() {
     return $('input[name="multilender"]:checked').map(function(){
       return $(this).val();
     }).get().join(',');
-  }
+}*/
 
   function checkValid() {
     $submit.unbind("click");
@@ -81,7 +81,7 @@
     });
   }
 
-  $( document ).ready(function() {
+  /*$( document ).ready(function() {
     $submit.on("click", checkValid);
 
     document.addEventListener("Validated", submitHandle);
@@ -92,4 +92,4 @@
         return false;
       }
     });
-  });  
+});*/
