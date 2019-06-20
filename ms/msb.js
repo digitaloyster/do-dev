@@ -1,6 +1,6 @@
 // Version 1.2
 
-$(document).ready(function() {
+$(document).ready(function () {
   // XXX: Variables/Objects
   if (document.cdnMultiStep.debugMode) var d = true;
   else var d = false;
@@ -18,27 +18,27 @@ $(document).ready(function() {
   /*--------------------------------------------------------------------------*/
   // XXX: Functions
   // Initialise Step Structre
-  var initialise = function() {
+  var initialise = function () {
     hooks.call('hookPreInit',[]); // Hook
 
-    $.each(steps, function(i, val) {
+    $.each(steps, function (i, val) {
       var page = [];
-      $.each(steps[i].fields, function(k, val) { page.push("#container_"+k); });
+      $.each(steps[i].fields, function (k, val) { page.push("#container_"+k); });
       if (objSize(page)==0) $('#step-'+(i-1)).after('<div id="step-' + i + '" data-id="' + i + '" class="step"></div>');
       else $(page.join(',')).wrapAll('<div id="step-' + i + '" data-id="' + i + '" class="step"></div>');
     });
 
     // Add custom aspects
-    $.each(steps, function(i, val) {
+    $.each(steps, function (i, val) {
       if ("fields" in steps[i] && steps[i].fields != '') {
-        $.each(steps[i].fields, function(k, val){
+        $.each(steps[i].fields, function (k, val){
           // Buttons
           if ("display" in val && val.display == "buttons") {
             if (!$('#'+k).length) {
               $("[name='"+k+"']").parent().addClass('select-button');
               if ( objSize(steps[i].fields) == 1 ) {
                 $("[name='"+k+"']").parent().addClass('single-field');
-                $("[name='"+k+"']").bind('change', function() {
+                $("[name='"+k+"']").bind('change', function () {
                   $("#container_"+k+" .selected").removeClass('selected');
                   var $update = $(this).parent('div');
                   $update.addClass('selected');
@@ -80,7 +80,7 @@ $(document).ready(function() {
   }
 
   // D8 Validation
-  var d8Validate = function() {
+  var d8Validate = function () {
     if (d) console.log("d8Validate()");
     // TODO: Switch custom validity from hardcoded to set variable if exists.
     document.getElementById('telephone').setCustomValidity("Please enter a valid telephone number.");
@@ -89,10 +89,10 @@ $(document).ready(function() {
   }
 
   // Validate current page
-  var isValid = function(step) {
+  var isValid = function (step) {
     var valid = true;
     var event = new Event('doErrors');
-    $.each(steps[step].fields, function(i,v) {
+    $.each(steps[step].fields, function (i,v) {
 
       i = i.trim();
       // NOTE: Potentially need a hook for custom validation here. Post i and return true/false.
@@ -121,33 +121,33 @@ $(document).ready(function() {
   };
 
   // Clear all error messages
-  var clearErrors = function() {
+  var clearErrors = function () {
     $('.error-message').remove();
   };
 
   // Get all Elements
-  var getElements = function() {
+  var getElements = function () {
       var allElements = [];
-      $.each(steps, function(index, value) {
+      $.each(steps, function (index, value) {
         if ("elements" in steps[index] && steps[index].elements != "") {
           var elements = steps[index].elements.split(',');
-          $.each(elements, function(ind, val) { allElements.push('#'+val.trim());})
+          $.each(elements, function (ind, val) { allElements.push('#'+val.trim());})
         }
       });
       return allElements.join();
     };
 
   // Show current pages elements
-  var showElements = function(step) {
+  var showElements = function (step) {
     $(getElements()).fadeOut(400);
     if ("elements" in steps[step] && steps[step].elements != "") {
       var elements = steps[step].elements.split(',');
-      $.each(elements, function(index, value){$('#'+value.trim()).fadeIn(1000)});
+      $.each(elements, function (index, value){$('#'+value.trim()).fadeIn(1000)});
     }
   };
 
   //Goto specific step
-  var gotoStep = function(step) {
+  var gotoStep = function (step) {
     // TODO: Sort out fadein for fields on step change
     $('.active').removeClass('active');
     $('#step-' + step).addClass('active');
@@ -175,13 +175,13 @@ $(document).ready(function() {
   };
 
   //Fade between steps
-  var showStep = function() {
+  var showStep = function () {
     $('fieldset > div').fadeOut(400);
     $('.active').fadeIn(1000);
   };
 
   //Detect and return current step
-  var getStep = function() {
+  var getStep = function () {
     return $('.active').attr('data-id');
   };
 
@@ -189,12 +189,12 @@ $(document).ready(function() {
   // Utility Functions
 
   // Return size of object
-  var objSize = function(obj) {
+  var objSize = function (obj) {
     return Object.keys(obj).length;
   };
 
   //Scroll to top of form
-  var refocusForm = function() {
+  var refocusForm = function () {
     $('html, body').animate({
       scrollTop: $(".lp-pom-form").parent().offset().top
     }, 500);
@@ -207,7 +207,7 @@ $(document).ready(function() {
   // XXX: Click Handlers
 
   // Goto prev step
-  var prevStep = function() {
+  var prevStep = function () {
     if ('hookPrevCheck' in hooks && !hooks.call('hookPrevCheck',[])) return; // HOOK
     refocusForm();
     var step = getStep();
@@ -215,7 +215,7 @@ $(document).ready(function() {
   };
 
   // Goto next step
-  var nextStep = function() {
+  var nextStep = function () {
     var step = getStep();
     if (step != 1) refocusForm();
 
@@ -226,8 +226,7 @@ $(document).ready(function() {
   };
 
   // Submit functions
-  var submit = function() {
-
+  var submit = function () {
       if (isValid(getStep())) {
         if (d) console.log("Submitted");
         else {
@@ -242,40 +241,47 @@ $(document).ready(function() {
       }
   }
 
+var submitActive = function () {
+    $('#'+settings.submitButton).click(function (e) {
+        console.log("submitbutton specific");
+        e.preventDefault();
+        if ("data8" in document.cdnParameters && document.cdnParameters.data8=="Y") d8Validate();
+        else submit();
+    });
+};
+
 
   // Event Handlers
   /*--------------------------------------------------------------------------*/
   // XXX: Events
   $('#'+settings.nextButton).click(nextStep);
   $('#'+settings.prevButton).click(prevStep);
-  $('#'+settings.submitButton).click(function(e) {
-    console.log("submitbutton specific");
-    e.preventDefault();
-    if ("data8" in document.cdnParameters && document.cdnParameters.data8=="Y") d8Validate();
-    else submit();
-  });
-  $('.select-button.single-field label').click(function() {
+  submitActive();
+  $('.select-button.single-field label').click(function () {
     console.log("single button click");
+    nextStep();
   });
-  document.addEventListener("d8Complete", function() {
+  document.addEventListener("submitActive", function () { submitActive(); });
+
+  document.addEventListener("d8Complete", function () {
     if (isValid(getStep())) { submit(); }
   });
 
   // Custom Event listeners for page control.
-  document.addEventListener("nextStep", function() {
+  document.addEventListener("nextStep", function () {
     nextStep();
     console.log("nextStep heard");
   });
-  document.addEventListener("prevStep", function() {
+  document.addEventListener("prevStep", function () {
     prevStep();
   });
-  document.addEventListener("gotoStep", function(e){
+  document.addEventListener("gotoStep", function (e){
     console.log(e.detail);
     gotoStep(e.detail);
   });
 
   // Prevent enter key functionality
-  $(window).keydown(function(event){
+  $(window).keydown(function (event){
   if(event.keyCode == 13 || event.keyCode == 169) {
     event.preventDefault();
     return false;
