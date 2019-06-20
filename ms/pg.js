@@ -70,3 +70,5 @@ setProgress( 1 );
 
 })( jQuery );
 
+jQuery("#progress").fitText(0.38);
+
