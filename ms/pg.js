@@ -16,12 +16,12 @@ hooks.register(
 );
 $( document.cdnParameters.progress_bar ).html( '<div class="progress-bar" style="height: 100%;float: left;width: 85%;">' +
 	                                                   '<div class="bar-container" style="display: flex;height: 100%;width: 100%;justify-content: center;align-items: center;">' +
-	                                                      '<div class="progress_bar" id="pgBar" style="width: 80%;height: 78%;background-color: #FFA500;">' +
-	                                                        '<div class="progress" id="progress" style="height: 100%;background-color: #FF0000;width: 0%;"></div>' +
+	                                                      '<div class="progress_bar_background progress_bar_border_color" id="pgBar" style="width: 80%;height: 78%;background-color: #FFA500;border-width: 1px;border-color:#000;">' +
+	                                                        '<div class="progress_bar_color" id="progress" style="height: 100%;background-color: #FF0000;width: 0%;"></div>' +
 	                                                      '</div>' +
 	                                                   '</div>' + 
 	                                                '</div>' + 
-	                                               '<div class="progress-bar-percent" id="percent_value" style="width: 15%;height: 100%;float: left; display: flex;justify-content: center;align-items: center;"></div>');
+	                                               '<div class="progress_bar_font_color" id="percent_value" style="font-size: 12px;width: 15%;height: 100%;float: left; display: flex;justify-content: center;align-items: center;"></div>');
 var setProgress = function( nextPrev ) {
     var num_steps = Object.keys( document.cdnMultiStep.steps ).length;
     var step = $( '.active' ).attr( 'data-id' );
