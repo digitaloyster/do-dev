@@ -5,7 +5,7 @@ multitype hidden csv
 --------------------------------------------------*/
 
 /*jslint browser: true*/
-/*global $, jQuery, console, alert*/
+/*global $, jQuery, console, alert, Event*/
 
 
 //--------------- VARIABLES
@@ -176,7 +176,6 @@ hooks.register(
             fillLenderFields(2);
         } else if ($('body[data-current-page="3"]').length) {
             fillTypeField();
-            //console.log($('#multitype'));
         }
         return true;
     }
@@ -187,18 +186,16 @@ hooks.register(
     'hookNextCheck',
     function (args) {
         "use strict";
-        //TODO : Need check for blank other, 0 selects and >8 selects
-        /*var selected = $(':input:checked, select', '#step-1');
-        if (selected.length === 1) {
-            if (selected.val() === "Other" && customBanksArr.length === 0) {
-            document.getElementById('lender_abbey_national').setCustomValidity('Please choose your other bank/lender below');
-            return false;
+        if ($('body[data-current-page="1"]').length) {
+            if (lenders.length + customBanksArr.length > 8) {
+                $('#group_lender').append('<div class="error-message">Limit to 8 banks/lenders.</div>');
+                return false;
+            }
+            if ($('#lender_other:checked').value === 'Other' && customBanksArr.length === 0) {
+                $('#group_lender').append('<div class="error-message">Choose Other from box above.</div>');
+                return false;
+            }
         }
-
-        } else if (selected.length > 8) {
-        document.getElementById('lender_abbey_national').setCustomValidity('Please select 8 or less banks/lenders');
-        return false;
-        }*/
         return true;
     }
 );
@@ -242,10 +239,11 @@ hooks.register(
                 return true;
             })
             .fail(function () {
-                var d = new Date(), message = "Fail: " + $('#ckm_request_id').val() + " - " + d.toUTCString();
+                var d = new Date(),
+                    message = "Fail: " + $('#ckm_request_id').val() + " - " + d.toUTCString(),
+                    event = new Event('submitActive');
                 $.get("https://digitaloyster.co.uk/dev/sigform_taylor/error_logging.php", { msg: message});
                 alert("ajax error");
-                var event = new Event('submitActive');
                 document.dispatchEvent(event);
                 $submit.find('span').html(submit_text);
                 return false;
