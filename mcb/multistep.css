@@ -1,0 +1,36 @@
+.select-button {
+    display: block;
+    position: relative !important;
+    height: 29px !important;
+    background-color: #337ab7;
+    padding: 0 !important;
+    width: 100% !important;
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #FFA009;
+  }
+  .select-button.selected {
+   	background-color: #fddfa1;
+  }
+  .select-button:hover {
+	opacity:0.7;
+  }
+  .select-button label {
+    padding: 0 !important;
+    position: relative;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .select-button label span {
+    text-align: center;
+    width: 100% !important;
+    color: #878787 !important;
+    display: block;
+    line-height: 24px !important;
+    top: 50% !important;
+  }
+  .select-button input {
+    display: none;
+  }
