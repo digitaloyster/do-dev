@@ -1,11 +1,8 @@
 <?php
-// Stage 1
+// Stage 1a
 
 $d = false;
 require('./includes/debugFunctions.php');
-
-//TODO: 1. Receive data from LP
-//var_dump($_POST);
 
 $dobM = 0;
 switch ($_POST['dobm']) {
@@ -45,8 +42,6 @@ switch ($_POST['dobm']) {
     case "12":
         $dobM="12";
         break;
-
-
 }
 
 if (strlen($_POST['dobd']) == 1) {$dobD =  "0".$_POST['dobd'];}
@@ -58,12 +53,6 @@ if (substr($phone, 0, 3) == '+44') $phone = "0".substr($phone, 3);
 if (substr($phone, 0, 1) != '0') $phone = "0".$phone;
 $phone = str_replace(' ', '', $phone);
 
-//$find = "'";
-//$apos = "&apos;"; REMOVED APOS FIX 070519
-
-//$data['actions'] = "api/create_application";
-//$data['api_access_key'] = "gh3ZgzHzHklrvghxUqILwkvGrZTZ0drq";
-//$data['api_secret_key'] = "sEztt8qVNeSioVz42Rf0hxzfVfoWCGjH";
 $data['title'] = $_POST["title"];
 $data['first_name'] = addslashes(ucwords($_POST["first_name"]));
 $data['last_name'] = addslashes(ucwords($_POST["last_name"]));
@@ -84,47 +73,16 @@ $dob['doby'] = (string) $_POST['doby'];
 $data['lenders'] = $_POST['multilender'];
 $data['lenderTypes'] = $_POST['multitype'];
 
-//$data['lenders'] = $_POST['multilender'];
-
-/*for ($i = 1; $i <= 8; $i++) {
-    //echo 'lender'.$i;
-    if ($_POST['lender_'.$i]!=='') {
-        $lenders[] = $_POST['lender_'.$i];
-        $lenderTypes[] = $_POST['acctype'.$i];
-    }
-}
-
-$data['lenders'] = implode(',', $lenders);
-$data['lenderTypes'] = implode(',', $lenderTypes);
-*/
-
-
-
-//$data['tcs_agreed'] = "";
-//$data['signature_rating'] = "";
-//$data['previous_addresses'] = array();
-//$data['previous_surname'] = "";
 require('./includes/dbFunctions.php');
-//TODO: 0a Check for dupes
 if (checkEmail($data['email_address'])) {
     echo "email exists";
     exit();
 }
 
-//TODO: 1a. Get creditor_id from MySQL
-
-//TODO: 2. Post to Refund
-
-//NOTE: {"success":true,"application_id":"86707326","agreements":{"1":"CR86707328","2":"CR86707329"}}
-
-//TODO: 2a. Post to DB
-
-//Add date of birth in separate fields after posting to wfac
 $data['dobd'] = (integer) $dob['dobd'];
 $data['dobm'] = (integer) $dob['dobm'];
 $data['doby'] = (integer) $dob['doby'];
 
-//var_dump($data);
 $ref = insertNewRef($data);
 debug(date("Y-m-d H:i:s")." - ".$ref, 'Logs/API_1_ref.log');
 echo $ref;
