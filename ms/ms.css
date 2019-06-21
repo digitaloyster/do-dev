@@ -1,13 +1,12 @@
 /* Pagination */
 .step {
-  display:none;
+  display: none;
 }
-.step.active  {
-  display:block;
+.step.active {
+  display: block;
 }
 
 /* Select Buttons */
-
 .select-button {
   display: block;
   position: relative !important;
@@ -18,11 +17,8 @@
   width: 100%;
   border-radius: 5px;
 }
-.select-button.selected {
-  /*background-color: red;*/
-}
 .select-button:hover {
-opacity:0.7;
+  opacity: 0.7;
 }
 .select-button label {
   padding: 0 !important;
@@ -42,3 +38,5 @@ opacity:0.7;
 .select-button input {
   display: none;
 }
+
+/*# sourceMappingURL=ms.css.map */
