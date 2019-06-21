@@ -78,7 +78,7 @@ $.each(steps, function (i, val) {
 });
 
 var styles = document.createElement('link');
-styles.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-ms@latest/ms.css');
+styles.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-dev/ms/ms.css');
 styles.setAttribute('rel','stylesheet');
 styles.setAttribute('type','text/css');
 document.head.appendChild(styles);
