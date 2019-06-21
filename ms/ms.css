@@ -15,7 +15,7 @@
   top: 0px !important;
   /*background-color: #EFAC1F;*/
   padding: 0 !important;
-  /*width: 100% !important;*/
+  width: 100%;
   border-radius: 5px;
 }
 .select-button.selected {
