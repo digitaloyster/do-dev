@@ -14,6 +14,7 @@ hooks.register(
     return true;
   }
 );
+$('head').append('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/digitaloyster/do-dev/ms/pg.css">');
 var progHeight = $( document.cdnParameters.progress_bar ).height(); 
 var fontSize =  progHeight / 2 ;
 if( fontSize < 8 ){ fontSize = 8; }
