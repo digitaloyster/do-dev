@@ -8,16 +8,22 @@
 .progress_bar_background {
 	width: 96.5%;
 	height: 78%;
-	background-color: #FFA500;
+	background-color: #0000FF;
 	border: solid 2px;
 	border-color:#000;
 	border-radius: 6px;
 }
 .progress_bar_color {
 	height: 100%;
-	background-color: #FF0000;
+	background-color: #74B695;
 	width: 0%;
 	display: flex;
 	justify-content: center;
 	align-items: center;border-radius: 4px 0px 0px 4px;
 }
+.progress_bar_font_color {
+    	color: #FFFFFF; 
+}
+.progress_bar_border_color {
+    	border-color: #008000; 
+ }
