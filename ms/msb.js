@@ -23,9 +23,9 @@ $(document).ready(function() {
     // Initialise Step Structre
     var initialise = function() {
         hooks.call('hookPreInit', []); // Hook
-        var crappiness = false;
+        var msBrowser = false;
         if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
-            crappiness = true;
+            msBrowser = true;
         }
 
         $.each(steps, function(i, val) {
@@ -61,7 +61,7 @@ $(document).ready(function() {
                                         $update.addClass('selected');
                                     }
                                 }
-                                if ($update.hasClass('single-field') && !crappiness) {
+                                if ($update.hasClass('single-field') && !msBrowser) {
                                     nextStep();
                                 }
                             });
