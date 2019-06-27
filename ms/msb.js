@@ -123,7 +123,7 @@ for (i = 0; i < steps[step].fields.length; i += 1 ) {
       if (d) console.log("failed");
     }
   }
-});
+};
 
 if (!valid) document.dispatchEvent(event);
 return valid;
