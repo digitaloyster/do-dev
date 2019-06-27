@@ -99,7 +99,9 @@ document.dispatchEvent(event);
 var isValid = function (step) {
 var valid = true;
 var event = new Event('doErrors');
-$.each(steps[step].fields, function (i,v) {
+//$.each(steps[step].fields, function (i,v) {
+
+for (i = 0; i < steps[step].fields.length; i += 1 ) {
 
   i = i.trim();
   // NOTE: Potentially need a hook for custom validation here. Post i and return true/false.
