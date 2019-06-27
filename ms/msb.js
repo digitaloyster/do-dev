@@ -46,6 +46,7 @@ $(document).ready(function() {
             if ("fields"in steps[i] && steps[i].fields != '') {
                 $.each(steps[i].fields, function(k, val) {
                     // Buttons
+                    console.log(k);
                     if ("display"in val && val.display == "buttons") {
                         if (!$('#' + k).length) {
                             $("[name='" + k + "']").parent().addClass('select-button');
@@ -143,6 +144,7 @@ $(document).ready(function() {
                 if (d)
                     console.log("failed");
             } else if ($('[name="' + id + '"]').length) {
+                console.log(id);
                 var ele = document.getElementsByName(id);
                 if (!ele[0].checkValidity()) {
                     valid = false;
