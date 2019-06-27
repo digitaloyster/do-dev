@@ -1,53 +1,48 @@
-// Version 1.2
+// Version 1.1
 
 $(document).ready(function() {
     // XXX: Variables/Objects
-    if (document.cdnMultiStep.debugMode)
-        var d = true;
-    else
-        var d = false;
+    if (document.cdnMultiStep.debugMode) var d = true;
+    else var d = false;
 
     if (document.cdnMultiStep.steps != '') {
         var steps = document.cdnMultiStep.steps;
-    } else
-        alert('steps not found');
+    } else alert('steps not found');
     //var buttons = document.cdnMultiStep.buttons;
     if (document.cdnMultiStep.settings != '') {
         var settings = document.cdnMultiStep.settings;
-    } else
-        alert('settings not found');
+    } else alert('settings not found');
 
     if (document.cdnMultiStep.hooks != '') {
         var hooks = document.cdnMultiStep.hooks;
-    } else
-        alert('hooks not found');
+    } else alert('hooks not found');
 
     // Variables/Objects
     /*--------------------------------------------------------------------------*/
     // XXX: Functions
     // Initialise Step Structre
     var initialise = function() {
-        hooks.call('hookPreInit', []);
-        // Hook
+        hooks.call('hookPreInit', []); // Hook
+        var crappiness = false;
+        if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
+            crappiness = true;
+        }
 
         $.each(steps, function(i, val) {
             var page = [];
             $.each(steps[i].fields, function(k, val) {
                 page.push("#container_" + k);
             });
-            if (objSize(page) == 0)
-                $('#step-' + (i - 1)).after('<div id="step-' + i + '" data-id="' + i + '" class="step"></div>');
-            else
-                $(page.join(',')).wrapAll('<div id="step-' + i + '" data-id="' + i + '" class="step"></div>');
+            if (objSize(page) == 0) $('#step-' + (i - 1)).after('<div id="step-' + i + '" data-id="' + i + '" class="step"></div>');
+            else $(page.join(',')).wrapAll('<div id="step-' + i + '" data-id="' + i + '" class="step"></div>');
         });
 
         // Add custom aspects
         $.each(steps, function(i, val) {
-            if ("fields"in steps[i] && steps[i].fields != '') {
+            if ("fields" in steps[i] && steps[i].fields != '') {
                 $.each(steps[i].fields, function(k, val) {
                     // Buttons
-                    console.log(k);
-                    if ("display"in val && val.display == "buttons") {
+                    if ("display" in val && val.display == "buttons") {
                         if (!$('#' + k).length) {
                             $("[name='" + k + "']").parent().addClass('select-button');
                             if (objSize(steps[i].fields) === 1 && $("[name='" + k + "']")[0].type !== "checkbox") {
@@ -66,14 +61,14 @@ $(document).ready(function() {
                                         $update.addClass('selected');
                                     }
                                 }
-                                if ($update.hasClass('single-field')) {
+                                if ($update.hasClass('single-field') && !crappiness) {
                                     nextStep();
                                 }
                             });
                         }
                     }
                     // DONE: Test Custom Error events
-                    if ("error"in val && val.error != '') {
+                    if ("error" in val && val.error != '') {
                         if ($('#' + i).length) {
                             document.getElementById(k).setAttribute("oninvalid", "this.setCustomValidity('" + val.error + "');")
                             document.getElementById(k).setAttribute("onchange", "this.setCustomValidity('');");
@@ -86,7 +81,7 @@ $(document).ready(function() {
                         }
                     }
 
-                    if ("numeric"in val && val.numeric == "Y") {
+                    if ("numeric" in val && val.numeric == "Y") {
                         var field = document.getElementById(k);
                         field.type = "number";
                         field.setAttribute('pattern', '[0-9]*');
@@ -96,19 +91,17 @@ $(document).ready(function() {
         });
 
         var styles = document.createElement('link');
-        styles.setAttribute('href', 'https://digitaloyster.github.io/do-dev/ms/ms.css');
+        styles.setAttribute('href', 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css');
         styles.setAttribute('rel', 'stylesheet');
         styles.setAttribute('type', 'text/css');
         document.head.appendChild(styles);
 
-        hooks.call('hookPageInit', []);
-        // HOOK
+        hooks.call('hookPageInit', []); // HOOK
     }
 
     // D8 Validation
     var d8Validate = function() {
-        if (d)
-            console.log("d8Validate()");
+        if (d) console.log("d8Validate()");
         // TODO: Switch custom validity from hardcoded to set variable if exists.
         document.getElementById('telephone').setCustomValidity("Please enter a valid telephone number.");
         var event = new Event('d8Validate');
@@ -119,42 +112,33 @@ $(document).ready(function() {
     var isValid = function(step) {
         var valid = true;
         var event = new Event('doErrors');
-        //$.each(steps[step].fields, function (i,v) {
-        var j;
-        var total = objSize(steps[step].fields)
-        for (j = 0; j < total; j += 1) {
-            var id = Object.keys(steps[step].fields)[j];
+        $.each(steps[step].fields, function(i, v) {
 
-            id = id.trim();
-
+            i = i.trim();
             // NOTE: Potentially need a hook for custom validation here. Post i and return true/false.
-            if ("postcode"in document.cdnParameters && document.cdnParameters.postcode != "N") {
-                if ((id == "add1" || id == "postcode") && $("#" + id).val() != '') {
-                    if (d)
-                        console.log("setting add1/PC");
-                    var poke = new Event('change',{
+            if ("postcode" in document.cdnParameters && document.cdnParameters.postcode != "N") {
+                if ((i == "add1" || i == "postcode") && $("#" + i).val() != '') {
+                    if (d) console.log("setting add1/PC");
+                    var poke = new Event('change', {
                         bubbles: true
                     });
-                    document.getElementById(id).dispatchEvent(poke);
-                    document.getElementById(id).validity['valid'];
+                    document.getElementById(i).dispatchEvent(poke);
+                    document.getElementById(i).validity['valid'];
                 }
             }
-            if ($('#' + id).length && !document.getElementById(id).checkValidity()) {
+            if ($('#' + i).length && !document.getElementById(i).checkValidity()) {
                 valid = false;
-                if (d)
-                    console.log("failed");
-            } else if ($('[name="' + id + '"]').length) {
-                console.log(id);
-                var ele = document.getElementsByName(id);
+                if (d) console.log("failed");
+            } else if ($('[name="' + i + '"]').length) {
+                var ele = document.getElementsByName(i);
                 if (!ele[0].checkValidity()) {
                     valid = false;
-                    if (d)
-                        console.log("failed");
+                    if (d) console.log("failed");
                 }
             }
-        }
-        if (!valid)
-            document.dispatchEvent(event);
+        });
+
+        if (!valid) document.dispatchEvent(event);
         return valid;
     };
 
@@ -167,7 +151,7 @@ $(document).ready(function() {
     var getElements = function() {
         var allElements = [];
         $.each(steps, function(index, value) {
-            if ("elements"in steps[index] && steps[index].elements != "") {
+            if ("elements" in steps[index] && steps[index].elements != "") {
                 var elements = steps[index].elements.split(',');
                 $.each(elements, function(ind, val) {
                     allElements.push('#' + val.trim());
@@ -180,7 +164,7 @@ $(document).ready(function() {
     // Show current pages elements
     var showElements = function(step) {
         $(getElements()).fadeOut(400);
-        if ("elements"in steps[step] && steps[step].elements != "") {
+        if ("elements" in steps[step] && steps[step].elements != "") {
             var elements = steps[step].elements.split(',');
             $.each(elements, function(index, value) {
                 $('#' + value.trim()).fadeIn(1000)
@@ -198,8 +182,8 @@ $(document).ready(function() {
         clearErrors();
         showStep();
         showElements(step);
-        if (step != 1)
-            refocusForm();
+        if (step != 1) refocusForm();
+
 
         if (step == 1) {
             $('#' + settings.prevButton).hide();
@@ -213,8 +197,7 @@ $(document).ready(function() {
             $('#' + settings.nextButton).show();
             $('#' + settings.submitButton).hide();
         }
-        hooks.call('hookNewStep', []);
-        //HOOK
+        hooks.call('hookNewStep', []); //HOOK
     };
 
     //Fade between steps
@@ -227,6 +210,7 @@ $(document).ready(function() {
     var getStep = function() {
         return $('.active').attr('data-id');
     };
+
 
     // Utility Functions
 
@@ -250,9 +234,7 @@ $(document).ready(function() {
 
     // Goto prev step
     var prevStep = function() {
-        if ('hookPrevCheck'in hooks && !hooks.call('hookPrevCheck', []))
-            return;
-        // HOOK
+        if ('hookPrevCheck' in hooks && !hooks.call('hookPrevCheck', [])) return; // HOOK
         refocusForm();
         var step = getStep();
         gotoStep(--step);
@@ -261,31 +243,23 @@ $(document).ready(function() {
     // Goto next step
     var nextStep = function() {
         var step = getStep();
-        if (step != 1)
-            refocusForm();
+        if (step != 1) refocusForm();
 
         if (isValid(step)) {
-            if ('hookNextCheck'in hooks && !hooks.call('hookNextCheck', []))
-                return;
-            // HOOK
+            if ('hookNextCheck' in hooks && !hooks.call('hookNextCheck', [])) return; // HOOK
             gotoStep(++step);
-        } else
-            console.log('validation fail going to step ' + getStep());
+        } else console.log('validation fail going to step ' + getStep());
     };
 
     // Submit functions
     var submit = function() {
         if (isValid(getStep())) {
-            if (d)
-                console.log("Submitted");
+            if (d) console.log("Submitted");
             else {
-                if ('hookSubmit'in hooks && !hooks.call('hookSubmit', []))
-                    return;
-                // HOOK
+                if ('hookSubmit' in hooks && !hooks.call('hookSubmit', [])) return; // HOOK
                 const myForm = document.forms[0];
-                var event = new Event('submit',{
-                    'bubbles': true,
-                    // Whether the event will bubble up through the DOM or not
+                var event = new Event('submit', {
+                    'bubbles': true, // Whether the event will bubble up through the DOM or not
                     'cancelable': true // Whether the event may be canceled or not
                 });
                 myForm.dispatchEvent(event);
@@ -297,12 +271,11 @@ $(document).ready(function() {
         $('#' + settings.submitButton).click(function(e) {
             console.log("submitbutton specific");
             e.preventDefault();
-            if ("data8"in document.cdnParameters && document.cdnParameters.data8 == "Y")
-                d8Validate();
-            else
-                submit();
+            if ("data8" in document.cdnParameters && document.cdnParameters.data8 == "Y") d8Validate();
+            else submit();
         });
     };
+
 
     // Event Handlers
     /*--------------------------------------------------------------------------*/
@@ -344,6 +317,7 @@ $(document).ready(function() {
             return false;
         }
     });
+
 
     // Events
     /*--------------------------------------------------------------------------*/
