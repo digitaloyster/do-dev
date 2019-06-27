@@ -15,7 +15,7 @@ function doErrors(form) {
   		for (var i = 0; i < errorMessages.length; i++) {
     		errorMessages[i].parentNode.removeChild(errorMessages[i]);
   		}
-
+        console.log(invalidFields);
   		for (var i = 0; i < invalidFields.length; i++) {
     		var field = invalidFields[i];
     		if (field.nodeName == "SELECT") {
