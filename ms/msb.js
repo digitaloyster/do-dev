@@ -17,6 +17,11 @@ $(document).ready(function() {
         var hooks = document.cdnMultiStep.hooks;
     } else alert('hooks not found');
 
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js');
+    script.setAttribute('id', 'date-picker-script');
+    document.head.appendChild(script);
+
     // Variables/Objects
     /*--------------------------------------------------------------------------*/
     // XXX: Functions
@@ -27,6 +32,8 @@ $(document).ready(function() {
         if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
             msBrowser = true;
         }
+
+
 
         $.each(steps, function(i, val) {
             var page = [];
@@ -68,14 +75,9 @@ $(document).ready(function() {
                         }
                     }
                     if ("display" in val && val.display == "datepicker") {
-                        if (!$('#date-picker-script').length) {
-                            var script = document.createElement('script');
-                            script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js');
-                            script.setAttribute('id', 'date-picker-script');
-                            document.head.appendChild(script);
-                        }
+
                         $('#' + k).attr("data-toggle", "datepicker");
-                        $('#' + k).datepicker({
+                        $('[data-toggle="datepicker"]').datepicker({
                             autoHide: true,
                             autoPick: true,
                             language: 'en-GB',
