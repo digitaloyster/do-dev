@@ -75,9 +75,14 @@ $(document).ready(function() {
                             document.head.appendChild(script);
                         }
                         $('#' + k).attr("data-toggle", "datepicker");
-
-
-                    }
+                        $('#' + k).datepicker({
+                            autoHide: true,
+                            autoPick: true,
+                            language: 'en-GB',
+                            format: 'dd-mm-yyyy',
+                             weekStart: 1
+                         });
+                     }
                     // DONE: Test Custom Error events
                     if ("error" in val && val.error != '') {
                         if ($('#' + i).length) {
@@ -100,15 +105,7 @@ $(document).ready(function() {
                 });
             }
         });
-        if ($('#date-picker-script').length) {
-            $('[data-toggle="datepicker"]').datepicker({
-                autoHide: true,
-                autoPick: true,
-                language: 'en-GB',
-                format: 'dd-mm-yyyy',
-                 weekStart: 1
-             });
-         }
+
 
 
         var styles = document.createElement('link');
