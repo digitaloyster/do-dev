@@ -63,7 +63,7 @@ function loadMSB() {
         msbScript.setAttribute('id', 'msbScript');
         document.body.appendChild(msbScript);
     }
-    else { window.setTimeout( loadMSB(), 50 ); }
+    else { window.setTimeout( loadMSB(), 100 ); }
 }
 
 loadMSB();
