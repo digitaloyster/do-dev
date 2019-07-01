@@ -18,14 +18,7 @@ $(document).ready(function() {
     } else alert('hooks not found');
 
     // Variables/Objects
-    /*--------------------------------------------------------------------------*/
-    // XXX:Script loads
-    var script = document.createElement('script');
-    script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js');
-    script.setAttribute('id', 'date-picker-script');
-    document.head.appendChild(script);
-    // Script loads
-    /*--------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------*/    
     // XXX: Functions
     // Initialise Step Structre
     var initialise = function() {

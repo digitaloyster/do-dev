@@ -1,4 +1,4 @@
-// Version 1.2
+// Version 1.1
 document.cdnMultiStep.hooks = {
   hooks: [],
   register: function ( name, callback ) {
@@ -24,3 +24,9 @@ document.cdnMultiStep.hooks = {
       }
     }
 };
+
+
+var script = document.createElement('script');
+script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js');
+script.setAttribute('id', 'date-picker-script');
+document.head.appendChild(script);
