@@ -67,6 +67,32 @@ $(document).ready(function() {
                             });
                         }
                     }
+
+                    if ("display" in val && val.display == "datepicker") {
+
+                        $('#' + k).datepicker({
+                            autoHide: true,
+                            autoPick: false,
+                            language: 'en-GB',
+                            format: 'yyyy/mm/dd',
+                            weekStart:1,
+                            startView:2
+                        });
+                        //var $j = jQuery.noConflict();
+                        //document.getElementById(k).setAttribute("type", "date");
+                        /*$('#' + k).datepicker({
+                            changeMonth: true,
+                            changeYear: true,
+                            onClose: function(date, datepicker) {
+                                var poke = new Event('change', {
+                                    bubbles: true
+                                });
+                                document.getElementById(k).dispatchEvent(poke);
+                                document.getElementById(k).validity['valid'];
+                            },
+                            dateFormat: 'yy/mm/dd'
+                        });*/
+                    }
                     // DONE: Test Custom Error events
                     if ("error" in val && val.error != '') {
                         if ($('#' + i).length) {
@@ -82,6 +108,7 @@ $(document).ready(function() {
                     }
 
                     if ("numeric" in val && val.numeric == "Y") {
+                        console.log(k);
                         var field = document.getElementById(k);
                         field.type = "number";
                         field.setAttribute('pattern', '[0-9]*');
@@ -89,6 +116,7 @@ $(document).ready(function() {
                 });
             }
         });
+
 
         var styles = document.createElement('link');
         styles.setAttribute('href', 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css');
