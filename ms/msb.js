@@ -81,7 +81,15 @@ $(document).ready(function() {
                         console.log(k);
                         $('#' + k).datepicker({
                             changeMonth: true,
-                            changeYear: true
+                            changeYear: true,
+                            onClose: function(date, datepicker) {
+                                var poke = new Event('change', {
+                                    bubbles: true
+                                });
+                                document.getElementById(k).dispatchEvent(poke);
+                                document.getElementById(k).validity['valid'];
+
+                            }
                         });
                      }
                     // DONE: Test Custom Error events
