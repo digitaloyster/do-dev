@@ -69,33 +69,20 @@ $(document).ready(function() {
                     }
 
                     if ("display" in val && val.display == "datepicker") {
-                        var jquiPromise = new Promise(function(resolve, reject) {
-                            if (jQuery.ui) {
-                                resolve("jquiLoaded");
-                            } else {
-                                reject("jquiNotLoaded");
-                            }
-                        });
-                        jquiPromise.then(function(value) {
-                            $('#' + k).datepicker({
-                                changeMonth: true,
-                                changeYear: true,
-                                onClose: function(date, datepicker) {
-                                    var poke = new Event('change', {
-                                        bubbles: true
-                                    });
-                                    document.getElementById(k).dispatchEvent(poke);
-                                    document.getElementById(k).validity['valid'];
-
-                                }
-                            });
-                        });
-                        jquiPromise.catch(function(reason) {
-                          console.log("jqui Fail");
-                        });
-                        jquiPromise.finally(function() {
-                          console.log("jqui Finally");
-                        });
+                        //var $j = jQuery.noConflict();
+                        document.getElementById(k).setAttribute("type", "date");
+                        /*$('#' + k).datepicker({
+                            changeMonth: true,
+                            changeYear: true,
+                            onClose: function(date, datepicker) {
+                                var poke = new Event('change', {
+                                    bubbles: true
+                                });
+                                document.getElementById(k).dispatchEvent(poke);
+                                document.getElementById(k).validity['valid'];
+                            },
+                            dateFormat: 'yy/mm/dd'
+                        });*/
                     }
                     // DONE: Test Custom Error events
                     if ("error" in val && val.error != '') {
@@ -112,6 +99,7 @@ $(document).ready(function() {
                     }
 
                     if ("numeric" in val && val.numeric == "Y") {
+                        console.log(k);
                         var field = document.getElementById(k);
                         field.type = "number";
                         field.setAttribute('pattern', '[0-9]*');

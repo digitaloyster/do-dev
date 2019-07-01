@@ -26,9 +26,9 @@ document.cdnMultiStep.hooks = {
 };
 
 
-if (document.cdnMultiStep.steps != '') {
+/*if (document.cdnMultiStep.steps != '') {
     var steps = document.cdnMultiStep.steps;
-} else alert('steps not found');
+} else alert('steps not found');*/
 
 
 /*var script = document.createElement('script');
@@ -36,7 +36,7 @@ script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@
 script.setAttribute('id', 'date-picker-script');
 document.head.appendChild(script);*/
 
-$.each(steps, function(i, val) {
+/*$.each(steps, function(i, val) {
     if ("fields" in steps[i] && steps[i].fields != '') {
         $.each(steps[i].fields, function(k, val) {
             if ("display" in val && val.display == "datepicker" && !$('#jqui').length) {
@@ -52,11 +52,11 @@ $.each(steps, function(i, val) {
             }
         });
     }
-});
+});*/
 /*<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>*/
 
-function loadMSB() {
+/*function loadMSB() {
     if (typeof document.body != 'undefined' && typeof jQuery.ui != 'undefined') {
         var msbScript = document.createElement('script');
         msbScript.setAttribute('src', 'https://digitaloyster.github.io/do-dev/ms/msb.js');
@@ -66,4 +66,4 @@ function loadMSB() {
     else { window.setTimeout( loadMSB, 100 ); }
 }
 
-loadMSB();
+loadMSB();*/
