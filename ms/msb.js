@@ -70,7 +70,7 @@ $(document).ready(function() {
 
                     if ("display" in val && val.display == "datepicker") {
 
-                        $('[data-toggle="datepicker"]').datepicker({
+                        $('#' + k).datepicker({
                             autoHide: true,
                             autoPick: false,
                             language: 'en-GB',
