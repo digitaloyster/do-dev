@@ -190,8 +190,8 @@ $(document).ready(function() {
 
     //Goto specific step
     var gotoStep = function(step) {
-        if ("fields" in steps[i] && steps[i].fields != '') {
-            $.each(steps[i].fields, function(k, val) {
+        if ("fields" in steps[step] && steps[step].fields != '') {
+            $.each(steps[step].fields, function(k, val) {
                 if ("display" in val && val.display == "datepicker") {
                     $('#' + k).datepicker({
                         changeMonth: true,
