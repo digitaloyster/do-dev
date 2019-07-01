@@ -26,15 +26,45 @@ document.cdnMultiStep.hooks = {
 };
 
 
-/*if (document.cdnMultiStep.steps != '') {
+if (document.cdnMultiStep.steps != '') {
     var steps = document.cdnMultiStep.steps;
-} else alert('steps not found');*/
+} else alert('steps not found');
 
 
 var script = document.createElement('script');
-script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js');
-script.setAttribute('id', 'date-picker-script');
+script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker/dist/datepicker.min.js');
 document.head.appendChild(script);
+
+
+function loadMSB() {
+    if (typeof document.body != 'undefined' && typeof jQuery.datepicker != 'undefined') {
+        var msbScript = document.createElement('script');
+        msbScript.setAttribute('src', 'https://digitaloyster.github.io/do-dev/ms/msb.js');
+        msbScript.setAttribute('id', 'msbScript');
+        document.body.appendChild(msbScript);
+    }
+    else { window.setTimeout( loadMSB, 100 ); }
+}
+
+loadMSB();
+
+/*$.each(steps, function(i, val) {
+    if ("fields" in steps[i] && steps[i].fields != '') {
+        $.each(steps[i].fields, function(k, val) {
+            if ("display" in val && val.display == "datepicker" && !$('#jqui').length) {
+                var jquiStyle = document.createElement('link');
+                jquiStyle.setAttribute('href', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css');
+                jquiStyle.setAttribute('rel', 'stylesheet');
+                document.head.appendChild(jquiStyle);
+
+                var jquiScript = document.createElement('script');
+                jquiScript.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js');
+                jquiScript.setAttribute('id', 'jqui');
+                document.head.appendChild(jquiScript);
+            }
+        });
+    }
+});*/
 
 /*$.each(steps, function(i, val) {
     if ("fields" in steps[i] && steps[i].fields != '') {
