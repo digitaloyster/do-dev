@@ -78,6 +78,7 @@ $(document).ready(function() {
                             format: 'yyyy-mm-dd',
                             weekStart: 1
                         });*/
+                        console.log(k);
                         $('#' + k).datepicker({
                             changeMonth: true,
                             changeYear: true
