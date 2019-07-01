@@ -57,7 +57,7 @@ $.each(steps, function(i, val) {
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>*/
 
 function loadMSB() {
-    if (typeof document.body != "undefined" && typeof jQuery.ui != "undefined") {
+    if (typeof document.body != 'undefined' && typeof jQuery.ui != 'undefined') {
         var msbScript = document.createElement('script');
         msbScript.setAttribute('src', 'https://digitaloyster.github.io/do-dev/ms/msb.js');
         msbScript.setAttribute('id', 'msbScript');
