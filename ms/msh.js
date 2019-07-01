@@ -31,14 +31,14 @@ script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@
 script.setAttribute('id', 'date-picker-script');
 document.head.appendChild(script);*/
 if ("display" in val && val.display == "datepicker") {
-    var jqui-style = document.createElement('link');
-    jqui-style.setAttribute('href', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css');
-    jqui-style.setAttribute('rel', 'stylesheet');
-    document.head.appendChild(jqui-style);
+    var jquiStyle = document.createElement('link');
+    jquiStyle.setAttribute('href', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css');
+    jquiStyle.setAttribute('rel', 'stylesheet');
+    document.head.appendChild(jquiStyle);
 
-    var jqui-script = document.createElement('script');
-    jqui-script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js');
-    document.head.appendChild(jqui-script);
+    var jquiScript = document.createElement('script');
+    jquiScript.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js');
+    document.head.appendChild(jquiScript);
 }
 /*<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>*/
