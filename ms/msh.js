@@ -58,5 +58,5 @@ $.each(steps, function(i, val) {
 
 var msbScript = document.createElement('script');
 msbScript.setAttribute('src', 'https://digitaloyster.github.io/do-dev/ms/msb.js');
-msbScript.setAttribute('id', 'jqui');
+msbScript.setAttribute('id', 'msbScript');
 document.body.appendChild(msbScript);
