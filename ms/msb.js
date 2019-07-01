@@ -18,7 +18,7 @@ $(document).ready(function() {
     } else alert('hooks not found');
 
     // Variables/Objects
-    /*--------------------------------------------------------------------------*/    
+    /*--------------------------------------------------------------------------*/
     // XXX: Functions
     // Initialise Step Structre
     var initialise = function() {
@@ -72,9 +72,10 @@ $(document).ready(function() {
                         $('#' + k).attr("data-toggle", "datepicker");
                         $('[data-toggle="datepicker"]').datepicker({
                             autoHide: true,
-                            autoPick: true,
+                            autoPick: false,
+                            startView: 2,
                             language: 'en-GB',
-                            format: 'dd-mm-yyyy',
+                            format: 'yyyy-mm-dd',
                             weekStart: 1
                          });
                      }
