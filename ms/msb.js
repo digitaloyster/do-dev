@@ -69,8 +69,17 @@ $(document).ready(function() {
                     }
 
                     if ("display" in val && val.display == "datepicker") {
+
+                        $('[data-toggle="datepicker"]').datepicker({
+                            autoHide: true,
+                            autoPick: false,
+                            language: 'en-GB',
+                            format: 'yyyy/mm/dd',
+                            weekStart:1,
+                            startView:2
+                        });
                         //var $j = jQuery.noConflict();
-                        document.getElementById(k).setAttribute("type", "date");
+                        //document.getElementById(k).setAttribute("type", "date");
                         /*$('#' + k).datepicker({
                             changeMonth: true,
                             changeYear: true,
@@ -107,6 +116,10 @@ $(document).ready(function() {
                 });
             }
         });
+        /*<script src="https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js"></script>*/
+        var dpScript = document.createElement('script');
+        dpScript.setAttribute('href', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js');
+        document.head.appendChild(dpScript);
 
         var styles = document.createElement('link');
         styles.setAttribute('href', 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css');
