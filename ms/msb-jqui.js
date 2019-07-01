@@ -67,7 +67,7 @@ $(document).ready(function() {
                             });
                         }
                     }
-                    if ("display" in val && val.display == "datepicker") {
+                    /*if ("display" in val && val.display == "datepicker") {
                         $('#' + k).datepicker({
                             changeMonth: true,
                             changeYear: true,
@@ -80,7 +80,7 @@ $(document).ready(function() {
                             },
                             dateFormat: 'yy/mm/dd'
                         });
-                    }
+                    }*/
 
 
                     // DONE: Test Custom Error events
@@ -190,6 +190,24 @@ $(document).ready(function() {
 
     //Goto specific step
     var gotoStep = function(step) {
+        if ("fields" in steps[i] && steps[i].fields != '') {
+            $.each(steps[i].fields, function(k, val) {
+                if ("display" in val && val.display == "datepicker") {
+                    $('#' + k).datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        onClose: function(date, datepicker) {
+                            var poke = new Event('change', {
+                                bubbles: true
+                            });
+                            document.getElementById(k).dispatchEvent(poke);
+                            document.getElementById(k).validity['valid'];
+                        },
+                        dateFormat: 'yy/mm/dd'
+                    });
+            });
+        }
+
         // TODO: Sort out fadein for fields on step change
         $('.active').removeClass('active');
         $('#step-' + step).addClass('active');
