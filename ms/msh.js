@@ -56,7 +56,14 @@ $.each(steps, function(i, val) {
 /*<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>*/
 
-var msbScript = document.createElement('script');
-msbScript.setAttribute('src', 'https://digitaloyster.github.io/do-dev/ms/msb.js');
-msbScript.setAttribute('id', 'msbScript');
-document.body.appendChild(msbScript);
+function loadMSB() {
+    if (document.body && jquery.ui) {
+        var msbScript = document.createElement('script');
+        msbScript.setAttribute('src', 'https://digitaloyster.github.io/do-dev/ms/msb.js');
+        msbScript.setAttribute('id', 'msbScript');
+        document.body.appendChild(msbScript);
+    }
+    else { window.setTimeout( checkJqueryUI, 50 ); }
+}
+
+loadMSB();
