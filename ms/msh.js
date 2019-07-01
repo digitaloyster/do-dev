@@ -26,7 +26,19 @@ document.cdnMultiStep.hooks = {
 };
 
 
-var script = document.createElement('script');
+/*var script = document.createElement('script');
 script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js');
 script.setAttribute('id', 'date-picker-script');
-document.head.appendChild(script);
+document.head.appendChild(script);*/
+if ("display" in val && val.display == "datepicker") {
+    var jqui-style = document.createElement('link');
+    jqui-style.setAttribute('href', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css');
+    jqui-style.setAttribute('rel', 'stylesheet');
+    document.head.appendChild(jqui-style);
+
+    var jqui-script = document.createElement('script');
+    jqui-script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js');
+    document.head.appendChild(jqui-script);
+}
+/*<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>*/

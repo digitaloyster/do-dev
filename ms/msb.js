@@ -69,7 +69,7 @@ $(document).ready(function() {
                     }
 
                     if ("display" in val && val.display == "datepicker") {
-                        $('#' + k).attr("data-toggle", "datepicker");
+                        /*$('#' + k).attr("data-toggle", "datepicker");
                         $('[data-toggle="datepicker"]').datepicker({
                             autoHide: true,
                             autoPick: false,
@@ -77,7 +77,11 @@ $(document).ready(function() {
                             language: 'en-GB',
                             format: 'yyyy-mm-dd',
                             weekStart: 1
-                         });
+                        });*/
+                        $('#' + k).datepicker({
+                            changeMonth: true,
+                            changeYear: true
+                        });
                      }
                     // DONE: Test Custom Error events
                     if ("error" in val && val.error != '') {
