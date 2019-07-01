@@ -116,10 +116,7 @@ $(document).ready(function() {
                 });
             }
         });
-        /*<script src="https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js"></script>*/
-        var dpScript = document.createElement('script');
-        dpScript.setAttribute('href', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js');
-        document.head.appendChild(dpScript);
+
 
         var styles = document.createElement('link');
         styles.setAttribute('href', 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css');

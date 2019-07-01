@@ -31,10 +31,10 @@ document.cdnMultiStep.hooks = {
 } else alert('steps not found');*/
 
 
-/*var script = document.createElement('script');
+var script = document.createElement('script');
 script.setAttribute('src', 'https://cdn.jsdelivr.net/gh/fengyuanchen/datepicker@latest/dist/datepicker.min.js');
 script.setAttribute('id', 'date-picker-script');
-document.head.appendChild(script);*/
+document.head.appendChild(script);
 
 /*$.each(steps, function(i, val) {
     if ("fields" in steps[i] && steps[i].fields != '') {
