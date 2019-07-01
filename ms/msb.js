@@ -69,29 +69,34 @@ $(document).ready(function() {
                     }
 
                     if ("display" in val && val.display == "datepicker") {
-                        /*$('#' + k).attr("data-toggle", "datepicker");
-                        $('[data-toggle="datepicker"]').datepicker({
-                            autoHide: true,
-                            autoPick: false,
-                            startView: 2,
-                            language: 'en-GB',
-                            format: 'yyyy-mm-dd',
-                            weekStart: 1
-                        });*/
-                        console.log(k);
-                        $('#' + k).datepicker({
-                            changeMonth: true,
-                            changeYear: true,
-                            onClose: function(date, datepicker) {
-                                var poke = new Event('change', {
-                                    bubbles: true
-                                });
-                                document.getElementById(k).dispatchEvent(poke);
-                                document.getElementById(k).validity['valid'];
-
+                        var jquiPromise = new Promise(function(resolve, reject) {
+                            if (jQuery.ui) {
+                                resolve("jquiLoaded");
+                            } else {
+                                reject("jquiNotLoaded");
                             }
                         });
-                     }
+                        jquiPromise.then(function(value) {
+                            $('#' + k).datepicker({
+                                changeMonth: true,
+                                changeYear: true,
+                                onClose: function(date, datepicker) {
+                                    var poke = new Event('change', {
+                                        bubbles: true
+                                    });
+                                    document.getElementById(k).dispatchEvent(poke);
+                                    document.getElementById(k).validity['valid'];
+
+                                }
+                            });
+                        });
+                        jquiPromise.catch(function(reason) {
+                          console.log("jqui Fail");
+                        });
+                        jquiPromise.finally(function() {
+                          console.log("jqui Finally");
+                        });
+                    }
                     // DONE: Test Custom Error events
                     if ("error" in val && val.error != '') {
                         if ($('#' + i).length) {
