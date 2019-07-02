@@ -78,7 +78,8 @@ $(window).bind("load", function() {
                                 document.getElementById(k).dispatchEvent(poke);
                                 document.getElementById(k).validity['valid'];
                             },
-                            dateFormat: 'yy/mm/dd'
+                            dateFormat: 'yy-mm-dd',
+                            firstDay: 1
                         });
                     }
 
