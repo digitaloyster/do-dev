@@ -99,7 +99,7 @@ $(window).bind("load", function() {
 
                     if ("numeric" in val && val.numeric == "Y") {
                         var field = document.getElementById(k);
-                        field.type = "number";
+                        //field.type = "number";
                         field.setAttribute('pattern', '[0-9]*');
                     }
                 });
