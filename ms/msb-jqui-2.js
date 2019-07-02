@@ -102,7 +102,7 @@ $(window).bind("load", function() {
                         //field.type = "number";
                         field.setAttribute('inputmode','numeric');
                         //field.setAttribute('pattern','[0-9]*');
-                        field.setAttribute('pattern','/d*');
+                        field.setAttribute('pattern','[\d]*');
                         field.setAttribute('placeholder', '');
                     }
                 });
