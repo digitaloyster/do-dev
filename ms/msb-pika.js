@@ -125,6 +125,8 @@ $(window).bind("load", function() {
         styles.setAttribute('type', 'text/css');
         document.head.appendChild(styles);
 
+        $('form').show();
+        
         hooks.call('hookPageInit', []); // HOOK
     }
 
