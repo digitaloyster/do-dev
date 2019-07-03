@@ -126,7 +126,7 @@ $(window).bind("load", function() {
         document.head.appendChild(styles);
 
         $('form').show();
-        
+
         hooks.call('hookPageInit', []); // HOOK
     }
 
@@ -205,25 +205,6 @@ $(window).bind("load", function() {
 
     //Goto specific step
     var gotoStep = function(step) {
-        if ("fields" in steps[step] && steps[step].fields != '') {
-            $.each(steps[step].fields, function(k, val) {
-                if ("display" in val && val.display == "datepicker") {
-                    $('#' + k).datepicker({
-                        changeMonth: true,
-                        changeYear: true,
-                        onClose: function(date, datepicker) {
-                            var poke = new Event('change', {
-                                bubbles: true
-                            });
-                            document.getElementById(k).dispatchEvent(poke);
-                            document.getElementById(k).validity['valid'];
-                        },
-                        dateFormat: 'yy/mm/dd'
-                    });
-                }
-            });
-        }
-
         // TODO: Sort out fadein for fields on step change
         $('.active').removeClass('active');
         $('#step-' + step).addClass('active');
