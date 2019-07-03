@@ -74,8 +74,8 @@ $(window).bind("load", function() {
                         var picker = new Pikaday({
                             field: document.getElementById(k),
                             firstDay: 1,
-                            format: 'DD/MM/YYYY',
-                            yearRange: [yearStart, yearEnd],
+                            format: 'YYYY-MM-DD',
+                            yearRange: [yearStart, yearEnd]/*,
                             toString(date, format) {
                                 // you should do formatting based on the passed format,
                                 // but we will just return 'D/M/YYYY' for simplicity
@@ -91,7 +91,7 @@ $(window).bind("load", function() {
                                 const month = parseInt(parts[1], 10) - 1;
                                 const year = parseInt(parts[0], 10);
                                 return new Date(year, month, day);
-                            }
+                            }*/
                         });
                     }
 
