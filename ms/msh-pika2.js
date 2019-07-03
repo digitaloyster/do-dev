@@ -24,6 +24,3 @@ document.cdnMultiStep.hooks = {
       }
     }
 };
-
-
-$('form').hide();
