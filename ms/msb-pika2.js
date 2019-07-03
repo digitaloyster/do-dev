@@ -324,9 +324,7 @@ $(window).keydown(function(event) {
 
 // Events
 /*--------------------------------------------------------------------------*/
-$(window).bind("load", function() {
     // Initialise
     initialise();
     gotoStep(1);
     // Initialise
-});
