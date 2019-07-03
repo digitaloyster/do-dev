@@ -1,6 +1,6 @@
 // Version 1.1.1
 
-$(document).ready(function() {
+$(window).bind("load", function() {
     // XXX: Variables/Objects
     if (document.cdnMultiStep.debugMode) var d = true;
     else var d = false;
@@ -72,7 +72,7 @@ $(document).ready(function() {
                         var yearEnd = dt.getYear() + 1900;
   	                     var yearStart = yearEnd - 120;
                          var picker = new Pikaday({
-                             field: document.getElementById(k), 
+                             field: document.getElementById(k),
                              firstDay:1,
                              format: 'D/M/YYYY',
                              yearRange: [yearStart, yearEnd],
