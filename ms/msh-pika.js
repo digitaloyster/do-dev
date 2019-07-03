@@ -35,12 +35,12 @@ $.each(steps, function(i, val) {
         $.each(steps[i].fields, function(k, val) {
             if ("display" in val && val.display == "datepicker" && !$('#jqui').length) {
                 var jquiStyle = document.createElement('link');
-                jquiStyle.setAttribute('href', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css');
+                jquiStyle.setAttribute('href', 'https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css');
                 jquiStyle.setAttribute('rel', 'stylesheet');
                 document.head.appendChild(jquiStyle);
 
                 var jquiScript = document.createElement('script');
-                jquiScript.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js');
+                jquiScript.setAttribute('src', 'https://cdn.jsdelivr.net/npm/pikaday/pikaday.js');
                 jquiScript.setAttribute('id', 'jqui');
                 document.head.appendChild(jquiScript);
             }
