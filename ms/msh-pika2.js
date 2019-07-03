@@ -41,4 +41,4 @@ function loadMSB() {
 }
 $(window).bind("load", function() {
     loadMSB();
-}
+});
