@@ -1,6 +1,6 @@
 // Version 1.1.1
 
-$(window).bind("load", function() {
+
     // XXX: Variables/Objects
     if (document.cdnMultiStep.debugMode) var d = true;
     else var d = false;
@@ -352,7 +352,7 @@ $(window).bind("load", function() {
 
     // Events
     /*--------------------------------------------------------------------------*/
-
+$(window).bind("load", function() {
     // Initialise
     initialise();
     gotoStep(1);
