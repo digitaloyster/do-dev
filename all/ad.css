@@ -1,11 +1,11 @@
 /* AD CSS v0.0 */
 @media screen and (max-width: 414px) and (orientation: portrait), screen and (max-width: 736px) and (orientation: landscape) {
-	.cc-window{
+    .cc-window{
       font-size: 13px !important;
       line-height: 0.8em !important;
       padding: 0.5em !important;
     }
     .cc-window .cc-message {
       margin-bottom: 0.5em !important;
-  	}
+    }
 }
