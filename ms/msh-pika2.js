@@ -39,6 +39,6 @@ function loadMSB() {
         window.setTimeout( loadMSB, 100 );
     }
 }
-$(window).bind("load", function() {
+$( document ).ready(function() {
     loadMSB();
 });
