@@ -70,6 +70,9 @@ var initialise = function() {
                 }
 
                 if ("display" in val && val.display == "datepicker") {
+                    if (document.datepicker != '') {
+                        var dpoptions = document.datepicker;
+                    }
                     var dt = new Date();
                     var yearEnd = dt.getYear() + 1900;
                     var yearStart = dt.getYear() + 1780;
@@ -97,6 +100,14 @@ var initialise = function() {
                             return new Date(year, month, day);
                         }
                     };
+                    $.each(dpoptions, function(l, val2) {
+                        if (k === l) {
+                            console.log(val2);
+                            val2.field = document.getElementById(val2.field);
+                            defaultPikaSettings = val2;
+                        }
+
+                    });
                     var picker = new Pikaday(defaultPikaSettings);
                 }
                 // DONE: Test Custom Error events
