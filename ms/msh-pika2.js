@@ -25,12 +25,7 @@ document.cdnMultiStep.hooks = {
     }
 };
 
-var styles = document.createElement('link');
-//styles.setAttribute('href', 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css');
-styles.setAttribute('href', 'https://digitaloyster.github.io/do-dev/ms/ms.css');
-styles.setAttribute('rel', 'stylesheet');
-styles.setAttribute('type', 'text/css');
-document.head.appendChild(styles);
+
 
 if (document.cdnMultiStep.steps != '') {
   var steps = document.cdnMultiStep.steps;
@@ -57,21 +52,29 @@ $.each(steps, function(i, val) {
 var increment = 0;
 function loadMSB() {
     console.log("loadMSB");
-    if (document.body && !$('#msbScript') && typeof Pikaday === "function") {
+    if (document.body && !$('#msbScript').length && typeof Pikaday === "function") {
         var msbScript = document.createElement('script');
         msbScript.setAttribute('src', 'https://digitaloyster.github.io/do-dev/ms/msb-pika2.js');
         msbScript.setAttribute('id', 'msbScript');
         document.body.appendChild(msbScript);
-
-
         console.log("msb increment[" + increment + "]");
-    } else if ($('#msbScript')){
-
+    } else if ($('#msbScript').length){
+        console.log("Loaded");
     } else {
+      console.log("inc");
         increment += 1;
         window.setTimeout( loadMSB, 100 );
     }
 }
-$( document ).ready(function() {
-    loadMSB();
+
+$(function() {
+  loadMSB();
+  console.log( "ready!" );
 });
+
+var styles = document.createElement('link');
+//styles.setAttribute('href', 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css');
+styles.setAttribute('href', 'https://digitaloyster.github.io/do-dev/ms/ms.css');
+styles.setAttribute('rel', 'stylesheet');
+styles.setAttribute('type', 'text/css');
+document.head.appendChild(styles);
