@@ -22,6 +22,7 @@ if (document.cdnMultiStep.hooks != '') {
 // XXX: Functions
 // Initialise Step Structre
 var initialise = function() {
+    console.log('init');
     hooks.call('hookPreInit', []); // Hook
     var msBrowser = false;
     if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
@@ -90,12 +91,12 @@ var initialise = function() {
         }
     });
 
-    var styles = document.createElement('link');
+    /*var styles = document.createElement('link');
     //styles.setAttribute('href', 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css');
     styles.setAttribute('href', 'https://digitaloyster.github.io/do-dev/ms/ms.css');
     styles.setAttribute('rel', 'stylesheet');
     styles.setAttribute('type', 'text/css');
-    document.head.appendChild(styles);
+    document.head.appendChild(styles);*/
 
     $('form').show();
 
