@@ -32,20 +32,46 @@ styles.setAttribute('rel', 'stylesheet');
 styles.setAttribute('type', 'text/css');
 document.head.appendChild(styles);
 
+if (document.cdnMultiStep.steps != '') {
+  var steps = document.cdnMultiStep.steps;
+} else alert('steps not found');
+
+$.each(steps, function(i, val) {
+  if ("fields" in steps[i] && steps[i].fields != '') {
+    $.each(steps[i].fields, function(k, val) {
+      if ("display" in val && val.display == "datepicker" && !$('#jqui').length) {
+        var jquiStyle = document.createElement('link');
+        jquiStyle.setAttribute('href', 'https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css');
+        jquiStyle.setAttribute('rel', 'stylesheet');
+        document.head.appendChild(jquiStyle);
+
+        var jquiScript = document.createElement('script');
+        jquiScript.setAttribute('src', 'https://cdn.jsdelivr.net/npm/pikaday/pikaday.js');
+        jquiScript.setAttribute('id', 'jqui');
+        document.head.appendChild(jquiScript);
+      }
+    });
+  }
+});
+
 var increment = 0;
 function loadMSB() {
-    if (document.body) {
+    console.log("loadMSB");
+    if (document.body && !$('#msbScript') && typeof Pikaday === "function") {
         var msbScript = document.createElement('script');
         msbScript.setAttribute('src', 'https://digitaloyster.github.io/do-dev/ms/msb-pika2.js');
         msbScript.setAttribute('id', 'msbScript');
         document.body.appendChild(msbScript);
+
+
         console.log("msb increment[" + increment + "]");
-    }
-    else {
+    } else if ($('#msbScript')){
+
+    } else {
         increment += 1;
         window.setTimeout( loadMSB, 100 );
     }
 }
-//$( document ).ready(function() {
+$( document ).ready(function() {
     loadMSB();
-//});
+});

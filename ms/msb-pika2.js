@@ -68,6 +68,37 @@ var initialise = function() {
                         });
                     }
                 }
+
+                if ("display" in val && val.display == "datepicker") {
+                        var dt = new Date();
+                        var yearEnd = dt.getYear() + 1900;
+                        var yearStart = yearEnd - 120;
+                        var defaultPikaSettings = {
+                            field: document.getElementById(k),
+                            firstDay: 1,
+                            format: 'YYYY-MM-DD',
+                            yearRange: [yearStart, yearEnd],
+                            toString(date, format) {
+                                // you should do formatting based on the passed format,
+                                // but we will just return 'D/M/YYYY' for simplicity
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                if ( day < 10 ) day = "0" + day;
+                                if ( month < 10 ) month = "0" + month;
+                                return `${year}-${month}-${day}`;
+                            },
+                            parse(dateString, format) {
+                                // dateString is the result of `toString` method
+                                const parts = dateString.split('/');
+                                const day = parseInt(parts[2], 10);
+                                const month = parseInt(parts[1], 10) - 1;
+                                const year = parseInt(parts[0], 10);
+                                return new Date(year, month, day);
+                            }
+                        };
+                        var picker = new Pikaday(defaultPikaSettings);
+                    }
                 // DONE: Test Custom Error events
                 if ("error" in val && val.error != '') {
                     if ($('#' + i).length) {
@@ -90,13 +121,6 @@ var initialise = function() {
             });
         }
     });
-
-    /*var styles = document.createElement('link');
-    //styles.setAttribute('href', 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css');
-    styles.setAttribute('href', 'https://digitaloyster.github.io/do-dev/ms/ms.css');
-    styles.setAttribute('rel', 'stylesheet');
-    styles.setAttribute('type', 'text/css');
-    document.head.appendChild(styles);*/
 
     $('form').show();
 
