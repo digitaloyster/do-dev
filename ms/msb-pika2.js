@@ -72,7 +72,7 @@ var initialise = function() {
                 if ("display" in val && val.display == "datepicker") {
                     var dt = new Date();
                     var yearEnd = dt.getYear() + 1900;
-                    var yearStart = dt.getYear() + 1880;
+                    var yearStart = dt.getYear() + 1780;
                     var defaultPikaSettings = {
                         field: document.getElementById(k),
                         firstDay: 1,
