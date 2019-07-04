@@ -34,7 +34,7 @@ document.head.appendChild(styles);
 
 var increment = 0;
 function loadMSB() {
-    if (typeof document.body != 'undefined') {
+    if (document.body) {
         var msbScript = document.createElement('script');
         msbScript.setAttribute('src', 'https://digitaloyster.github.io/do-dev/ms/msb-pika2.js');
         msbScript.setAttribute('id', 'msbScript');
