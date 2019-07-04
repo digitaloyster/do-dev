@@ -46,6 +46,6 @@ function loadMSB() {
         window.setTimeout( loadMSB, 100 );
     }
 }
-$( document ).ready(function() {
+//$( document ).ready(function() {
     loadMSB();
-});
+//});
