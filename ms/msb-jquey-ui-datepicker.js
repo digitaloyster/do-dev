@@ -79,11 +79,28 @@ $(document).ready(function() {
                             }
                         }
                     }
-
                     if ("numeric" in val && val.numeric == "Y") {
                         var field = document.getElementById(k);
                         field.type = "number";
                         field.setAttribute('pattern', '[0-9]*');
+                    }
+                    if ("datepicker" in val && val.datepicker == "Y") {
+                        var script = document.createElement('script');
+                        script.onload = function () {
+                              $( function() {
+                                $( "#startdate" ).datepicker({ dateFormat: "dd/mm/yy"});
+                              } );
+                        };
+                        script.src = 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js';
+
+                        document.head.appendChild(script);
+                        var styles = document.createElement('link');
+                        styles.setAttribute('href', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
+                        styles.setAttribute('rel', 'stylesheet');
+                        styles.setAttribute('type', 'text/css');
+                        document.head.appendChild(styles);
+                        var field = document.getElementById(k);
+                        field.setAttribute('pattern', '(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}');
                     }
                 });
             }
