@@ -84,7 +84,7 @@ $(document).ready(function() {
                         field.type = "number";
                         field.setAttribute('pattern', '[0-9]*');
                     }
-                    if ("datepicker" in val && val.datepicker == "Y") {
+                    if ("display" in val && val.display == "datepicker") {
                         var script = document.createElement('script');
                         var options = { dateFormat: "dd/mm/yy" };
                         if( "dob" in val && val.dob == "Y" ){
