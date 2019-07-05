@@ -86,9 +86,14 @@ $(document).ready(function() {
                     }
                     if ("datepicker" in val && val.datepicker == "Y") {
                         var script = document.createElement('script');
+                        var options = { dateFormat: "dd/mm/yy" };
+                        if( "dob" in val && val.dob == "Y" ){
+                            options.changeYear = true;
+                            options.yearRange = "-120:+0";
+                        }
                         script.onload = function () {
                               $( function() {
-                                $( "#startdate" ).datepicker({ dateFormat: "dd/mm/yy"});
+                                $( "#startdate" ).datepicker( options );
                               } );
                         };
                         script.src = 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js';
