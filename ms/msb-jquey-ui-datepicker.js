@@ -85,26 +85,40 @@ $(document).ready(function() {
                         field.setAttribute('pattern', '[0-9]*');
                     }
                     if ("display" in val && val.display == "datepicker") {
-                        var script = document.createElement('script');
                         var options = { dateFormat: "dd/mm/yy", changeYear: true, changeMonth: true };
                         if( "dob" in val && val.dob == "Y" ){
                             options.yearRange = "-120:+0";
                         }
-                        script.onload = function () {
-                              $( function() {
-                                $( "#" + k ).datepicker( options );
-                              } );
-                        };
-                        script.src = 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js';
+                        var all_scripts = document.getElementsByTagName('script');
+                        var loadScript = true
+                        for (var i = all_scripts.length; i--;) {
+                            if (all_scripts[i].src == 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js'){
+                                loadScript = false;
+                            }
+                        }
+                        if( loadScript ){
+                            var script = document.createElement('script');
+                            script.onload = function () {
+                                  $( function() {
+                                    $( "#" + k ).datepicker( options );
+                                  } );
+                            };
+                            script.src = 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js';
 
-                        document.head.appendChild(script);
-                        var styles = document.createElement('link');
-                        styles.setAttribute('href', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
-                        styles.setAttribute('rel', 'stylesheet');
-                        styles.setAttribute('type', 'text/css');
-                        document.head.appendChild(styles);
-                        var field = document.getElementById(k);
-                        field.setAttribute('pattern', '(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}');
+                            document.head.appendChild(script);
+                            var styles = document.createElement('link');
+                            styles.setAttribute('href', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
+                            styles.setAttribute('rel', 'stylesheet');
+                            styles.setAttribute('type', 'text/css');
+                            document.head.appendChild(styles);
+                            var field = document.getElementById(k);
+                            field.setAttribute('pattern', '(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}');
+                        }
+                        else{
+                            $( function() {
+                                $( "#" + k ).datepicker( options );
+                            } );
+                        }
                     }
                 });
             }
