@@ -86,9 +86,8 @@ $(document).ready(function() {
                     }
                     if ("display" in val && val.display == "datepicker") {
                         var script = document.createElement('script');
-                        var options = { dateFormat: "dd/mm/yy" };
+                        var options = { dateFormat: "dd/mm/yy", changeYear: true, changeMonth: true };
                         if( "dob" in val && val.dob == "Y" ){
-                            options.changeYear = true;
                             options.yearRange = "-120:+0";
                         }
                         script.onload = function () {
