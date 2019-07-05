@@ -93,7 +93,7 @@ $(document).ready(function() {
                         }
                         script.onload = function () {
                               $( function() {
-                                $( "#startdate" ).datepicker( options );
+                                $( "#" + k ).datepicker( options );
                               } );
                         };
                         script.src = 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js';
