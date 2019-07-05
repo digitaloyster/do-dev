@@ -92,6 +92,15 @@ $(document).ready(function() {
                         if( "dob" in val && val.dob == "Y" ){
                             datepicker_option[ k ].yearRange = "-120:+0";
                         }
+                        if( "datepicker_dateRange" in val && val.datepicker_dateRange != ''){
+                            var this_year = val.datepicker_dateRange.split(',');
+                            var curr_year = new Date().getFullYear();
+                            if( this_year.length === 2 ){
+                                this_year[0] = curr_year - this_year[0];
+                                this_year[1] = this_year[1] - curr_year;
+                                datepicker_option[ k ].yearRange = "-" + this_year[0] + ":+" + this_year[1];
+                            }
+                        }
                         var field = document.getElementById(k);
                         field.setAttribute('pattern', '(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}');
                     }
