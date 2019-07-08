@@ -67,7 +67,6 @@ $(document).ready(function() {
                             });
                         }
                     }
-                    // DONE: Test Custom Error events
                     if ("error" in val && val.error != '') {
                         if ($('#' + i).length) {
                             document.getElementById(k).setAttribute("oninvalid", "this.setCustomValidity('" + val.error + "');")
@@ -105,12 +104,6 @@ $(document).ready(function() {
                 });
             }
         });
-
-        // var styles = document.createElement('link');
-        // styles.setAttribute('href', 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css');
-        // styles.setAttribute('rel', 'stylesheet');
-        // styles.setAttribute('type', 'text/css');
-        // document.head.appendChild(styles);
         loadStyleSheet( 'https://cdn.jsdelivr.net/gh/digitaloyster/do-live/ms/ms.css' );
         if( loadJqueryUi ){
             loadStyleSheet( 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css' );
