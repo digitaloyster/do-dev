@@ -87,7 +87,7 @@ $(document).ready(function() {
                     }
                     if ("display" in val && val.display == "datepicker") {
                         loadJqueryUi = true;
-                        datepicker_option[ k ] = { dateFormat: "dd/mm/yy", changeYear: true, changeMonth: true };
+                        datepicker_option[ k ] = { dateFormat: "dd/mm/yy", changeYear: true, changeMonth: true, firstDay: 1 };
                         datepicker_option[ k ].yearRange = "-120:+0";
 //                         if( "dob" in val && val.dob == "Y" ){
 //                             datepicker_option[ k ].yearRange = "-120:+0";
