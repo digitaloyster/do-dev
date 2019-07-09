@@ -86,7 +86,7 @@ $(document).ready(function() {
                     }
                     if ("display" in val && val.display == "datepicker") {
                         loadJqueryUi = true;
-                        datepicker_option[ k ] = { dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, firstDay: 1 };
+                        datepicker_option[ k ] = { changeYear: true, changeMonth: true, firstDay: 1, dateFormat: "yy-mm-dd", maxDate: "+0"};
                         datepicker_option[ k ].yearRange = "-120:+0";
                         var field = document.getElementById(k);
                         field.setAttribute('pattern', '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])');
