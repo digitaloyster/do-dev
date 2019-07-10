@@ -1,3 +1,5 @@
+// Version 1.2
+
 $(document).ready(function() {
     // XXX: Variables/Objects
     if (document.cdnMultiStep.debugMode) var d = true;
