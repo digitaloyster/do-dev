@@ -4,7 +4,7 @@
 var styles=document.createElement("link");
 styles.setAttribute("rel", "stylesheet");
 styles.setAttribute("type", "text/css");
-styles.setAttribute("href", "//cdn.jsdelivr.net/gh/digitaloyster/do-all@latest/al.css");
+styles.setAttribute("href", "//cdn.jsdelivr.net/gh/digitaloyster/do-all/all/al.css");
 document.getElementsByTagName('head')[0].appendChild(styles);
 
 // FullStory

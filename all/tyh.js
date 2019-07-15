@@ -4,7 +4,7 @@
 var styles=document.createElement("link");
 styles.setAttribute("rel", "stylesheet");
 styles.setAttribute("type", "text/css");
-styles.setAttribute("href", "//cdn.jsdelivr.net/gh/digitaloyster/do-all@latest/ty.css");
+styles.setAttribute("href", "//cdn.jsdelivr.net/gh/digitaloyster/do-all/all/ty.css");
 document.getElementsByTagName('head')[0].appendChild(styles);
 //CSS CDN FILE
 
