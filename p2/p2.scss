@@ -1,0 +1,140 @@
+/* PCA 2 */
+
+// Mobile devices
+// Small tablets (portrait view)
+$mobile: 600px;
+@mixin mobile {
+   @media (max-width: #{$mobile}) {
+       @content;
+   }
+}
+
+#container_address_search {
+    top: 235px !important;
+    @include mobile {
+        width: 171px !important;
+    }
+}
+
+#address_search {
+    border-radius: 5px 0 0 5px !important;
+    border-color: black;
+    width: 271px !important;
+    @include mobile {
+        width: 171px !important;
+    }
+}
+
+#address-edit {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: large;
+}
+
+#start-search {
+    border-color: black;
+    border-radius: 0 5px 5px 0 !important;
+    padding: 4px 31px;
+    left: 270px;
+    top: 19px;
+    position: absolute;
+    height: 40px !important;
+    background-color: #5DB992;
+    color: #fff;
+    @include mobile {
+        left: 170px !important;
+        padding: 3px 15px;
+    }
+}
+
+#address-select {
+    overflow: scroll;
+    height: 160px;
+    width: 382px !important;
+    top: 70px;
+    left: 5px;
+    position: absolute;
+    display: block !important;
+    border: 3px solid #aaa;
+    border-radius: 5px 5px 5px 5px;
+    @include mobile {
+        width: 265px !important;
+        height: 200px !important;
+    }
+    span {
+        font-weight: bold;
+        padding: 7px;
+        font-size: 1.1em;
+        line-height: 2.2em;
+    }
+    ul {
+        list-style: none;
+    }
+    li {
+        /*display: inline-block;
+        margin-right: 15px;*/
+        &:hover {
+            background-color: #ccc;
+        }
+        &:nth-child(odd) {
+            background-color: #eee;
+        }
+    }
+    input {
+        visibility: hidden;
+        height: 0 !important;
+        width: 0 !important;
+        &:checked + label {
+            background: #bbb;
+        }
+    }
+    label {
+        cursor: pointer;
+        padding-left: 6px;
+        padding-bottom: 5px;
+        margin-top: -12px;
+        display: block;
+        border-bottom: 1px #ccc solid;
+    }
+}
+
+
+
+#address {
+    position: absolute;
+    top: 16px;
+    left: 40px;
+}
+
+#address-error {
+    position: absolute;
+    color: red;
+    top: 58px;
+    left: 0;
+    width: 100%;
+    @include mobile {
+        left: 77px;
+        width: 92px;
+    }
+}
+
+#container_postcode {
+    width: 100% !important;
+    height: 1px !important;
+    top: 221px;
+    @include mobile {
+        width: 100% !important;
+        height: 1px !important;
+        top: 221px;
+    }
+    input {
+        display: none !important;
+        @include mobile {
+            display: none !important;
+        }
+    }
+}
+/*#container_postcode label.error {display:none !important;}*/
+@media only screen and (max-width: 600px) {
+
+}
