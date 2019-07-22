@@ -29,33 +29,44 @@ $(function () {
         },
         success: function(data) {
           var term = $(searchField).val().toLowerCase().replace(/\s/g, '');
-
           // Test Valid Postcode
           var valid = false;
+          var single = '';
           $.each(data.Items, function(index, value) {
-            if (value.Text.toLowerCase().replace(/\s/g,'') == term) valid = true;
+            if (value.Text.toLowerCase().replace(/\s/g,'') == term) {
+              valid = true;
+              single = false;
+            }
+            if (value.Description.toLowerCase().replace(/\s/g,'').includes(term)) {
+              valid = true;
+              single = true;
+            }
           });
           // Test Valid Postcode
           if (!valid){
             invalidPC(true);
           } else if (data.Items.length == 1) {
-            $.each(data.Items, function(index, value) {
-              secondSearch(value.Text,value.Id);
-            });
+
+            if (single) {
+              $('#address-select').empty().remove();
+              var radios = "<div id='address-select'><span>Please select your address:</span><ul>";
+              $.each(data.Items, function(index, value) {
+                radios += "<li><input type='radio' name='address-select' value='"+value.Id+"' id='"+value.Id+"' data-type='"+value.Type+"' data-text='"+value.Text+"'></input><label for='"+value.Id+"'>"+value.Text +", "+ value.Description+"</label></li>";
+              });
+              radios += "</ul></div>";
+              $('#start-search').after(radios);
+              $(document).on('click', '[name="address-select"]', function () {
+                $('#address-select').hide();
+                retrieveAddress($(this).val());
+              });
+
+            } else {
+              $.each(data.Items, function(index, value) {
+                secondSearch(value.Text,value.Id);
+              });
+            }
           } else {
-            var select = "<select id='address-select' required>";
-            select += "<option value='' data-type='' data-text=''>Please select your address or full postcode...</option>";
-            $.each(data.Items, function(index, value) {
-              select += "<option value='"+value.Id+"' data-type='"+value.Type+"' data-text='"+value.Text+"'>"+value.Text +", "+ value.Description+"</option>";
-            });
-            select += "</select>";
-            $('#start-search').after(select);
-            $('#address-select').change(function() {
-              var type = $('#address-select').find(":selected").attr('data-type');
-              var text = $('#address-select').find(":selected").attr('data-text');
-              if (type == "Address") retrieveAddress($('#address-select').val());
-              else secondSearch(text, $('#address-select').find(":selected").val());
-            });
+              console.log("unknown");
           }
         }
       });
