@@ -23,13 +23,14 @@
 
     label {
         padding: 0 !important;
-        position: relative;
+        position: relative; 
         display: block;
         width: 100% !important;
         height: 100% !important;
 
         span {
             text-align: center;
+            font-size: 18px !important;
             width: 100% !important;
             color: white;
             display: block;
@@ -55,7 +56,7 @@
     }
 }
 
-.pika-title { 
+.pika-title {
     select {
         width: 100%;
         top: 0;
