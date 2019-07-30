@@ -23,7 +23,7 @@
 
     label {
         padding: 0 !important;
-        position: relative; 
+        position: relative;
         display: block;
         width: 100% !important;
         height: 100% !important;
@@ -41,26 +41,5 @@
 
     input {
         display: none;
-    }
-}
-/* pika */
-.pika-label {
-    overflow: unset;
-    margin: 2px 4px;
-    padding: 1px;
-    width: 104px;
-    color: white;
-
-    &:nth-of-type(2) {
-        width: 63px;
-    }
-}
-
-.pika-title {
-    select {
-        width: 100%;
-        top: 0;
-        opacity: 1;
-        -webkit-appearance: menulist-button !important;
     }
 }
