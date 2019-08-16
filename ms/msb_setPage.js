@@ -348,6 +348,6 @@ $(document).ready(function() {
 
     // Initialise
     initialise();
-    gotoStep(1);
+    gotoStep(8);
     // Initialise
 });
