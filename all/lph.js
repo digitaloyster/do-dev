@@ -1,4 +1,4 @@
-// All Landing Pages header CDN-v1.0
+// All Landing Pages header CDN-v1.1
 
 //CSS CDN FILE
 var styles=document.createElement("link");
@@ -9,16 +9,12 @@ document.getElementsByTagName('head')[0].appendChild(styles);
 //CSS CDN FILE
 
 // PCA
-  /*if (document.cdnParameters.postcode_autocomplete == "Y" && typeof document.cdnParameters.postcode_autocomplete !== "undefined") {
-    (function(n,t,i,r){var u,f;n[i]=n[i]||{},n[i].initial={accountCode:"DIGIT11191",host:"DIGIT11191.pcapredict.com"},n[i].on=n[i].on||function(){(n[i].onq=n[i].onq||[]).push(arguments)},u=t.createElement("script"),u.async=!0,u.src=r,f=t.getElementsByTagName("script")[0],f.parentNode.insertBefore(u,f)})(window,document,"pca","//DIGIT11191.pcapredict.com/js/sensor.js")
-  } else*/
-  if (document.cdnParameters.postcode == "A" && typeof document.cdnParameters.postcode !== "undefined") {
+if (document.cdnParameters.postcode == "A" && typeof document.cdnParameters.postcode !== "undefined") {
     (function(n,t,i,r){var u,f;n[i]=n[i]||{},n[i].initial={accountCode:"DIGIT11191",host:"DIGIT11191.pcapredict.com"},n[i].on=n[i].on||function(){(n[i].onq=n[i].onq||[]).push(arguments)},u=t.createElement("script"),u.async=!0,u.src=r,f=t.getElementsByTagName("script")[0],f.parentNode.insertBefore(u,f)})(window,document,"pca","//DIGIT11191.pcapredict.com/js/sensor.js")
 } else if (document.cdnParameters.postcode == "S" && typeof document.cdnParameters.postcode !== "undefined") {
     var p2Script = document.createElement('script');
     p2Script.setAttribute('src','https://digitaloyster.github.io/do-live/p2/p2.js');
     document.head.appendChild(p2Script);
-
     var p2Style = document.createElement('link');
     p2Style.setAttribute('rel','stylesheet');
     p2Style.setAttribute('type','text/css');
@@ -28,8 +24,8 @@ document.getElementsByTagName('head')[0].appendChild(styles);
 // PCA
 
 //Taboola Pixels
-  if (document.cdnParameters.TB_pixel_ids != "" && typeof document.cdnParameters.TB_pixel_ids !== "undefined") {
-    var idstring = document.cdnParameters.TB_pixel_ids;
+if (document.cdnParameters.TB_pixel_ids != "" && typeof document.cdnParameters.TB_pixel_ids !== "undefined") {
+  var idstring = document.cdnParameters.TB_pixel_ids;
     if (idstring != '') {
       var ids = idstring.split(',');
       for (i in ids) {
@@ -45,7 +41,7 @@ document.getElementsByTagName('head')[0].appendChild(styles);
         'tb_tfa_script');
       }
     }
-  }
+}
 //Taboola Pixels
 
 //Load PolyFill
