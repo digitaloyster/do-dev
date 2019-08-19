@@ -16,13 +16,13 @@ document.getElementsByTagName('head')[0].appendChild(styles);
     (function(n,t,i,r){var u,f;n[i]=n[i]||{},n[i].initial={accountCode:"DIGIT11191",host:"DIGIT11191.pcapredict.com"},n[i].on=n[i].on||function(){(n[i].onq=n[i].onq||[]).push(arguments)},u=t.createElement("script"),u.async=!0,u.src=r,f=t.getElementsByTagName("script")[0],f.parentNode.insertBefore(u,f)})(window,document,"pca","//DIGIT11191.pcapredict.com/js/sensor.js")
 } else if (document.cdnParameters.postcode == "S" && typeof document.cdnParameters.postcode !== "undefined") {
     var p2Script = document.createElement('script');
-    p2Script.setAttribute('src','https://digitaloyster.github.io/do-dev/p2/p2.js');
+    p2Script.setAttribute('src','https://digitaloyster.github.io/do-live/p2/p2.js');
     document.head.appendChild(p2Script);
 
     var p2Style = document.createElement('link');
     p2Style.setAttribute('rel','stylesheet');
     p2Style.setAttribute('type','text/css');
-    p2Style.setAttribute('href','https://digitaloyster.github.io/do-dev/p2/p2.css');
+    p2Style.setAttribute('href','https://digitaloyster.github.io/do-live/p2/p2.css');
     document.head.appendChild(p2Style);
 }
 // PCA
