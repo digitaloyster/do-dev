@@ -111,6 +111,10 @@
   }
 }
 
+#container_add1, #container_add2, #container_add3, #container_add4 {
+  display: none;
+}
+
 #container_postcode {
   width: 100% !important;
   height: 1px !important;
