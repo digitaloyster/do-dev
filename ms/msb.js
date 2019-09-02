@@ -45,22 +45,14 @@ $(document).ready(function() {
                     if ("display" in val && val.display == "buttons") {
                         if (!$('#' + k).length) {
                             $("[name='" + k + "']").parent().addClass('select-button');
+                            //console.log($("[name='" + k + "']")[0].type);
                             if (objSize(steps[i].fields) === 1 && $("[name='" + k + "']")[0].type !== "checkbox") {
                                 $("[name='" + k + "']").parent().addClass('single-field');
                             }
                             $("[name='" + k + "']").bind('change', function() {
-                                //$("#container_"+k+" .selected").removeClass('selected');
                                 var $update = $(this).parent('div');
-                                if ($update.hasClass('single-field')) {
-                                    $("#container_" + k + " .selected").removeClass('selected');
-                                    $update.addClass('selected');
-                                } else {
-                                    if ($update.hasClass('selected')) {
-                                        $update.removeClass('selected');
-                                    } else {
-                                        $update.addClass('selected');
-                                    }
-                                }
+                                if ($("[name='" + k + "']")[0].type !== "checkbox") $("#container_" + k + " .selected").removeClass('selected');
+                                $update.toggleClass('selected');
                                 if ($update.hasClass('single-field') && !msBrowser) {
                                     nextStep();
                                 }
