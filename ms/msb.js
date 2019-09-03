@@ -229,6 +229,13 @@ $(document).ready(function() {
         }
         hooks.call('hookNewStep', []); //HOOK
     };
+    
+     var focusClick = function( ev, el) {
+        if( ev.keyCode === 32 || ev.keyCode === 13 ){
+            $(':input:enabled:visible:first').focus();
+            el.click();
+        }
+     }
 
     //Fade between steps
     var showStep = function() {
