@@ -29,7 +29,13 @@ $(document).ready(function() {
         if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
             msBrowser = true;
         }
-
+        $( ".lp-pom-button" ).each(function( ) {
+          $(this).attr('tabindex', 0);
+          $(this).keypress(function( ev ) {
+              ev.preventDefault();
+              focusClick(ev, this)
+           });
+        });
         $.each(steps, function(i, val) {
             var page = [];
             $.each(steps[i].fields, function(k, val) {
