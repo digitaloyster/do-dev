@@ -30,11 +30,17 @@ $(document).ready(function() {
             msBrowser = true;
         }
         $( ".lp-pom-button" ).each(function( ) {
-          $(this).attr('tabindex', 0);
-          $(this).keypress(function( ev ) {
-              ev.preventDefault();
-              focusClick(ev, this)
-           });
+            $(this).attr('tabindex', 0);
+            $('#' + this.id).focus( function() {
+                $(this).addClass('focusGlow');
+            });
+            $('#' + this.id).blur( function() {
+                $(this).removeClass('focusGlow');
+            });
+            $(this).keypress(function( ev ) {
+                ev.preventDefault();
+                focusClick(ev, this)
+            });
         });
         $.each(steps, function(i, val) {
             var page = [];
@@ -230,12 +236,12 @@ $(document).ready(function() {
         hooks.call('hookNewStep', []); //HOOK
     };
     
-     var focusClick = function( ev, el) {
+    var focusClick = function( ev, el) {
         if( ev.keyCode === 32 || ev.keyCode === 13 ){
             $(':input:enabled:visible:first').focus();
             el.click();
         }
-     }
+    }
 
     //Fade between steps
     var showStep = function() {
