@@ -233,6 +233,7 @@ $(document).ready(function() {
             $('#' + settings.nextButton).show();
             $('#' + settings.submitButton).hide();
         }
+        $(':input:enabled:visible:first').focus();
         hooks.call('hookNewStep', []); //HOOK
     };
     
