@@ -29,17 +29,25 @@ $(document).ready(function() {
         if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
             msBrowser = true;
         }
+        $( '#' + document.cdnMultiStep.settings.nextButton ).addClass('button-next');
+        $( '#' + document.cdnMultiStep.settings.nextButton ).addClass('button-back');
         $( ".lp-pom-button" ).each(function( ) {
-            $(this).attr('tabindex', 0);
-            $('#' + this.id).focus( function() {
-                $(this).addClass('focusGlow');
+            let mousedown = 0;
+            $('#' + this.id).mousedown( function(e) {
+                mousedown = 1;
+            });
+            $('#' + this.id).focus( function(e) {
+                if( !mousedown ){
+                   $(this).addClass('focusGlow');
+                }
+                mousedown = 0;
             });
             $('#' + this.id).blur( function() {
                 $(this).removeClass('focusGlow');
             });
             $(this).keypress(function( ev ) {
                 ev.preventDefault();
-                focusClick(ev, this)
+                focusClick(ev, this, 1)
             });
         });
         $.each(steps, function(i, val) {
@@ -233,7 +241,8 @@ $(document).ready(function() {
             $('#' + settings.nextButton).show();
             $('#' + settings.submitButton).hide();
         }
-        $(':input:enabled:visible:first').focus();
+        updateTabIndex();
+       $(':input:enabled:visible:first').focus();
         hooks.call('hookNewStep', []); //HOOK
     };
     
@@ -242,6 +251,35 @@ $(document).ready(function() {
             $(':input:enabled:visible:first').focus();
             el.click();
         }
+    }
+    var updateTabIndex = function() {
+        $( "button" ).each(function( ) {
+            $('#' + this.id).focus( function() {
+                $(this).addClass('focusGlow');
+            });
+            $('#' + this.id).blur( function() {
+                $(this).removeClass('focusGlow');
+            });
+            $(this).keypress(function( ev ) {
+                ev.preventDefault();
+                focusClick(ev, this)
+            });
+        });
+        let count = 1;
+        // $( "#step-" + step + ' *' ).filter(':input').each(function( ) {
+        $( 'form *' ).filter(':input').each(function( ) {
+                $(this).attr('tabindex', count);
+                count ++;
+        });
+        $( '#' + document.cdnMultiStep.settings.nextButton ).attr('tabindex', count);
+        count ++;
+        $( '#' + document.cdnMultiStep.settings.prevButton ).attr('tabindex', count);
+        $( ".lp-pom-button" ).each(function( ) {
+            if( this.id != document.cdnMultiStep.settings.nextButton && this.id != document.cdnMultiStep.settings.prevButton ){
+                $(this).attr('tabindex', count);
+                count ++;
+            }
+        });
     }
 
     //Fade between steps
