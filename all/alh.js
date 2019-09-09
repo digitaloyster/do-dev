@@ -24,7 +24,9 @@ var guid = function() {
    return guid;
 };
 
-if (guid()%6==0) {
+let mod1 = 0;
+document.cdnParameters.full_story ? mod1 = document.cdnParameters.full_story :  mod1 = 6;
+if ( mod1 != 'off' && guid() % parseInt( mod1 ) === 0 ) {
   window['_fs_debug'] = false;
   window['_fs_host'] = 'fullstory.com';
   window['_fs_org'] = 'F14BY';
