@@ -242,7 +242,9 @@ $(document).ready(function() {
             $('#' + settings.submitButton).hide();
         }
         updateTabIndex();
-       $(':input:enabled:visible:first').focus();
+        if (step != 1) {
+            $(':input:enabled:visible:first').focus();
+        }
         hooks.call('hookNewStep', []); //HOOK
     };
     
