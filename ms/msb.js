@@ -226,11 +226,7 @@ $(document).ready(function() {
         clearErrors();
         showStep();
         showElements(step);
-        if (step == 1) {
-            refocusForm();
-        }
-
-
+        if (step != 1){ refocusForm(); }
         if (step == 1) {
             $('#' + settings.prevButton).hide();
         } else {
@@ -244,9 +240,7 @@ $(document).ready(function() {
             $('#' + settings.submitButton).hide();
         }
         updateTabIndex();
-        alert( 'step is ' + step + ' value' );
         if (step !== 1) {
-            alert( 'here' );
             $(':input:enabled:visible:first').focus();
         }
         hooks.call('hookNewStep', []); //HOOK
