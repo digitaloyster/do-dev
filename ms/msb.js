@@ -303,7 +303,6 @@ $(document).ready(function() {
 
     //Scroll to top of form
     var refocusForm = function() {
-        alert( 'refocusForm' );
         $('html, body').animate({
             scrollTop: $(".lp-pom-form").parent().offset().top
         }, 500);
