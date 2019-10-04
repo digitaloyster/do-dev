@@ -19,7 +19,6 @@ var msb_mask = function () {
       this.maskEv = true;
     	this.el = el;
       this.byPassKeys = [8, 9, 16, 17, 18, 36, 37, 38, 39, 40, 46, 91];
-      // if( this.mask.byPassKeys !== undefined ){ this.byPassKeys = this.byPassKeys.concat( this.mask.byPassKeys ); }
       this.unmaskArr = [];
       this.maskCharArr = [];
     	this.translation = {
@@ -47,8 +46,6 @@ var msb_mask = function () {
             this.unmaskArr.push( inputVal.charAt(i) );
           }
         }
-//        let caretPos = a.frontChar ? $( '#' + this.el )[ 0 ].selectionStart -1 : $( '#' + this.el )[ 0 ].selectionStart;
-        //if( ev.keyCode ){ this.unmaskArr.splice( caretPos, 0, ev.key ); }
   	    let buf = [];
         let i = 0;
         if( a.reverse ){
@@ -59,7 +56,9 @@ var msb_mask = function () {
             let maskVal = a.mask.charAt( caret );
             if( caret >= 0 ){
               let retVar = this.calcMask( caret, arrPos, maskVal, a );
-              buf[ arrMethod ]( retVar[ 'retchar' ] );
+              if( retVar[ 'retchar'] ){
+                buf[ arrMethod ]( retVar[ 'retchar' ] );
+              }
               arrPos = retVar[ 'arrPos' ];
               caret = retVar[ 'caret' ];
             }
@@ -80,7 +79,9 @@ var msb_mask = function () {
             let maskVal = a.mask.charAt( caret );
             if( caret < a.mask.length ){
               let retVar = this.calcMask( caret, arrPos, maskVal, a );
-              buf[ arrMethod ]( retVar[ 'retchar' ] );
+              if( retVar[ 'retchar'] ){
+                buf[ arrMethod ]( retVar[ 'retchar' ] );
+              }
               arrPos = retVar[ 'arrPos' ];
               caret = retVar[ 'caret' ];
             }
@@ -107,7 +108,7 @@ var msb_mask = function () {
       }
     },
     calcMask: function( caret, arrPos, maskVal, a) {
-      let retChar = '';
+      let retChar;
       if( $.inArray( this.unmaskArr[ arrPos ], a.escChar ) !== -1 ){
         retChar = this.unmaskArr[ arrPos ];
         escCharPos = $.inArray( a.escChar[0], this.unmaskArr );
@@ -142,12 +143,15 @@ var msb_mask = function () {
   }
 }
 var masks = {};
-$.fn.mask = function( mask ) {      
+$.fn.amask = function( mask ) {      
   this.each( function(){
     let id = this.id;
     masks[ id ] = new msb_mask;
     masks[ id ].setMask( mask, id );
     $( '#' + id  ).on('keydown', function( ev ){
+        if( ev.keyCode === 8 || ev.keyCode === 46  ){
+          $( '#' + id ).keyup();
+        }
         if( masks[ id ].maskEv === true ){
             masks[ id ].maskEv = false;
             masks[ id ].checkMask( ev );
@@ -158,7 +162,6 @@ $.fn.mask = function( mask ) {
         
     });
     $( '#' + id ).on('keyup', function( ev ){
-        ev.preventDefault()
         masks[ id ].maskEv = true;
         if( ev.keyCode === 8 || ev.keyCode === 46  ){
           ev.keyCode = 0;
@@ -173,9 +176,3 @@ $.fn.unMask = function(){
     masks[ id ].unMask();
   });
 }
-
-
-
-
-
-
