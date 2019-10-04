@@ -152,6 +152,9 @@ $.fn.mask = function( mask ) {
             masks[ id ].maskEv = false;
             masks[ id ].checkMask( ev );
         }
+        else {
+          return false;
+        }
         
     });
     $( '#' + id ).on('keyup', function( ev ){
