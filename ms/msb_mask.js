@@ -143,7 +143,7 @@ var msb_mask = function () {
   }
 }
 var masks = {};
-$.fn.amask = function( mask ) {      
+$.fn.mask = function( mask ) {      
   this.each( function(){
     let id = this.id;
     masks[ id ] = new msb_mask;
