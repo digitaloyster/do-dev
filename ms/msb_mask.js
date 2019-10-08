@@ -174,7 +174,6 @@ $.fn.mask = function( mask ) {
             else { 
               var key = window.event.data; 
             }
-            console.log( this.selectionStart );
             masks[ id ].oldSelectionStart = this.selectionStart;
             masks[ id ].oldSelectionEnd = this.selectionEnd;
             masks[ id ].checkMask( key, this.value, this.selectionStart, this.selectionEnd );
@@ -182,6 +181,9 @@ $.fn.mask = function( mask ) {
           else if (this.hasOwnProperty("oldValue")) {
             this.value = masks[ id ].oldValue;
             this.setSelectionRange( masks[ id ].oldSelectionStart, masks[ id ].oldSelectionEnd);
+          }
+          else {
+            this.value = '';
           }
         });
     }
@@ -194,8 +196,3 @@ $.fn.unMask = function(){
     masks[ id ].unMask();
   });
 }
-
-
-
-
-
