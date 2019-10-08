@@ -1,11 +1,13 @@
 var msb_mask = function () {
     
-  var masks = { 'money decimal': { mask: '000,000,000', frontChar: '£', reverse: true, escChar: [ '.' ]  }, 
-                'money': { mask: '000,000,000', frontChar: '£', reverse: true },
-                'date': { mask: '00/00/00' }, 
-                'percent': { mask: '000', rearChar: '%' },
-                'sort code': { mask: '00-00-00' },
-                'credit card': { mask: '0000 0000 0000 0000'}
+  var masks = { 'money decimal': { mask: '000,000,000', regex: RegExp(/^[£0-9,.]*$/), frontChar: '£', reverse: true, escChar: { num: 1, key: '.' }  }, 
+                'money': { mask: '000,000,000', regex: RegExp(/^[£0-9,]*$/), frontChar: '£', reverse: true },
+                'date': { mask: '00/00/00', regex: RegExp(/^[£0-9/]*$/) }, 
+                'percent': { mask: '000', regex: RegExp(/^[£0-9%]*$/), rearChar: '%' },
+                'sort code': { mask: '00-00-00', regex: RegExp(/^[£0-9-]*$/) },
+                'acc no': { mask: '00000000', regex: RegExp(/^[0-9]*$/) },
+                'mobile': { mask: '00000 000000', regex: RegExp(/^[0-9 ]*$/) },
+                'credit card': { mask: '0000 0000 0000 0000', regex: RegExp(/^[£0-9 ]*$/) }
               }
   this.mask = '';
   this.maskEv;
@@ -21,6 +23,10 @@ var msb_mask = function () {
       this.byPassKeys = [8, 9, 16, 17, 18, 36, 37, 38, 39, 40, 46, 91];
       this.unmaskArr = [];
       this.maskCharArr = [];
+      this.escCharNum = 0;
+      this.oldValue = '';
+      this.oldSelectionStart = 0;
+      this.oldSelectionEnd = 0;
     	this.translation = {
             '0': {pattern: /\d/},
             '9': {pattern: /\d/, optional: true},
@@ -29,25 +35,28 @@ var msb_mask = function () {
             'S': {pattern: /[a-zA-Z]/}
         }
     },
-    checkMask: function( ev ){
-      if ($.inArray( ev.keyCode, this.byPassKeys ) === -1) {
-        ev.preventDefault()
+    checkMask: function( inputVal ){
       	var a = this.mask;
-      	let inputVal = a.frontChar == $( '#' + this.el ).val().slice( 0, 1 ) ? $( '#' + this.el ).val().slice( 1 ) : $( '#' + this.el ).val();
+      	inputVal = a.frontChar == $( '#' + this.el ).val().slice( 0, 1 ) ? $( '#' + this.el ).val().slice( 1 ) : $( '#' + this.el ).val();
         inputVal = a.rearChar  == inputVal.slice( -1 ) ? inputVal.slice( 0, -1 ) : inputVal;
         this.unmaskArr = [];
-        if( inputVal.length === a.mask.length ){ return; }
-        if( ev.keyCode ){
-          let caretPos = a.frontChar ? $( '#' + this.el )[ 0 ].selectionStart -1 : $( '#' + this.el )[ 0 ].selectionStart;
-          inputVal = inputVal.slice( 0, caretPos ) + ev.key + inputVal.slice( caretPos, inputVal.length );
+        if( inputVal.length > a.mask.length ){
+          inputVal = inputVal.slice( 0, -1 );
         }
         for (let i = 0; i < inputVal.length; i++) {
-          if( $.inArray( inputVal.charAt(i), this.maskCharArr ) === -1 ){
-            this.unmaskArr.push( inputVal.charAt(i) );
+          let isEscChar = 0;
+          if( a.escChar ){
+            inputVal.charAt(i) == a.escChar.key ? isEscChar = 1 : isEscChar = 0;
           }
+          if( $.inArray( inputVal.charAt(i) , this.maskCharArr ) !== -1 || isEscChar ) {  
+            this.oldSelectionStart -- ; 
+          }
+          this.unmaskArr.push( inputVal.charAt(i) );
+        }
+        if( a.frontChar && inputVal.length === 1 ){
+          this.oldSelectionStart ++;
         }
   	    let buf = [];
-        let i = 0;
         if( a.reverse ){
           let arrMethod = 'unshift';
           let caret = a.mask.length -1;
@@ -93,7 +102,7 @@ var msb_mask = function () {
             arrPos ++; 
           }
         }
-
+        this.escCharNum = 0;
         if( buf.length && a.frontChar ){
     			buf.unshift( a.frontChar );
     		}
@@ -101,19 +110,24 @@ var msb_mask = function () {
           buf.push( a.rearChar );
         }
         let final_val = buf.join('');
+        this.oldValue = final_val;
         $( '#' + this.el ).val( final_val );
+        this.oldSelectionEnd = this.oldSelectionStart;
         if( a.rearChar ){
-          this.setCaretPos( $('#' + this.el )[0], $('#' + this.el )[0].value.length - 1 );
+          this.setCaretPos( $('#' + this.el )[0], $('#' + this.el )[0].value.length - 1, $('#' + this.el )[0].value.length - 1  );
         }
-      }
+        else {
+          this.setCaretPos( $('#' + this.el )[0], this.oldSelectionEnd, this.oldSelectionStart );
+        }
     },
     calcMask: function( caret, arrPos, maskVal, a) {
       let retChar;
-      if( $.inArray( this.unmaskArr[ arrPos ], a.escChar ) !== -1 ){
+      if( a.escChar && this.unmaskArr[ arrPos ] == a.escChar.key && this.escCharNum < a.escChar.num){
         retChar = this.unmaskArr[ arrPos ];
         escCharPos = $.inArray( a.escChar[0], this.unmaskArr );
         setPos = this.unmaskArr.length - escCharPos;
-        caret += setPos; 
+        caret += setPos;
+        this.escCharNum ++;
       }      
       else if( this.translation[ maskVal ] ){ 
         if( this.unmaskArr[ arrPos ].match( this.translation[ maskVal ].pattern ) ){
@@ -128,6 +142,7 @@ var msb_mask = function () {
         if( $.inArray( a.mask.charAt( caret ) , this.maskCharArr ) === -1 ) {  this.maskCharArr.push( a.mask.charAt( caret ) ); }
         a.reverse ?  arrPos++ : arrPos -- ;
         retChar = a.mask.charAt( caret );
+        this.oldSelectionStart ++;
       }
       return { 'retchar': retChar, 'arrPos': arrPos, 'caret': caret }
     },
@@ -136,9 +151,9 @@ var msb_mask = function () {
       $( '#' + this.el ).val( this.unmaskArr.join('') );
 
     },
-    setCaretPos: function( input, caretPos ){
+    setCaretPos: function( input, start, end ){
        input.focus();
-       input.setSelectionRange( caretPos, caretPos); 
+       input.setSelectionRange( start, end); 
     }
   }
 }
@@ -148,26 +163,29 @@ $.fn.mask = function( mask ) {
     let id = this.id;
     masks[ id ] = new msb_mask;
     masks[ id ].setMask( mask, id );
-    $( '#' + id  ).on('keydown', function( ev ){
-        if( ev.keyCode === 8 || ev.keyCode === 46  ){
-          $( '#' + id ).keyup();
-        }
-        if( masks[ id ].maskEv === true ){
-            masks[ id ].maskEv = false;
-            masks[ id ].checkMask( ev );
-        }
-        else {
-          return false;
-        }
-        
-    });
-    $( '#' + id ).on('keyup', function( ev ){
-        masks[ id ].maskEv = true;
-        if( ev.keyCode === 8 || ev.keyCode === 46  ){
-          ev.keyCode = 0;
-          masks[ id ].checkMask( ev );
-        }
-    });
+
+    function setInputFilter(textbox, inputFilter) {
+        textbox.addEventListener('input', function() {
+          if (inputFilter(this.value)) {
+            this.oldValue = this.value;
+            if( window.event.key ){
+              var key = window.event.key;
+            }
+            else { 
+              var key = window.event.data; 
+            }
+            console.log( this.selectionStart );
+            masks[ id ].oldSelectionStart = this.selectionStart;
+            masks[ id ].oldSelectionEnd = this.selectionEnd;
+            masks[ id ].checkMask( key, this.value, this.selectionStart, this.selectionEnd );
+          } 
+          else if (this.hasOwnProperty("oldValue")) {
+            this.value = masks[ id ].oldValue;
+            this.setSelectionRange( masks[ id ].oldSelectionStart, masks[ id ].oldSelectionEnd);
+          }
+        });
+    }
+    setInputFilter(document.getElementById( id ), function(value) { return masks[ id ].mask.regex.test(value); });
   });     
 }
 $.fn.unMask = function(){
@@ -176,3 +194,8 @@ $.fn.unMask = function(){
     masks[ id ].unMask();
   });
 }
+
+
+
+
+
