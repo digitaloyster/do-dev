@@ -23,6 +23,7 @@ var msb_mask = function () {
       this.byPassKeys = [8, 9, 16, 17, 18, 36, 37, 38, 39, 40, 46, 91];
       this.unmaskArr = [];
       this.maskCharArr = [];
+      this.charArr = [];
       this.escCharNum = 0;
       this.oldValue = '';
       this.oldSelectionStart = 0;
@@ -40,6 +41,7 @@ var msb_mask = function () {
       	inputVal = a.frontChar == $( '#' + this.el ).val().slice( 0, 1 ) ? $( '#' + this.el ).val().slice( 1 ) : $( '#' + this.el ).val();
         inputVal = a.rearChar  == inputVal.slice( -1 ) ? inputVal.slice( 0, -1 ) : inputVal;
         this.unmaskArr = [];
+        this.charArr   = [];
         if( inputVal.length > a.mask.length ){
           inputVal = inputVal.slice( 0, -1 );
         }
@@ -51,9 +53,8 @@ var msb_mask = function () {
           if( $.inArray( inputVal.charAt(i) , this.maskCharArr ) !== -1 || isEscChar ) {  
             this.oldSelectionStart -- ; 
           }
-          if( $.inArray( inputVal.charAt(i) , this.maskCharArr ) === -1 ) {  
-            this.unmaskArr.push( inputVal.charAt(i) );
-          }
+          this.unmaskArr.push( inputVal.charAt(i) );
+
         }
         if( a.frontChar && inputVal.length === 1 ){
           this.oldSelectionStart ++;
@@ -136,6 +137,7 @@ var msb_mask = function () {
       else if( this.translation[ maskVal ] ){ 
         if( this.unmaskArr[ arrPos ].match( this.translation[ maskVal ].pattern ) ){
           retChar = this.unmaskArr[ arrPos ];
+          this.charArr.push( retChar );
         }
         else{
           a.reverse ?  caret++ : caret -- ;
@@ -152,7 +154,7 @@ var msb_mask = function () {
     },
     unMask: function(){
 
-      $( '#' + this.el ).val( this.unmaskArr.join('') );
+      $( '#' + this.el ).val( this.charArr.join('') );
 
     },
     setCaretPos: function( input, start, end ){
