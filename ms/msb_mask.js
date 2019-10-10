@@ -1,16 +1,18 @@
 var msb_mask = function () {
     
-  var masks = { 'money decimal': { mask: '000,000,000', regex: RegExp(/^[£0-9,.]*$/), frontChar: '£', reverse: true, escChar: { num: 1, key: '.' }  }, 
+  var masks = { 'money decimal': { mask: '000,000,000', regex: RegExp(/^[£0-9,]+\.?\d{0,2}$/), frontChar: '£', reverse: true, escChar: { num: 1, key: '.' }  },     
                 'money': { mask: '000,000,000', regex: RegExp(/^[£0-9,]*$/), frontChar: '£', reverse: true },
-                'date': { mask: '00/00/00', regex: RegExp(/^[£0-9/]*$/) }, 
+                'date': { mask: '00/00/00', regex: RegExp(/^[0-9/]*$/) }, 
+                'date time': { mask: '00/00/00 00:00:00', regex: RegExp(/^[0-9/ :]*$/) }, 
+                'time': { mask: '00:00:00', regex: RegExp(/^[0-9:]*$/) }, 
                 'percent': { mask: '000', regex: RegExp(/^[£0-9%]*$/), rearChar: '%' },
                 'sort code': { mask: '00-00-00', regex: RegExp(/^[£0-9-]*$/) },
                 'acc no': { mask: '00000000', regex: RegExp(/^[0-9]*$/) },
                 'mobile': { mask: '00000 000000', regex: RegExp(/^[0-9 ]*$/) },
                 'credit card': { mask: '0000 0000 0000 0000', regex: RegExp(/^[£0-9 ]*$/) }
               }
-  this.mask = '';
-  this.maskEv;
+  // this.mask = '';
+  // this.maskEv;
 
   return {
     getMask: function( this_mask ) {
@@ -124,10 +126,12 @@ var msb_mask = function () {
       let retChar;
       if( a.escChar && this.unmaskArr[ arrPos ] == a.escChar.key && this.escCharNum < a.escChar.num){
         retChar = this.unmaskArr[ arrPos ];
-        escCharPos = $.inArray( a.escChar[0], this.unmaskArr );
+        escCharPos = $.inArray( a.escChar.key, this.unmaskArr );
         setPos = this.unmaskArr.length - escCharPos;
-        caret += setPos;
+        //caret += setPos;
+        caret = a.mask.length;
         this.escCharNum ++;
+        this.oldSelectionStart ++;
       }      
       else if( this.translation[ maskVal ] ){ 
         if( this.unmaskArr[ arrPos ].match( this.translation[ maskVal ].pattern ) ){
