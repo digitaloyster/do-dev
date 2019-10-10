@@ -11,8 +11,6 @@ var msb_mask = function () {
                 'mobile': { mask: '00000 000000', regex: RegExp(/^[0-9 ]*$/) },
                 'credit card': { mask: '0000 0000 0000 0000', regex: RegExp(/^[£0-9 ]*$/) }
               }
-  // this.mask = '';
-  // this.maskEv;
 
   return {
     getMask: function( this_mask ) {
@@ -53,7 +51,9 @@ var msb_mask = function () {
           if( $.inArray( inputVal.charAt(i) , this.maskCharArr ) !== -1 || isEscChar ) {  
             this.oldSelectionStart -- ; 
           }
-          this.unmaskArr.push( inputVal.charAt(i) );
+          if( $.inArray( inputVal.charAt(i) , this.maskCharArr ) === -1 ) {  
+            this.unmaskArr.push( inputVal.charAt(i) );
+          }
         }
         if( a.frontChar && inputVal.length === 1 ){
           this.oldSelectionStart ++;
@@ -170,7 +170,7 @@ $.fn.mask = function( mask ) {
 
     function setInputFilter(textbox, inputFilter) {
         textbox.addEventListener('input', function() {
-          if (inputFilter(this.value)) {
+          if ( inputFilter( this.value ) ) {
             this.oldValue = this.value;
             if( window.event.key ){
               var key = window.event.key;
@@ -182,7 +182,7 @@ $.fn.mask = function( mask ) {
             masks[ id ].oldSelectionEnd = this.selectionEnd;
             masks[ id ].checkMask( key, this.value, this.selectionStart, this.selectionEnd );
           } 
-          else if (this.hasOwnProperty("oldValue")) {
+          else if ( this.hasOwnProperty("oldValue") && this.value != '' ) {
             this.value = masks[ id ].oldValue;
             this.setSelectionRange( masks[ id ].oldSelectionStart, masks[ id ].oldSelectionEnd);
           }
