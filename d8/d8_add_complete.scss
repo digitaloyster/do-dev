@@ -1,4 +1,10 @@
-  #AddressCapture_FindButton {
+$mobile: 600px;
+@mixin mobile {
+   @media (max-width: #{$mobile}) {
+       @content;
+   }
+}  
+#AddressCapture_FindButton {
     border-color: black;
     border-radius: 0 5px 5px 0;
     padding: 0px;
@@ -23,6 +29,14 @@
   }
   #container_add1, #container_add2, #container_add3, #container_add4 {
     display: none;
+  }
+  #container_postcode {
+      input {
+          display: none !important;
+          @include mobile {
+              display: none !important;
+          }
+      }
   }
   .data8-postcodelookup-dropdown{
     padding: 0px !important;
