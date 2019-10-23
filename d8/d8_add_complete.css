@@ -1,0 +1,67 @@
+  #AddressCapture_FindButton {
+    border-color: black;
+    border-radius: 0 5px 5px 0;
+    padding: 0px;
+    top: 19px;
+    position: absolute;
+    background-color: #5DB992;
+    color: #fff;
+    width: 140px;
+    left: 259px !important;
+    height: 36px !important;
+    line-height: 14px !important;
+  }
+  .data8-postcodelookup-dropdown{
+    padding: 0px !important;
+    top: 55px !important;
+    left: 0px !important;
+    border-radius: 5px !important;
+  }
+  .data8-postcodelookup-list option:nth-child(odd){
+    background-color: #eee;
+  }
+  .data8-postcodelookup-list {
+    min-width: 394px !important;
+    height: 115px !important;
+    padding: 0px !important;
+  }
+  select option:focus, 
+  select option:active, 
+  select option:checked
+  {
+    background: linear-gradient(#eee,#eee);
+    background-color: #eee !important; /* for IE */
+  }
+  .data8-postcodelookup-list option{
+    padding: 5px 0 5px 5px;
+    -moz-white-space: pre-wrap;
+    -o-white-space: pre-wrap;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    width: 392px;
+    margin: 1px; 
+  }
+  .data8-postcodelookup-dropdown div{
+    margin: 3px !important;
+  }
+  .data8-postcodelookup-ok { 
+    margin-right: 5px;
+    background-color: #5DB992;
+  }
+  .data8-postcodelookup-ok, .data8-postcodelookup-cancel { 
+    font-size: 10px;
+    padding: 3px;
+    border-radius: 3px;
+  }
+  .data8-postcodelookup-cancel:hover {
+    background-color: #e6e6e6;
+    border-color: #adadad;
+  }
+  .data8-postcodelookup-ok {
+    display: none !important;
+  }
+  .data8-postcodelookup-cancel {
+    display: none !important;
+  }
