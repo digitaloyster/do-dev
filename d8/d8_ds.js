@@ -1,9 +1,4 @@
  window.onload = function(){
-      var d8style = document.createElement('link');
-      d8style.setAttribute('rel','stylesheet');
-      d8style.setAttribute('type','text/css');
-      d8style.setAttribute('href','https://webservices.data-8.co.uk/content/predictiveaddress.css');
-      document.head.appendChild(d8style);
       $( '#address_search' ).after( '<div id="address"></div> ');
       var txt = document.getElementById('address_search');
       new data8.predictiveaddressui(txt, {
