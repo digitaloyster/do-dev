@@ -81,3 +81,6 @@
   .data8-postcodelookup-cancel {
     display: none !important;
   }
+  .data8-postcodelookup-dropdown {
+    display: block !important;
+  }
