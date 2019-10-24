@@ -8,78 +8,56 @@ styles.setAttribute("href", "//cdn.jsdelivr.net/gh/digitaloyster/do-live/all/lp.
 document.getElementsByTagName('head')[0].appendChild(styles);
 //CSS CDN FILE
 
-// PCA & Data8
 if( typeof document.cdnParameters.postcode !== "undefined" ){
+  let head = document.getElementsByTagName('head')[0];
   if (document.cdnParameters.postcode == "A") {
       (function(n,t,i,r){var u,f;n[i]=n[i]||{},n[i].initial={accountCode:"DIGIT11191",host:"DIGIT11191.pcapredict.com"},n[i].on=n[i].on||function(){(n[i].onq=n[i].onq||[]).push(arguments)},u=t.createElement("script"),u.async=!0,u.src=r,f=t.getElementsByTagName("script")[0],f.parentNode.insertBefore(u,f)})(window,document,"pca","//DIGIT11191.pcapredict.com/js/sensor.js")
   } 
-  else if (document.cdnParameters.postcode == "S") {
+  if (document.cdnParameters.postcode == "S") {
       var p2Style = document.createElement('link');
       p2Style.setAttribute('rel','stylesheet');
       p2Style.setAttribute('type','text/css');
       p2Style.setAttribute('href','https://digitaloyster.github.io/do-live/p2/p2.css');
       document.head.appendChild(p2Style);
       var p2Script = document.createElement('script');
-      p2Script.setAttribute('src','https://digitaloyster.github.io/do-live/p2/p2.js');
-      document.head.appendChild(p2Script);
+      p2Script.setAttribute('src','https://digitaloyster.github.io/do-dev/p2/p2.js');
+      head.appendChild(p2Script);
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = "https://digitaloyster.github.io/do-dev/p2/address-edit.js";
+      head.appendChild(script);
   }
-  else if (document.cdnParameters.postcode == "DP") {
+  if (document.cdnParameters.postcode == "DP" || document.cdnParameters.postcode == "DS" ) {
     var d8css = document.createElement('link');
     d8css.setAttribute('rel','stylesheet');
     d8css.setAttribute('type','text/css');
     d8css.setAttribute('href','https://digitaloyster.github.io/do-dev/d8/d8_add_complete.css');
     document.head.appendChild(d8css);
-    var head = document.getElementsByTagName('head')[0];
     var script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = "https://webservices.data-8.co.uk/javascript/address_min.js";
+    script.src = "https://digitaloyster.github.io/do-dev/p2/address-edit.js";
     head.appendChild(script);
+  }
+  if( document.cdnParameters.postcode == "DP" ){
     var script1 = document.createElement('script');
     script1.type = 'text/javascript';
-    script1.src = "https://digitaloyster.github.io/do-dev/d8/d8_dp.js";
+    script1.src = "https://webservices.data-8.co.uk/javascript/address_min.js";
     head.appendChild(script1);
+    var script2 = document.createElement('script');
+    script2.type = 'text/javascript';
+    script2.src = "https://digitaloyster.github.io/do-dev/d8/d8_dp.js";
+    head.appendChild(script2);
   }
-  else if (document.cdnParameters.postcode == "DS") {
-    var d8style = document.createElement('link');
-    d8style.setAttribute('rel','stylesheet');
-    d8style.setAttribute('type','text/css');
-    d8style.setAttribute('href','https://webservices.data-8.co.uk/content/predictiveaddress.css');
-    document.head.appendChild(d8style);
-    var head = document.getElementsByTagName('head')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "https://webservices.data-8.co.uk/javascript/predictiveaddress.js";
-    head.appendChild(script);
-    var script1 = document.createElement('script');
-    script1.type = 'text/javascript';
-    script1.src = "https://digitaloyster.github.io/do-dev/d8/d8_ds.js";
-    head.appendChild(script1);
+  if( document.cdnParameters.postcode == "DS" ){
+    var script3 = document.createElement('script');
+    script3.type = 'text/javascript';
+    script3.src = "https://webservices.data-8.co.uk/javascript/predictiveaddress.js";
+    head.appendChild(script3);
+    var script4 = document.createElement('script');
+    script4.type = 'text/javascript';
+    script4.src = "https://digitaloyster.github.io/do-dev/d8/d8_ds.js";
+    head.appendChild(script4);
   }
-  $(document).on("click", "#address-edit", function() {
-    if ($('#address_search').val() != '') {
-      $('#postcode-switch').text('#container_postcode .error-message {display:block !important;}');
-    } else {
-      $('#postcode-switch').text('#container_postcode .error-message {display:none !important;}');
-    }
-    $('#label_address_search').show();
-    $('#address_search').show();
-    $('#start-search').show();
-    $('#address-select').remove();
-    $("#address").html('');
-    $("#address-edit").remove();
-
-    $('#AddressCapture_FindButton').show();
-
-    $(postcode).val('');
-    $(add1).val('');
-    $(add2).val('');
-    $(add3).val('');
-    $(add4).val('');
-    $(add5).val('');
-    $(document).trigger('revalidate');
-    $(document).trigger('clearErrors');
-  });
-}
 
 //Taboola Pixels
 if (document.cdnParameters.TB_pixel_ids != "" && typeof document.cdnParameters.TB_pixel_ids !== "undefined") {
