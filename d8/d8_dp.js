@@ -29,21 +29,17 @@
       var sel_el = document.getElementsByClassName('data8-postcodelookup-list');
       document.addEventListener("focus", 
         function(e){ 
-          let h = $('.data8-postcodelookup-list').height();
-          if( e.target.className == 'data8-postcodelookup-list' && h != 150 ){
+          let op = $('.data8-postcodelookup-dropdown').css("opacity")
+          if( e.target.className == 'data8-postcodelookup-list' && parseInt( op ) === 0 ){
             $('.data8-postcodelookup-list').blur();
             s = function() {
-              $('.data8-postcodelookup-list').css('border-width','1px');
-              $('.data8-postcodelookup-list').height( 150 );
-              $('.data8-postcodelookup-dropdown').fadeTo(200, 1); 
+              $('.data8-postcodelookup-dropdown').fadeTo(150, 1); 
             }
             ,
             setTimeout(s, 200);
           }
           else {
              s = function() {
-              $('.data8-postcodelookup-list').css('border-width','0px');
-              $('.data8-postcodelookup-list').height( 0 );
               $('.data8-postcodelookup-dropdown').fadeTo("fast", 0); 
             }
             ,
