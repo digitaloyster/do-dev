@@ -58,6 +58,7 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     script4.src = "https://digitaloyster.github.io/do-dev/d8/d8_ds.js";
     head.appendChild(script4);
   }
+}
 
 //Taboola Pixels
 if (document.cdnParameters.TB_pixel_ids != "" && typeof document.cdnParameters.TB_pixel_ids !== "undefined") {
