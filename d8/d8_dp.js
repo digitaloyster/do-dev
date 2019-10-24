@@ -27,7 +27,8 @@
         $(document).trigger('clearErrors');
       });
       var sel_el = document.getElementsByClassName('data8-postcodelookup-list');
-      document.addEventListener("focus", 
+      // document.addEventListener("focus", 
+      sel_el[0].addEventListener("focus", 
         function(e){ 
           let h = $('.data8-postcodelookup-list').height();
           if( e.target.className == 'data8-postcodelookup-list' && h != 150 ){
