@@ -174,31 +174,6 @@ $(function () {
     }
   });
 
-  //$(document).on("click", "#address-edit", editAddress());
-  $(document).on("click", "#address-edit", function() {
-    if ($('#address_search').val() != '') {
-      $('#postcode-switch').text('#container_postcode .error-message {display:block !important;}');
-    } else {
-      $('#postcode-switch').text('#container_postcode .error-message {display:none !important;}');
-    }
-    $('#label_address_search').show();
-    $('#address_search').show();
-    $('#start-search').show();
-    $('#address-select').remove();
-    $("#address").html('');
-    $("#address-edit").remove();
-    $(postcode).val('').trigger('change').hide();
-    $(add1).val('').hide();
-    $(add2).val('').hide();
-    $(add3).val('').hide();
-    $(add4).val('').hide();
-    $(add5).val('').hide();
-    //var event = new CustomEvent('doError', {"detail":{"id":"address-select"}});
-    //document.dispatchEvent(event);
-    $(document).trigger('revalidate');
-    $(document).trigger('clearErrors');
-  });
-
   $( document ).ready(function() {
     $(postcode).val('').hide();
     $(add1).val('').hide();
