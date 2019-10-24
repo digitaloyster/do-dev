@@ -35,6 +35,7 @@
             s = function() {
               $('.data8-postcodelookup-list').css('border-width','1px');
               $('.data8-postcodelookup-list').height( 150 );
+              $('.data8-postcodelookup-dropdown').fadeTo(200, 1); 
             }
             ,
             setTimeout(s, 200);
@@ -43,6 +44,7 @@
              s = function() {
               $('.data8-postcodelookup-list').css('border-width','0px');
               $('.data8-postcodelookup-list').height( 0 );
+              $('.data8-postcodelookup-dropdown').fadeTo("fast", 0); 
             }
             ,
             setTimeout(s, 200);
