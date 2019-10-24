@@ -1,3 +1,15 @@
+/* DS CSS */
+.data8-pa-autocomplete{
+  min-width: 387px !important;
+  border: 3px solid #aaa !important;
+  border-radius: 5px;
+  height: 140px !important;
+  margin-top: 5px;l
+}
+.data8-pa-autocomplete div:nth-child(odd){
+  background-color: #eee;
+}
+/* DP CSS */
 #AddressCapture_FindButton {
     border-color: black;
     border-radius: 0 5px 5px 0;
