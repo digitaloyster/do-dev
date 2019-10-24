@@ -15,7 +15,6 @@
         }
       ).show();
       $( '#address_search' ).after( '<div id="address"></div> ');
-      $('select.data8-postcodelookup-list').css('border-width','0px');
       $( '.data8-postcodelookup-list' ).on("click", "option", function (event) {
         $('.data8-postcodelookup-dropdown').hide();
         $('#AddressCapture_FindButton').hide();
