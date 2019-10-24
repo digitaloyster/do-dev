@@ -22,10 +22,12 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
       var p2Script = document.createElement('script');
       p2Script.setAttribute('src','https://digitaloyster.github.io/do-dev/p2/p2.js');
       head.appendChild(p2Script);
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = "https://digitaloyster.github.io/do-dev/p2/address-edit.js";
-      head.appendChild(script);
+  }
+  if (document.cdnParameters.postcode == "DP" || document.cdnParameters.postcode == "DS" || document.cdnParameters.postcode == "S"  ) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "https://digitaloyster.github.io/do-dev/p2/address-edit.js";
+    head.appendChild(script);
   }
   if (document.cdnParameters.postcode == "DP" || document.cdnParameters.postcode == "DS" ) {
     var d8css = document.createElement('link');
@@ -33,10 +35,6 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     d8css.setAttribute('type','text/css');
     d8css.setAttribute('href','https://digitaloyster.github.io/do-dev/d8/d8_add_complete.css');
     document.head.appendChild(d8css);
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "https://digitaloyster.github.io/do-dev/p2/address-edit.js";
-    head.appendChild(script);
   }
   if( document.cdnParameters.postcode == "DP" ){
     var script1 = document.createElement('script');
@@ -49,6 +47,11 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     head.appendChild(script2);
   }
   if( document.cdnParameters.postcode == "DS" ){
+    var d8style = document.createElement('link');
+    d8style.setAttribute('rel','stylesheet');
+    d8style.setAttribute('type','text/css');
+    d8style.setAttribute('href','https://webservices.data-8.co.uk/content/predictiveaddress.css');
+    head.appendChild(d8style);
     var script3 = document.createElement('script');
     script3.type = 'text/javascript';
     script3.src = "https://webservices.data-8.co.uk/javascript/predictiveaddress.js";
