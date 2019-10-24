@@ -27,16 +27,13 @@
         $(document).trigger('clearErrors');
       });
       var sel_el = document.getElementsByClassName('data8-postcodelookup-list');
-      // document.addEventListener("focus", 
-      sel_el[0].addEventListener("focus", 
+      document.addEventListener("focus", 
         function(e){ 
           let h = $('.data8-postcodelookup-list').height();
           if( e.target.className == 'data8-postcodelookup-list' && h != 150 ){
-            console.log( this );
             $('.data8-postcodelookup-list').blur();
             s = function() {
-              $('select.data8-postcodelookup-list').css('border-width','1px');
-              var el = 
+              $('.data8-postcodelookup-list').css('border-width','1px');
               $('.data8-postcodelookup-list').height( 150 );
             }
             ,
@@ -44,7 +41,7 @@
           }
           else {
              s = function() {
-              $('select.data8-postcodelookup-list').css('border-width','0px');
+              $('.data8-postcodelookup-list').css('border-width','0px');
               $('.data8-postcodelookup-list').height( 0 );
             }
             ,
