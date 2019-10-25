@@ -1,5 +1,14 @@
  window.onload = function(){
     $('body').after('<style id="postcode-switch">#container_postcode .error-message {display:none !important;}</style>');
+    $('#address_search').change(function() {
+      if ($('#address_search').val() != '' && $('#postcode').val() == '') {
+        $('#container_address_search .error-message').remove();
+        $('#postcode-switch').text('#container_postcode .error-message {display:block !important;}');
+      } 
+      else {
+        $('#postcode-switch').text('#container_postcode .error-message {display:none !important;}');
+      }
+    });
     $( '#address_search' ).after( '<div id="address"></div> ');
     var txt = document.getElementById('address_search');
     new data8.predictiveaddressui(txt, {
@@ -24,6 +33,7 @@
       showResults: function( pa, results ){  
          if (!results.Count) {
           $('#' + pa.elements.textbox.id ).parent().find('.error-message').remove();
+          $('#container_postcode').find('.error-message').remove();
           $('#address_search').addClass('error').after("<label for='address_search' generated='true' class='error-message' style=''>Please enter a valid address or postcode</label>");
           return true;
          }
