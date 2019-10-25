@@ -41,7 +41,17 @@
         $('#AddressCapture_FindButton').hide();
         $('#label_address_search').hide();
         $('#address_search').hide();
-        var address = this.innerHTML.replace(new RegExp(',', 'g'), '<br/>');
+        let add_arr = this.innerHTML.split(',');
+        for( let i = 0; i < add_arr.length; i++ ){
+              if( i !== add_arr.length -1 ){
+                  $('#add' + ( i + 1 ) ).val( add_arr[i] ); 
+              }
+              else {
+                  $('#postcode').val( add_arr[i] );
+              }
+              
+        }
+        let address = this.innerHTML.replace(new RegExp(',', 'g'), '<br/>');
         $("#address").html( address );
         $("#address").after("<button id='address-edit'>&#9998;</button>");
         $(document).trigger('clearErrors');
@@ -67,3 +77,4 @@
           }
          }, true);
     }
+
