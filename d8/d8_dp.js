@@ -10,6 +10,7 @@
             }
           };
       })(window.alert);
+      $('body').after('<style id="postcode-switch">#container_postcode .error-message {display:none !important;}</style>');
       new data8.postcodeLookupButton(
         [
           { element: 'add1', field: 'line1' },
