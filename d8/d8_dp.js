@@ -3,6 +3,7 @@
           window.alert = function() {
             if( arguments[0].toLowerCase().includes( 'postcode' ) ){
                $('#AddressCapture_FindButton').parent().find('.error-message').remove();
+               $('#container_postcode').find('.error-message').remove();
                $('#AddressCapture_FindButton').parent().append( '<div class="error-message">' + arguments[0] + '</div>' );
             }
             else {
@@ -11,6 +12,15 @@
           };
       })(window.alert);
       $('body').after('<style id="postcode-switch">#container_postcode .error-message {display:none !important;}</style>');
+      $('#address_search').change(function() {
+        if ($('#address_search').val() != '' && $('#postcode').val() == '') {
+          $('#container_address_search .error-message').remove();
+          $('#postcode-switch').text('#container_postcode .error-message {display:block !important;}');
+        } else {
+
+          $('#postcode-switch').text('#container_postcode .error-message {display:none !important;}');
+        }
+      });
       new data8.postcodeLookupButton(
         [
           { element: 'add1', field: 'line1' },
