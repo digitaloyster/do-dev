@@ -2,8 +2,7 @@
       (function(proxied) {
           window.alert = function() {
             if( arguments[0].toLowerCase().includes( 'postcode' ) ){
-               $('#AddressCapture_FindButton').parent().find('.error-message').remove();
-               $('#container_postcode').find('.error-message').remove();
+               $('.error-message').remove();
                $('#AddressCapture_FindButton').parent().append( '<div class="error-message">' + arguments[0] + '</div>' );
             }
             else {
