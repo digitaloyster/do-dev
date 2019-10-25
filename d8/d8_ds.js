@@ -28,7 +28,7 @@
         let this_add = pa.Address.Lines.filter( function( x ){ if( x != ''){ return x; } })
         $("#address").html( this_add.join('<br/>') );
         $("#address").after("<button id='address-edit'>&#9998;</button>");
-        $(document).trigger('clearErrors');
+        $('.error-message').remove();
       },
       showResults: function( pa, results ){  
          if (!results.Count) {
@@ -38,7 +38,7 @@
           return true;
          }
          else{
-           $('#' + pa.elements.textbox.id ).parent().find('.error-message').remove();
+           $('.error-message').remove();
          }
       }
     });
