@@ -1,4 +1,5 @@
  window.onload = function(){
+    $('body').after('<style id="postcode-switch">#container_postcode .error-message {display:none !important;}</style>');
     $( '#address_search' ).after( '<div id="address"></div> ');
     var txt = document.getElementById('address_search');
     new data8.predictiveaddressui(txt, {
