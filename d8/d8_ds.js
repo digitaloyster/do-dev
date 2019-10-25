@@ -2,7 +2,6 @@
     $( '#address_search' ).after( '<div id="address"></div> ');
     var txt = document.getElementById('address_search');
     new data8.predictiveaddressui(txt, {
-      // Change this to your own API Key
       ajaxKey: 'TJYU-SWL8-DN53-XQF4',
       fields: [
         { element: 'add1', field: 'line1' },
