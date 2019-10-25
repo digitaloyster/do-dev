@@ -100,4 +100,7 @@
     display: block !important;
     opacity: 0;
   }
+  #container_postcode .error-message {
+      top: -505px;
+  }
 
