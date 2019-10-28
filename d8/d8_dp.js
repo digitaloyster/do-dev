@@ -63,10 +63,10 @@
           if( e.target.className == 'data8-postcodelookup-list' && parseInt( op ) === 0 ){
             $('.data8-postcodelookup-list').blur();
             s = function() {
-              $('.data8-postcodelookup-dropdown').fadeTo(50, 1); 
+              $('.data8-postcodelookup-dropdown').fadeTo("fast", 1); 
             }
             ,
-            setTimeout(s, 300);
+            setTimeout(s, 400);
           }
           else {
              s = function() {
