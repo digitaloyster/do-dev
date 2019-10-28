@@ -42,9 +42,9 @@
   .data8-postcodelookup-dropdown{
     display: block !important;
     opacity: 0;
-    padding: 0px;
-    top: 55px;
-    left: 0px;
+    padding: 0px !important;
+    top: 55px !important;
+    left: 0px !important;
     border-radius: 5px;
   }
   .data8-postcodelookup-dropdown:hover {
