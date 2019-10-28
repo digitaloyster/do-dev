@@ -103,7 +103,7 @@
   #container_postcode .error-message {
       top: -505px;
   }
-  container_postcode {
+  #container_postcode {
       width: 100% !important;
       height: 1px !important;
       top: 221px;
