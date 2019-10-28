@@ -66,7 +66,7 @@
               $('.data8-postcodelookup-dropdown').fadeTo("fast", 1); 
             }
             ,
-            setTimeout(s, 400);
+            setTimeout(s, 350);
           }
           else {
              s = function() {
