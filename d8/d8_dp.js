@@ -32,7 +32,7 @@
         {
           ajaxKey: 'TJYU-SWL8-DN53-XQF4',
           license: 'WebClickFull',
-          findLabel: 'SEARCH LABEL'
+          findLabel: 'Address Search'
         }
       ).show();
       $( '#address_search' ).after( '<div id="address"></div> ');
