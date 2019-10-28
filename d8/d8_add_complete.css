@@ -43,11 +43,6 @@
     display: block !important;
     opacity: 0;
     padding: 0px !important;
-    top: 55px !important;
-    left: 0px !important;
-    border-radius: 5px;
-    border: 3px solid #aaa !important;
-    height: 170px;
     overflow-x: hidden;
   }
   .data8-postcodelookup-dropdown:hover {
