@@ -40,10 +40,10 @@
     display: none !important;
   }
   .data8-postcodelookup-dropdown{
-    padding: 0px !important;
-    top: 55px !important;
-    left: 0px !important;
-    border-radius: 5px !important;
+    padding: 0px;
+    top: 55px;
+    left: 0px;
+    border-radius: 5px;
   }
   .data8-postcodelookup-list option:nth-child(odd){
     background-color: #eee;
