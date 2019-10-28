@@ -40,10 +40,15 @@
     display: none !important;
   }
   .data8-postcodelookup-dropdown{
+    display: block !important;
+    opacity: 0;
     padding: 0px;
     top: 55px;
     left: 0px;
     border-radius: 5px;
+  }
+  .data8-postcodelookup-dropdown:hover {
+    overflow-y: scroll;
   }
   .data8-postcodelookup-list option:nth-child(odd){
     background-color: #eee;
@@ -95,10 +100,6 @@
   }
   .data8-postcodelookup-cancel {
     display: none !important;
-  }
-  .data8-postcodelookup-dropdown {
-    display: block !important;
-    opacity: 0;
   }
   #container_postcode .error-message {
       top: -505px;
