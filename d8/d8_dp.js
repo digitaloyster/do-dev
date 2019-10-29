@@ -37,6 +37,7 @@
       ).show();
       $( '#address_search' ).after( '<div id="address"></div> ');
       $( '.data8-postcodelookup-list' ).on("click", "option", function (event) {
+        $('#address-edit').remove();
         $('.data8-postcodelookup-dropdown').hide();
         $('#AddressCapture_FindButton').hide();
         $('#label_address_search').hide();
@@ -56,20 +57,25 @@
         $("#address").after("<button id='address-edit'>&#9998;</button>");
         $(document).trigger('clearErrors');
       });
-      var sel_el = document.getElementsByClassName('data8-postcodelookup-list');
       document.addEventListener("focus", 
         function(e){ 
           let op = $('.data8-postcodelookup-dropdown').css("opacity")
           if( e.target.className == 'data8-postcodelookup-list' && parseInt( op ) === 0 ){
             $('.data8-postcodelookup-list').blur();
             s = function() {
-              $('.data8-postcodelookup-dropdown').fadeTo("fast", 1); 
+              let dis = $('#address_search').css('display');
+              if( dis == 'block'){
+                  $('.data8-postcodelookup-list option').css('cursor', 'pointer');
+                  $('.data8-postcodelookup-dropdown').fadeTo("fast", 1);    
+              }
+              
             }
             ,
             setTimeout(s, 350);
           }
           else {
              s = function() {
+              $('.data8-postcodelookup-list option').css('cursor', 'default');
               $('.data8-postcodelookup-dropdown').fadeTo("fast", 0); 
             }
             ,
