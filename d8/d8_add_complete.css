@@ -102,4 +102,12 @@
       height: 1px !important;
       top: 221px;
   }
+  @media only screen and (max-width: 600px) {
+    .data8-postcodelookup-dropdown select {
+      min-width: 265px !important; 
+    }
+    .data8-postcodelookup-list option {
+      width: 265px;
+    }
+  }
 
