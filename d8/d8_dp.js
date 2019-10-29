@@ -37,6 +37,7 @@
       ).show();
       $( '#address_search' ).after( '<div id="address"></div> ');
       $( '.data8-postcodelookup-list' ).on("click", "option", function (event) {
+        if( $("#address").html() != '' ){ return; }
         $('#address-edit').remove();
         $('.data8-postcodelookup-dropdown').hide();
         $('#AddressCapture_FindButton').hide();
