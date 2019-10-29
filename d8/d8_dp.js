@@ -12,7 +12,7 @@ $(searchField).after(extraHTML);
 invalidPC(false);
 $("#start-search").on("click",function(e) {
 e.preventDefault();
-//invalidPC(false);
+invalidPC(false);
 if ($(searchField).val() != "") {
     $('#address-select').empty().remove();
     $('#address').empty();
