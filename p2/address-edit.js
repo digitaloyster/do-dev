@@ -7,7 +7,7 @@
     $('#label_address_search').show();
     $('#address_search').show();
     $('#start-search').show();
-    $('#address-select').remove();
+    $('#address-select').show();
     $("#address").html('');
     $("#address-edit").remove();
     if( document.cdnParameters.postcode == "S" ){
