@@ -104,6 +104,11 @@
   left: 0;
   width: 100%;
 }
+.li_add{
+  cursor: pointer;
+  border-bottom: 1px #ccc solid;
+  padding: 5px 0 5px 5px;
+}
 @media (max-width: 600px) {
   #address-error {
     left: 77px;
@@ -111,7 +116,7 @@
   }
 }
 
-#container_add1, #container_add2, #container_add3, #container_add4 {
+#container_add1, #container_add2, #container_add3, #container_add4, #container_add5 {
   display: none;
 }
 
