@@ -80,4 +80,17 @@ if ($(searchField).val() != "") {
     i.open("POST", t, !0),
     n && i.setRequestHeader("Authorization", "Bearer " + this.options.jwt),
     i.send(e);
+    }
+});
+
+function invalidPC(state) {
+  $('#postcode-switch').text('#container_postcode .error-message {display:none !important;}');
+  if (state) {
+    $('#container_postcode label.error').remove();
+    $(searchField).addClass('error').after("<label for='address_search' generated='true' class='error-message' style=''>Please enter a valid postcode</label>");
+  } else {
+    $(searchField).removeClass('error').css("border-color","black");
+    $('#container_address_search .error-message').remove();
+  }
 }
+
