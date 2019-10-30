@@ -10,104 +10,13 @@
   background-color: #eee;
 }
 /* DP CSS */
-#AddressCapture_FindButton {
-    border-color: black;
-    border-radius: 0 5px 5px 0;
-    padding: 0px;
-    top: 19px;
-    position: absolute;
-    background-color: #5DB992;
-    color: #fff;
-    width: 140px;
-    height: 36px;
-    line-height: 14px;
-  }
-  #address {
-      position: absolute;
-      top: 16px;
-      left: 40px;
-  }
-  #address-edit {
-      padding: 5px;
-      border-radius: 5px;
-      font-size: large;
-  }
-  #container_add1, #container_add2, #container_add3, #container_add4, #container_add5 {
-    display: none;
-  }
-  #container_postcode input {
-    display: none !important;
-  }
-  .data8-postcodelookup-dropdown{
-    display: block !important;
-    opacity: 0;
-    padding: 0px !important;
-    overflow-x: hidden;
-  }
-  .data8-postcodelookup-dropdown:hover {
-    overflow-y: scroll;
-  }
-  .data8-postcodelookup-list option:nth-child(odd){
-    background-color: #eee;
-  }
-  .data8-postcodelookup-list {
-    min-width: 394px !important;
-    padding: 0px !important;
-  }
-  select option:focus, 
-  select option:active, 
-  select option:checked
-  {
-    background: linear-gradient(#eee,#eee);
-    background-color: #eee !important; /* for IE */
-  }
-  .data8-postcodelookup-list option{
-    padding: 5px 0 5px 5px;
-    -moz-white-space: pre-wrap;
-    -o-white-space: pre-wrap;
-    white-space: pre-wrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: pointer;
-    width: 392px;
-    margin: 1px; 
-  }
-  .data8-postcodelookup-dropdown div{
-    margin: 3px !important;
-  }
-  .data8-postcodelookup-ok { 
-    margin-right: 5px;
-    background-color: #5DB992;
-  }
-  .data8-postcodelookup-ok, .data8-postcodelookup-cancel { 
-    font-size: 10px;
-    padding: 3px;
-    border-radius: 3px;
-  }
-  .data8-postcodelookup-cancel:hover {
-    background-color: #e6e6e6;
-    border-color: #adadad;
-  }
-  .data8-postcodelookup-ok {
-    display: none !important;
-  }
-  .data8-postcodelookup-cancel {
-    display: none !important;
-  }
-  #container_postcode .error-message {
-      top: -505px;
-  }
-  #container_postcode {
-      width: 100% !important;
-      height: 1px !important;
-      top: 221px;
-  }
-  @media only screen and (max-width: 600px) {
-    .data8-postcodelookup-dropdown select {
-      min-width: 265px !important; 
-    }
-    .data8-postcodelookup-list option {
-      width: 265px;
-    }
-  }
+
+#container_add1, #container_add2, #container_add3, #container_add4, #container_add5 {
+  display: none;
+}
+#container_address_search .error-message {
+
+  display: none;
+
+}
 
