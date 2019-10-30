@@ -93,7 +93,7 @@ function invalidPC(state, m ) {
     $(searchField).addClass('error')
     let error_txt = ''
     m !== undefined ? error_txt = m : error_txt = 'Postcode is required for address lookup.';
-    document.getElementById('postcode').insertAdjacentHTML("afterend", '<div class="error-message">' + error_txt + '.</div>'); 
+    document.getElementById('postcode').insertAdjacentHTML("afterend", '<div class="error-message">' + error_txt + '</div>'); 
   } else {
     $(searchField).removeClass('error').css("border-color","black");
   }
