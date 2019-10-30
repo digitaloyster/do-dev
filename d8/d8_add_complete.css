@@ -51,17 +51,6 @@
   color: #fff;
   width: 140px;
 }
-#address-select {
-  overflow: scroll;
-  height: 160px;
-  width: 382px;
-  top: 60px;
-  left: 5px;
-  position: absolute;
-  display: block;
-  border: 3px solid #aaa;
-  border-radius: 5px 5px 5px 5px;
-}
 #address-select span {
   font-weight: bold;
   padding: 7px 75px 7px 7px;
