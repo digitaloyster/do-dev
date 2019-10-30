@@ -18,6 +18,93 @@
   display: none;
 }
 #address-select {
+    overflow: scroll;
+    height: 160px;
+    width: 382px;
+    top: 60px;
+    left: 5px;
+    position: absolute;
+    display: block;
+    border: 3px solid #aaa;
+    border-radius: 5px 5px 5px 5px;
     z-index: 1;
+}
+#address_search {
+  border-radius: 5px 0 0 5px;
+  border-color: black;
+  width: 271px;
+}
+#address-edit {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: large;
+}
+#start-search {
+  border-color: black;
+  border-radius: 0 5px 5px 0;
+  padding: 4px 31px;
+  left: 270px;
+  top: 19px;
+  position: absolute;
+  height: 40px;
+  background-color: #5DB992;
+  color: #fff;
+  width: 140px;
+}
+#address-select {
+  overflow: scroll;
+  height: 160px;
+  width: 382px;
+  top: 60px;
+  left: 5px;
+  position: absolute;
+  display: block;
+  border: 3px solid #aaa;
+  border-radius: 5px 5px 5px 5px;
+}
+#address-select span {
+  font-weight: bold;
+  padding: 7px 75px 7px 7px;
+  font-size: 1.1em;
+  line-height: 2.2em;
+}
+#address-select ul {
+  list-style: none;
+}
+#address-select li:hover {
+  background-color: #ccc !important;
+}
+#address-select li:nth-child(odd) {
+  background-color: #eee;
+}
+#address {
+  position: absolute;
+  top: 16px;
+  left: 40px;
+}
+#container_postcode input {
+  display: none !important;
+}
+.li_add{
+ cursor: pointer;
+ border-bottom: 1px #ccc solid;
+ padding: 5px 0 5px 5px;
+}
+@media (max-width: 600px) {
+  #container_address_search {
+    width: 171px;
+  }
+  #address_search {
+    width: 171px;
+  }
+  #start-search {
+    width: 100px;
+    left: 170px;
+    padding: 3px 15px;
+  }
+  #address-select {
+    width: 265px;
+    height: 200px;
+  }
 }
 
