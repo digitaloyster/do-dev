@@ -15,8 +15,9 @@
   display: none;
 }
 #container_address_search .error-message {
-
   display: none;
-
+}
+#address-select {
+    z-index: 1;
 }
 
