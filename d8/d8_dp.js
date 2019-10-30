@@ -38,7 +38,7 @@ $("#start-search").on("click",function(e) {
         if (4 == i.readyState)
             if (200 == i.status) {
                 var t = JSON.parse(i.responseText);
-                if( t.Status.Success === false ) { invalidPC( true ); return; }
+                if( t.Status.Success === false ) { invalidPC( true, t.Status.ErrorMessage ); return; }
                 $('#address-select').empty().remove();
                 var radios = "<div id='address-select'><span>Please select your address:</span><ul>";
                 t = t.Results;
@@ -87,11 +87,13 @@ $("#start-search").on("click",function(e) {
     }
 });
 
-function invalidPC(state) {
+function invalidPC(state, m ) {
   $('.error-message').remove();
   if (state) {
-    $(searchField).addClass('error').after("<label for='address_search' generated='true' class='error-message' style=''>Please enter a valid postcode</label>");
-    
+    $(searchField).addClass('error')
+    let error_txt = ''
+    m !== undefined ? error_txt = m : error_txt = 'Postcode is required for address lookup.';
+    document.getElementById('postcode').insertAdjacentHTML("afterend", '<div class="error-message">' + error_txt + '.</div>'); 
   } else {
     $(searchField).removeClass('error').css("border-color","black");
   }
