@@ -17,29 +17,29 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
       var p2Style = document.createElement('link');
       p2Style.setAttribute('rel','stylesheet');
       p2Style.setAttribute('type','text/css');
-      p2Style.setAttribute('href','https://digitaloyster.github.io/do-live/p2/p2.css');
+      p2Style.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/p2/p2.css');
       document.head.appendChild(p2Style);
       var p2Script = document.createElement('script');
-      p2Script.setAttribute('src','https://digitaloyster.github.io/do-dev/p2/p2.js');
+      p2Script.setAttribute('src','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/p2/p2.js');
       head.appendChild(p2Script);
   }
   if (document.cdnParameters.postcode == "DP" || document.cdnParameters.postcode == "DS" || document.cdnParameters.postcode == "S"  ) {
     var script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = "https://digitaloyster.github.io/do-dev/p2/address-edit.js";
+    script.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/p2/address-edit.js";
     head.appendChild(script);
   }
   if (document.cdnParameters.postcode == "DP" || document.cdnParameters.postcode == "DS" ) {
     var d8css = document.createElement('link');
     d8css.setAttribute('rel','stylesheet');
     d8css.setAttribute('type','text/css');
-    d8css.setAttribute('href','https://digitaloyster.github.io/do-dev/d8/d8_add_complete.css');
+    d8css.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_add_complete.css');
     document.head.appendChild(d8css);
   }
   if( document.cdnParameters.postcode == "DP" ){
     var script2 = document.createElement('script');
     script2.type = 'text/javascript';
-    script2.src = "https://digitaloyster.github.io/do-dev/d8/d8_dp.js";
+    script2.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_dp.js";
     head.appendChild(script2);
   }
   if( document.cdnParameters.postcode == "DS" ){
@@ -54,7 +54,7 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     head.appendChild(script3);
     var script4 = document.createElement('script');
     script4.type = 'text/javascript';
-    script4.src = "https://digitaloyster.github.io/do-dev/d8/d8_ds.js";
+    script4.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_ds.js";
     head.appendChild(script4);
   }
 }
