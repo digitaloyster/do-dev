@@ -20,9 +20,9 @@
 #address-select {
     overflow: scroll;
     height: 160px;
-    width: 396px;
+    width: 400px;
     top: 60px;
-    left: 2px;
+    left: 0px;
     position: absolute;
     display: block;
     border: 3px solid #aaa;
