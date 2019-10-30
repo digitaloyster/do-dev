@@ -37,11 +37,6 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     document.head.appendChild(d8css);
   }
   if( document.cdnParameters.postcode == "DP" ){
-    var p2Style = document.createElement('link');
-    p2Style.setAttribute('rel','stylesheet');
-    p2Style.setAttribute('type','text/css');
-    p2Style.setAttribute('href','https://digitaloyster.github.io/do-live/p2/p2.css');
-    document.head.appendChild(p2Style);
     var script2 = document.createElement('script');
     script2.type = 'text/javascript';
     script2.src = "https://digitaloyster.github.io/do-dev/d8/d8_dp.js";
