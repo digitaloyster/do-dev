@@ -11,9 +11,9 @@ var searchContext = "",
 $(searchField).after(extraHTML);
 invalidPC(false);
 $("#start-search").on("click",function(e) {
-e.preventDefault();
-invalidPC(false);
-if ($(searchField).val() != "") {
+  e.preventDefault();
+  invalidPC(false);
+  if ($(searchField).val() != "") {
     $('#address-select').empty().remove();
     $('#address').empty();
     var i;
@@ -38,6 +38,7 @@ if ($(searchField).val() != "") {
         if (4 == i.readyState)
             if (200 == i.status) {
                 var t = JSON.parse(i.responseText);
+                if( t.Status.Success === false ) { invalidPC( true ); return; }
                 $('#address-select').empty().remove();
                 var radios = "<div id='address-select'><span>Please select your address:</span><ul>";
                 t = t.Results;
@@ -81,16 +82,18 @@ if ($(searchField).val() != "") {
     n && i.setRequestHeader("Authorization", "Bearer " + this.options.jwt),
     i.send(e);
     }
+    else{
+      invalidPC( true );
+    }
 });
 
 function invalidPC(state) {
-  $('#postcode-switch').text('#container_postcode .error-message {display:none !important;}');
+  $('.error-message').remove();
   if (state) {
-    $('#container_postcode label.error').remove();
     $(searchField).addClass('error').after("<label for='address_search' generated='true' class='error-message' style=''>Please enter a valid postcode</label>");
+    
   } else {
     $(searchField).removeClass('error').css("border-color","black");
-    $('#container_address_search .error-message').remove();
   }
 }
 
