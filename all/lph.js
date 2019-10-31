@@ -39,7 +39,7 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
   if( document.cdnParameters.postcode == "DP" ){
     var script2 = document.createElement('script');
     script2.type = 'text/javascript';
-    script2.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_dp.js";
+    script2.src = "https://digitaloyster.github.io/do-dev/d8/d8_dp.js";
     head.appendChild(script2);
   }
   if( document.cdnParameters.postcode == "DS" ){
