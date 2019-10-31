@@ -8,6 +8,10 @@ var searchContext = "",
   add4 = "#add4",
   add5 = "#add5",
   extraHTML = '<button id="start-search">SEARCH ADDRESS</button><br /><div id="address"></div>';
+
+$("#address_search").attr("autocomplete", "postal-code");
+
+
 $(searchField).after(extraHTML);
 invalidPC(false);
 $("#start-search").on("click",function(e) {
