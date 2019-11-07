@@ -1,5 +1,5 @@
 .data8-pa-autocomplete{
-    min-width: 300px !important;
+    min-width: 290px !important;
     border: 1px solid #ccc;
     border-radius: 1px;
     height: 217px;
@@ -14,6 +14,6 @@
 }
 @media (max-width: 600px) {
     .data8-pa-autocomplete{
-        width: 300px;
+        width: 290px;
     }
 }
