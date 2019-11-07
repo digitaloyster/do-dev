@@ -1,10 +1,9 @@
 .data8-pa-autocomplete{
-  min-width: 387px !important;
-  border: 3px solid #aaa !important;
-  border-radius: 5px;
-  height: 140px !important;
-  margin-top: 5px;
-}
-.data8-pa-autocomplete div:nth-child(odd){
-  background-color: #eee;
+    min-width: 300px !important;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    height: 217px;
+    margin-top: 5px;
+    width: 398px;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2);
 }
