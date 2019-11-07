@@ -69,12 +69,12 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     head.appendChild(script3);
     var script4 = document.createElement('script');
     script4.type = 'text/javascript';
-    script4.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_ds2.js";
+    script4.src = "https://digitaloyster.github.io/do-dev/d8/d8_ds2.js";
     head.appendChild(script4);
     var d8css = document.createElement('link');
     d8css.setAttribute('rel','stylesheet');
     d8css.setAttribute('type','text/css');
-    d8css.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_d2.css');
+    d8css.setAttribute('href','https://digitaloyster.github.io/do-dev/d8/d8_d2.css');
     document.head.appendChild(d8css);
   }
 }
