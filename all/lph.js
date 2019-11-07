@@ -33,13 +33,13 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     var d8css = document.createElement('link');
     d8css.setAttribute('rel','stylesheet');
     d8css.setAttribute('type','text/css');
-    d8css.setAttribute('href','https://digitaloyster.github.io/do-dev/d8/d8_dp_d1.css');
+    d8css.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_dp_d1.css');
     document.head.appendChild(d8css);
   }
   if( document.cdnParameters.postcode == "DP" ){
     var script2 = document.createElement('script');
     script2.type = 'text/javascript';
-    script2.src = "https://digitaloyster.github.io/do-dev/d8/d8_dp.js";
+    script2.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_dp.js";
     head.appendChild(script2);
   }
   if( document.cdnParameters.postcode == "DS1" ){
@@ -69,12 +69,12 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     head.appendChild(script3);
     var script4 = document.createElement('script');
     script4.type = 'text/javascript';
-    script4.src = "https://digitaloyster.github.io/do-dev/d8/d8_ds2.js";
+    script4.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_ds2.js";
     head.appendChild(script4);
     var d8css = document.createElement('link');
     d8css.setAttribute('rel','stylesheet');
     d8css.setAttribute('type','text/css');
-    d8css.setAttribute('href','https://digitaloyster.github.io/do-dev/d8/d8_d2.css');
+    d8css.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_d2.css');
     document.head.appendChild(d8css);
   }
 }
