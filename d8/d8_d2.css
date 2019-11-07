@@ -12,3 +12,8 @@
 .data8-pa-autocompleteitem {
     padding: 10px 0px 0px 10px !important;
 }
+@media (max-width: 600px) {
+    .data8-pa-autocomplete{
+        width: 300px;
+    }
+}
