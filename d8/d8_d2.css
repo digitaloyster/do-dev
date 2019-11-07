@@ -9,3 +9,6 @@
     font: 9pt arial;
     padding-bottom: 10px;
 }
+.data8-pa-autocompleteitem {
+    padding: 10px 0px 0px 10px !important;
+}
