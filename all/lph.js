@@ -36,20 +36,13 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     d8css.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_add_complete.css');
     document.head.appendChild(d8css);
   }
-  if ( document.cdnParameters.postcode == "DS2" ) {
-    var d8css = document.createElement('link');
-    d8css.setAttribute('rel','stylesheet');
-    d8css.setAttribute('type','text/css');
-    d8css.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_autoComplete.css');
-    document.head.appendChild(d8css);
-  }
   if( document.cdnParameters.postcode == "DP" ){
     var script2 = document.createElement('script');
     script2.type = 'text/javascript';
     script2.src = "https://digitaloyster.github.io/do-dev/d8/d8_dp.js";
     head.appendChild(script2);
   }
-  if( document.cdnParameters.postcode == "DS" ){
+  if( document.cdnParameters.postcode == "DS1" ){
     var d8style = document.createElement('link');
     d8style.setAttribute('rel','stylesheet');
     d8style.setAttribute('type','text/css');
@@ -63,6 +56,26 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     script4.type = 'text/javascript';
     script4.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_ds.js";
     head.appendChild(script4);
+  }
+  if ( document.cdnParameters.postcode == "DS2" ) {
+    var d8style = document.createElement('link');
+    d8style.setAttribute('rel','stylesheet');
+    d8style.setAttribute('type','text/css');
+    d8style.setAttribute('href','https://webservices.data-8.co.uk/content/predictiveaddress.css');
+    head.appendChild(d8style);
+    var script3 = document.createElement('script');
+    script3.type = 'text/javascript';
+    script3.src = "https://webservices.data-8.co.uk/javascript/predictiveaddress.js";
+    head.appendChild(script3);
+    var script4 = document.createElement('script');
+    script4.type = 'text/javascript';
+    script4.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_ds.js";
+    head.appendChild(script4);
+    var d8css = document.createElement('link');
+    d8css.setAttribute('rel','stylesheet');
+    d8css.setAttribute('type','text/css');
+    d8css.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_autoComplete.css');
+    document.head.appendChild(d8css);
   }
 }
 
