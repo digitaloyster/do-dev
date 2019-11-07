@@ -1,4 +1,7 @@
- window.onload = function(){
+// add another input for this ds1, called address_search
+// postcode input then needs its label to be hidden and address_search need its label to be 'Postcode'
+// both fields are required
+window.onload = function(){
     $('body').after('<style id="postcode-switch">#container_postcode .error-message {display:none !important;}</style>');
     $('#address_search').change(function() {
       if ($('#address_search').val() != '' && $('#postcode').val() == '') {
