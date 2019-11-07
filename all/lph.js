@@ -23,7 +23,7 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
       p2Script.setAttribute('src','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/p2/p2.js');
       head.appendChild(p2Script);
   }
-  if (document.cdnParameters.postcode == "DP" || document.cdnParameters.postcode == "DS" || document.cdnParameters.postcode == "S"  ) {
+  if (document.cdnParameters.postcode != "A") {
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/p2/address-edit.js";
@@ -54,7 +54,7 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     head.appendChild(script3);
     var script4 = document.createElement('script');
     script4.type = 'text/javascript';
-    script4.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_ds.js";
+    script4.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_ds1.js";
     head.appendChild(script4);
   }
   if ( document.cdnParameters.postcode == "DS2" ) {
@@ -69,7 +69,7 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     head.appendChild(script3);
     var script4 = document.createElement('script');
     script4.type = 'text/javascript';
-    script4.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_ds.js";
+    script4.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_ds2.js";
     head.appendChild(script4);
     var d8css = document.createElement('link');
     d8css.setAttribute('rel','stylesheet');
