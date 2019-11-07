@@ -29,11 +29,18 @@ if( typeof document.cdnParameters.postcode !== "undefined" ){
     script.src = "https://cdn.jsdelivr.net/gh/digitaloyster/do-live/p2/address-edit.js";
     head.appendChild(script);
   }
-  if (document.cdnParameters.postcode == "DP" || document.cdnParameters.postcode == "DS" ) {
+  if ( document.cdnParameters.postcode == "DP" || document.cdnParameters.postcode == "DS1" ) {
     var d8css = document.createElement('link');
     d8css.setAttribute('rel','stylesheet');
     d8css.setAttribute('type','text/css');
     d8css.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_add_complete.css');
+    document.head.appendChild(d8css);
+  }
+  if ( document.cdnParameters.postcode == "DS2" ) {
+    var d8css = document.createElement('link');
+    d8css.setAttribute('rel','stylesheet');
+    d8css.setAttribute('type','text/css');
+    d8css.setAttribute('href','https://cdn.jsdelivr.net/gh/digitaloyster/do-live/d8/d8_autoComplete.css');
     document.head.appendChild(d8css);
   }
   if( document.cdnParameters.postcode == "DP" ){
