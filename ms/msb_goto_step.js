@@ -1,5 +1,7 @@
 // Version 1.2.1
-
+//<script id="goto_this_step" data-goto_this_step="8" src="https://digitaloyster.github.io/do-dev/ms/msb_goto_step.js"></script>
+//load script with above
+/////////////////////////////////
 $(document).ready(function() {
     // XXX: Variables/Objects
     if (document.cdnMultiStep.debugMode) var d = true;
@@ -409,6 +411,7 @@ $(document).ready(function() {
 
     // Initialise
     initialise();
-    gotoStep(8);
+    let goto_this_step = document.getElementById("goto_this_step").getAttribute("data-goto_this_step");
+    gotoStep( goto_this_step );
     // Initialise
 });
