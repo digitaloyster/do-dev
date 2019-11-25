@@ -30,7 +30,7 @@ $(document).ready(function() {
         if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
             msBrowser = true;
         }
-        if( ( (/iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) || (navigator.userAgent.match( /Android/ ) ) && !window.MSStream ){
+        if( (/iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) || navigator.userAgent.match( /Android/ ) ) && !window.MSStream ){
             document.cdnMultiStep.settings.mobile_device = true;   
         }
         var regex = /(\d{1,2})_\d{1,2}/;
