@@ -24,11 +24,19 @@ $(document).ready(function() {
     var initialise = function() {
         hooks.call('hookPreInit', []); // Hook
         var msBrowser = false;
+        var oldIOS = false;
         var loadJqueryUi = false;
         var datepicker_option = {};
         if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
             msBrowser = true;
         }
+
+        var regex = /(\d{1,2})_\d{1,2}/;
+        var found = navigator.userAgent.match(regex);
+        if (found !== null) {
+            if (found[1] < 12 && navigator.userAgent.includes("Mobile")) { oldIOS = true; }
+        }
+
         $( '#' + document.cdnMultiStep.settings.nextButton ).addClass('button-next');
         $( '#' + document.cdnMultiStep.settings.nextButton ).addClass('button-back');
         $( ".lp-pom-button" ).each(function( ) {
@@ -63,6 +71,10 @@ $(document).ready(function() {
         $.each(steps, function(i, val) {
             if ("fields" in steps[i] && steps[i].fields != '') {
                 $.each(steps[i].fields, function(k, val) {
+                    // Email Validate
+                    if (k==="email_address") {
+                        document.getElementById(k).setAttribute("pattern", "[a-zA-Z0-9.-_]{1,}@[a-zA-Z0-9.-]{1,}[.]{1}[a-zA-Z0-9]{2,}");
+                    }
                     // Buttons
                     if ("display" in val && val.display == "buttons") {
                         if (!$('#' + k).length) {
@@ -75,7 +87,7 @@ $(document).ready(function() {
                                 var $update = $(this).parent('div');
                                 if ($("[name='" + k + "']")[0].type !== "checkbox") $("#container_" + k + " .selected").removeClass('selected');
                                 $update.toggleClass('selected');
-                                if ($update.hasClass('single-field') && !msBrowser) {
+                                if ($update.hasClass('single-field') && !msBrowser && !oldIOS) {
                                     nextStep();
                                 }
                             });
@@ -229,7 +241,9 @@ $(document).ready(function() {
         clearErrors();
         showStep();
         showElements(step);
-        if (step != 1){ refocusForm(); }
+        if (step != 1) refocusForm();
+
+
         if (step == 1) {
             $('#' + settings.prevButton).hide();
         } else {
@@ -248,7 +262,7 @@ $(document).ready(function() {
         }
         hooks.call('hookNewStep', []); //HOOK
     };
-    
+
     var focusClick = function( ev, el) {
         if( ev.keyCode === 32 || ev.keyCode === 13 ){
             $(':input:enabled:visible:first').focus();
