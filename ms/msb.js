@@ -31,6 +31,7 @@ $(document).ready(function() {
             msBrowser = true;
         }
         if( (/iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) || navigator.userAgent.match( /Android/ ) ) && !window.MSStream ){
+            alert( navigator.platform );
             document.cdnMultiStep.settings.mobile_device = true;   
         }
         var regex = /(\d{1,2})_\d{1,2}/;
