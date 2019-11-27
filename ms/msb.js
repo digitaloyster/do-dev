@@ -27,6 +27,7 @@ $(document).ready(function() {
         var oldIOS = false;
         var loadJqueryUi = false;
         var datepicker_option = {};
+        document.cdnMultiStep.settings.mobile_device = false;
         if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
             msBrowser = true;
         }
